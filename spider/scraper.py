@@ -47,24 +47,4 @@ class Scraper:
     def extract_urls(self) -> list:
         return self.soup.find_all('a')
 
-# url_list = [
-#     'https://www.nitrocollege.com/nitro-scholarship-application',
-#     'https://calvinrosser.com/scholarships/buena-amistad-scholarship/', # no
-#     'https://joinjuno.com/scholarship/january-2022-scholarship', # no
-#     'https://www.keepgoingforward.org/money-isnt-everything',
-#     'https://calvinrosser.com/scholarships/financial-freedom/',# no
-#     'https://calvinrosser.com/scholarships/a-bold-life-scholarship/', # no
-#     'https://www.nitrocollege.com/nitro-scholarship-application/1k',
-#     'https://calvinrosser.com/scholarships/a-green-world-scholarship/', # no
-#     'https://www.mymozaic.com/monthlyscholarship.php'
-# ]
 
-# for url in url_list:
-#     test = Scraper(url)
-#     print('<--------- Sholarship ------------->')
-#     print(test.get_title())
-#     print(test.get_amount())
-#     # print(test.get_requirements())
-#     print(test.get_organization())
-#     print()
-#     print()
