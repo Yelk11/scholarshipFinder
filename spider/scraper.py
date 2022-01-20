@@ -2,10 +2,14 @@ from bs4 import BeautifulSoup
 import requests
 import re
 import random
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
 
-class Scholarship:
 
-    def __init__(self, url):
+class Scraper:
+
+    def __init__(self, url, ):
 
         qual_list = ['no essay', 'essay','student', 'non student', 'incoming freshman','full time', 'part time' ]
 
@@ -40,25 +44,27 @@ class Scholarship:
     def get_organization(self):
         return re.findall('://([\w\-\.]+)', self.url)
 
+    def extract_urls(self) -> list:
+        return self.soup.find_all('a')
 
-url_list = [
-    'https://www.nitrocollege.com/nitro-scholarship-application',
-    'https://calvinrosser.com/scholarships/buena-amistad-scholarship/', # no
-    'https://joinjuno.com/scholarship/january-2022-scholarship', # no
-    'https://www.keepgoingforward.org/money-isnt-everything',
-    'https://calvinrosser.com/scholarships/financial-freedom/',# no
-    'https://calvinrosser.com/scholarships/a-bold-life-scholarship/', # no
-    'https://www.nitrocollege.com/nitro-scholarship-application/1k',
-    'https://calvinrosser.com/scholarships/a-green-world-scholarship/', # no
-    'https://www.mymozaic.com/monthlyscholarship.php'
-]
+# url_list = [
+#     'https://www.nitrocollege.com/nitro-scholarship-application',
+#     'https://calvinrosser.com/scholarships/buena-amistad-scholarship/', # no
+#     'https://joinjuno.com/scholarship/january-2022-scholarship', # no
+#     'https://www.keepgoingforward.org/money-isnt-everything',
+#     'https://calvinrosser.com/scholarships/financial-freedom/',# no
+#     'https://calvinrosser.com/scholarships/a-bold-life-scholarship/', # no
+#     'https://www.nitrocollege.com/nitro-scholarship-application/1k',
+#     'https://calvinrosser.com/scholarships/a-green-world-scholarship/', # no
+#     'https://www.mymozaic.com/monthlyscholarship.php'
+# ]
 
-for url in url_list:
-    test = Scholarship(url)
-    print('<--------- Sholarship ------------->')
-    print(test.get_title())
-    print(test.get_amount())
-    # print(test.get_requirements())
-    print(test.get_organization())
-    print()
-    print()
+# for url in url_list:
+#     test = Scraper(url)
+#     print('<--------- Sholarship ------------->')
+#     print(test.get_title())
+#     print(test.get_amount())
+#     # print(test.get_requirements())
+#     print(test.get_organization())
+#     print()
+#     print()
