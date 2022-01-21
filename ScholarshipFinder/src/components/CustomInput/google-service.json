@@ -1,0 +1,47 @@
+{
+    "project_info": {
+      "project_number": "741116047859",
+      "firebase_url": "https://scholarshipfinder-fb492-default-rtdb.firebaseio.com",
+      "project_id": "scholarshipfinder-fb492",
+      "storage_bucket": "scholarshipfinder-fb492.appspot.com"
+    },
+    "client": [
+      {
+        "client_info": {
+          "mobilesdk_app_id": "1:741116047859:android:7e8497faafa56215afe286",
+          "android_client_info": {
+            "package_name": "com.scholarshipfinder"
+          }
+        },
+        "oauth_client": [
+          {
+            "client_id": "741116047859-ip1605lkg94lh3ve03m3o3jafjla8tsf.apps.googleusercontent.com",
+            "client_type": 3
+          }
+        ],
+        "api_key": [
+          {
+            "current_key": "AIzaSyA0_370YddYBBT9HA1DS0EbwyT3npHE6BI"
+          }
+        ],
+        "services": {
+          "appinvite_service": {
+            "other_platform_oauth_client": [
+              {
+                "client_id": "741116047859-ip1605lkg94lh3ve03m3o3jafjla8tsf.apps.googleusercontent.com",
+                "client_type": 3
+              },
+              {
+                "client_id": "741116047859-8tqnbauumasa01ifv26hd59ien8pl661.apps.googleusercontent.com",
+                "client_type": 2,
+                "ios_info": {
+                  "bundle_id": "org.reactjs.native.example.ScholarshipFinder"
+                }
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "configuration_version": "1"
+  }
