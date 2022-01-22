@@ -3,13 +3,20 @@ import * as React from 'react';
 import { Button, View, Text, SafeAreaView, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 import UserSignIn from './src/Screens/UserSignIn';
 
 const App = () => {
+  const Stack = createNativeStackNavigator();
   return(
-    <SafeAreaView style={styles.root}>
-      <Text>UserSignIn</Text>
-    </SafeAreaView>
+    <NavigationContainer>
+       <Stack.Navigator initialRouteName="UserSignIn">
+         <Stack.Screen name="UserSignIn" component={UserSignInScreen}/>
+         <Stack.Screen name="Home" component={HomeScreen} />
+         <Stack.Screen name="Details" component={DetailsScreen} />
+       </Stack.Navigator>
+     </NavigationContainer>
+    
   );
 }
 
@@ -31,7 +38,13 @@ function HomeScreen({ navigation }) {
     </View>
   );
 }
-
+function UserSignInScreen({ navigation }) {
+  return (
+    <SafeAreaView style={styles.root}>
+      <UserSignIn/>
+    </SafeAreaView>
+  );
+}
 function DetailsScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
