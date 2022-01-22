@@ -4,7 +4,7 @@ import { View, Text, Image, StyleSheet, useWindowDimensions, ScrollView, SafeAre
 import CustomInput from '../components/CustomInput/CustomInput';
 import logo from '../../../assets/images/logo-1.png';
 import CustomButton from '../components/CustomButton/CustomButton';
-import { useNavigation } from '@react-navigation/native';
+//import { useNavigation } from '@react-navigation/native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
