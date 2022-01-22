@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import UserSignIn from './src/Screens/UserSignIn';
 
+
 const App = () => {
   const Stack = createNativeStackNavigator();
   return(
@@ -57,15 +58,15 @@ function DetailsScreen({ navigation }) {
   );
 }
 
-// function App() {
-//   return (
-//     <NavigationContainer>
-//       <Stack.Navigator initialRouteName="Home">
-//         <Stack.Screen name="Home" component={HomeScreen} />
-//         <Stack.Screen name="Details" component={DetailsScreen} />
-//       </Stack.Navigator>
-//     </NavigationContainer>
-//   );
-// }
+ function App() {
+   return (
+     <NavigationContainer>
+       <Stack.Navigator initialRouteName="Home">
+         <Stack.Screen name="Home" component={HomeScreen} />
+         <Stack.Screen name="Details" component={DetailsScreen} />
+       </Stack.Navigator>
+     </NavigationContainer>
+   );
+ }
 
 export default App;
