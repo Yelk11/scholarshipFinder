@@ -61,7 +61,7 @@ const UserSignIn = () => {
             frontColor={"#FAE9EA"} backColor={"#DD4D44"} />
             <CustomButton text="Sign In with Apple" onPress={onUserSignInApple}
             frontColor={"#363636"} backColor={"#e3e3e3"} />
-            <CustomButton text="Don't have an account? Create account" 
+            <CustomButton text="Don't have an account? Create new account" 
             onPress={onSignUpPressed} type="tertiary" />
         </View>
     </ScrollView>
