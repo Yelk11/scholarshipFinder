@@ -5,16 +5,18 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import UserSignIn from './src/Screens/UserSignIn';
+import Questions from './src/Screens/Questions';
 
 
 const App = () => {
   const Stack = createNativeStackNavigator();
   return(
     <NavigationContainer>
-       <Stack.Navigator initialRouteName="UserSignIn">
+       <Stack.Navigator initialRouteName="Questions">
          <Stack.Screen name="UserSignIn" component={UserSignInScreen}/>
          <Stack.Screen name="Home" component={HomeScreen} />
          <Stack.Screen name="Details" component={DetailsScreen} />
+         <Stack.Screen name="Questions" component={QuestionsScreen} />
        </Stack.Navigator>
      </NavigationContainer>
     
@@ -55,6 +57,14 @@ function DetailsScreen({ navigation }) {
         onPress={() => navigation.navigate('Details')}
       />
     </View>
+  );
+}
+
+function QuestionsScreen({ navigation }) {
+  return (
+    <SafeAreaView style={styles.root}>
+      <Questions/>
+    </SafeAreaView>
   );
 }
 
