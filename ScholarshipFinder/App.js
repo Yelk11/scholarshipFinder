@@ -17,11 +17,11 @@ const App = () => {
   const Stack = createNativeStackNavigator();
   return(
     <NavigationContainer>
-       <Stack.Navigator initialRouteName="ScholarshipDetails">
+       <Stack.Navigator initialRouteName="Question1">
          <Stack.Screen name="UserSignIn" component={UserSignInScreen}/>
          <Stack.Screen name="Home" component={HomeScreen} />
          <Stack.Screen name="Details" component={DetailsScreen} />
-         <Stack.Screen name="Questions" component={Question1Screen} />
+         <Stack.Screen name="Question1" component={Question1Screen} />
          <Stack.Screen name="Question2" component={Question2Screen} />
          <Stack.Screen name="Question3" component={Question3Screen} />
          <Stack.Screen name="Question4" component={Question4Screen} />
