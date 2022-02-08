@@ -6,16 +6,20 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import CustomButton from '../components/CustomButton/CustomButton';
 
 const Question2 = () => {
+
+    const navigation = useNavigation();
+
+    const onQuestion2Pressed = () => navigation.navigate('Question3')
     
     return(
         <View style={styles.container}>
             <Text style={styles.questions}>What year of college are you in? (Can Change Later)</Text>
-            <CustomButton frontColor="#000000" backColor="#FFF" text="Incoming College Student"/>
-            <CustomButton frontColor="#000000" backColor="#FFF" text="Freshman"/>
-            <CustomButton frontColor="#000000" backColor="#FFF" text="Sophomore"/>
-            <CustomButton frontColor="#000000" backColor="#FFF" text="Junior"/>
-            <CustomButton frontColor="#000000" backColor="#FFF" text="Senior"/>
-            <CustomButton frontColor="#000000" backColor="#FFF" text="Other"/>
+            <CustomButton frontColor="#000000" backColor="#FFF" text="Incoming College Student" onPress={onQuestion2Pressed}/>
+            <CustomButton frontColor="#000000" backColor="#FFF" text="Freshman" onPress={onQuestion2Pressed}/>
+            <CustomButton frontColor="#000000" backColor="#FFF" text="Sophomore" onPress={onQuestion2Pressed}/>
+            <CustomButton frontColor="#000000" backColor="#FFF" text="Junior" onPress={onQuestion2Pressed}/>
+            <CustomButton frontColor="#000000" backColor="#FFF" text="Senior" onPress={onQuestion2Pressed}/>
+            <CustomButton frontColor="#000000" backColor="#FFF" text="Other" onPress={onQuestion2Pressed}/>
         </View> 
     );
 };

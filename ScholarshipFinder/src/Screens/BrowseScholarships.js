@@ -6,16 +6,20 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import CustomButton from '../components/CustomButton/CustomButton';
 
 const BrowseScholarships = () => {
+
+    const navigation = useNavigation();
+
+    const onScholarshipPressed = () => navigation.navigate('ScholarshipDetails')
     
     return(
         <View style={styles.container}>
             <Text style={styles.text}>Choose from these availale scholarships recommended to you based on your answers!</Text>
-            <CustomButton frontColor="#FFFFFF" backColor="#000" text="MSI 46k Scholarship / $46,000"/>
-            <CustomButton frontColor="#FFFFFF" backColor="#000" text="Melinda and Bill Gates Scholarship Foundation / $6,000"/>
-            <CustomButton frontColor="#FFFFFF" backColor="#000" text="Founders in Technology / $10,000"/>
-            <CustomButton frontColor="#FFFFFF" backColor="#000" text="OU Relatives and Graduates / $2,000"/>
-            <CustomButton frontColor="#FFFFFF" backColor="#000" text="Women in Engineering / $3,000"/>
-            <CustomButton frontColor="#FFFFFF" backColor="#000" text="Dr. Z's very own personal funding! / $999,999,999,999.99"/>
+            <CustomButton frontColor="#FFFFFF" backColor="#000" text="MSI 46k Scholarship / $46,000" onPress={onScholarshipPressed}/>
+            <CustomButton frontColor="#FFFFFF" backColor="#000" text="Melinda and Bill Gates Scholarship Foundation / $6,000" onPress={onScholarshipPressed}/>
+            <CustomButton frontColor="#FFFFFF" backColor="#000" text="Founders in Technology / $10,000" onPress={onScholarshipPressed}/>
+            <CustomButton frontColor="#FFFFFF" backColor="#000" text="OU Relatives and Graduates / $2,000" onPress={onScholarshipPressed}/>
+            <CustomButton frontColor="#FFFFFF" backColor="#000" text="Women in Engineering / $3,000" onPress={onScholarshipPressed}/>
+            <CustomButton frontColor="#FFFFFF" backColor="#000" text="Dr. Z's very own personal funding! / $999,999,999,999.99" onPress={onScholarshipPressed}/>
         </View> 
     );
 };

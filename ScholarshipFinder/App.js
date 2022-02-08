@@ -12,7 +12,6 @@ import Question4 from './src/Screens/Question4';
 import BrowseScholarships from './src/Screens/BrowseScholarships';
 import ScholarshipDetails from './src/Screens/ScholarshipDetails';
 
-
 const App = () => {
   const Stack = createNativeStackNavigator();
   return(
