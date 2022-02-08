@@ -5,12 +5,14 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import CustomButton from '../components/CustomButton/CustomButton';
 
-const Question1 = () => {
 
+const Question1 = () => {
     const navigation = useNavigation();
+    
 
     const onQuestion2Pressed = () => {
-        navigation.navigate = ('Question2');
+        
+        navigation.navigate('Question2');
         console.warn('Button Pressed');
     };
     
