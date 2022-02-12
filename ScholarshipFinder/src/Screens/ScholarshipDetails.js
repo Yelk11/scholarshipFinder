@@ -9,8 +9,6 @@ const ScholarshipDetails = () => {
     
     const navigation = useNavigation();
 
-    const onApplyPressed = () => navigation.navigate('ScholarshipDetails')
-
     return(
         <View style={styles.container}>
             <Text style={styles.headers}>MSI 46k Scholarship / $46,000</Text>
