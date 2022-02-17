@@ -8,7 +8,6 @@ import UserSignIn from './src/Screens/UserSignIn';
 import Question1 from './src/Screens/Question1';
 import Question2 from './src/Screens/Question2';
 import Question3 from './src/Screens/Question3';
-import Question4 from './src/Screens/Question4';
 import BrowseScholarships from './src/Screens/BrowseScholarships';
 import ScholarshipDetails from './src/Screens/ScholarshipDetails';
 
@@ -23,7 +22,6 @@ const App = () => {
          <Stack.Screen name="Question1" component={Question1Screen} />
          <Stack.Screen name="Question2" component={Question2Screen} />
          <Stack.Screen name="Question3" component={Question3Screen} />
-         <Stack.Screen name="Question4" component={Question4Screen} />
          <Stack.Screen name="BrowseScholarships" component={BrowseScholarshipsScreen} />
          <Stack.Screen name="ScholarshipDetails" component={ScholarshipDetailsScreen} />
        </Stack.Navigator>
@@ -89,14 +87,6 @@ function Question3Screen({ navigation }) {
   return (
     <SafeAreaView style={styles.root}>
       <Question3/>
-    </SafeAreaView>
-  );
-}
-
-function Question4Screen({ navigation }) {
-  return (
-    <SafeAreaView style={styles.root}>
-      <Question4/>
     </SafeAreaView>
   );
 }
