@@ -1,48 +1,53 @@
-import React, {useState} from 'react';
-import { View, Button, Text, Image, StyleSheet, useWindowDimensions, ScrollView, SafeAreaView } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, FlatList, Text, ActivityIndicator } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import CustomButton from '../components/CustomButton/CustomButton';
-
+import firestore from '@react-native-firebase/firestore';
+import { firebase } from '@react-native-firebase/firestore';
 const BrowseScholarships = () => {
+    const [loading, setLoading] = useState(true); // Set loading to true on component mount
+    const [scholarships, setScholarships] = useState([]); // Initial empty array of scholarships
 
     const navigation = useNavigation();
 
     const onScholarshipPressed = () => navigation.navigate('ScholarshipDetails')
-    
-    return(
-        <View style={styles.container}>
-            <Text style={styles.text}>Choose from these availale scholarships recommended to you based on your answers!</Text>
-            <CustomButton frontColor="#FFFFFF" backColor="#000" text="MSI 46k Scholarship / $46,000" onPress={onScholarshipPressed}/>
-            <CustomButton frontColor="#FFFFFF" backColor="#000" text="Melinda and Bill Gates Scholarship Foundation / $6,000" onPress={onScholarshipPressed}/>
-            <CustomButton frontColor="#FFFFFF" backColor="#000" text="Founders in Technology / $10,000" onPress={onScholarshipPressed}/>
-            <CustomButton frontColor="#FFFFFF" backColor="#000" text="OU Relatives and Graduates / $2,000" onPress={onScholarshipPressed}/>
-            <CustomButton frontColor="#FFFFFF" backColor="#000" text="Women in Engineering / $3,000" onPress={onScholarshipPressed}/>
-            <CustomButton frontColor="#FFFFFF" backColor="#000" text="Dr. Z's very own personal funding! / $999,999,999,999.99" onPress={onScholarshipPressed}/>
-        </View> 
+
+
+
+
+    useEffect(() => {
+        const subscriber = firestore().collection('scholarships').get().then((querySnapshot) => {
+            // console.log('Total Scholarships: ', querySnapshot.size);
+            const objectsArray = [];
+            querySnapshot.forEach(documentSnapshot => {
+                // console.log('User ID: ', documentSnapshot.id, documentSnapshot.data());
+                objectsArray.push({
+                    ...documentSnapshot.data(),
+                    key: documentSnapshot.id,
+                });
+            });
+            setScholarships(objectsArray);
+            setLoading(false);
+            console.log(scholarships)
+        });
+        return () => subscriber();
+    }, []);
+    if (loading) {
+        return <ActivityIndicator />;
+    }
+    return (
+        <FlatList
+
+            data={scholarships}
+            renderItem={({ item }) => (
+                <View style={{ height: 50, flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                    <Text>User ID: {item.title}</Text>
+
+                </View>
+            )}
+        />
     );
 };
 
-const styles = StyleSheet.create({
-    container : {
-        flex : 1,
-        alignItems : "center",
-        justifyContent : "center",
-        // backgroundColor : "#FFCE31"
-        bottom: 40
-    },
 
-    text : {
-        color: "#000",
-        fontSize: 24,
-        // backgroundColor : "#3E4347",
-        textAlign: 'left',
-        width: "100%",
-        padding: 20,
-        // bottom:
-    }
-
-})
 
 export default BrowseScholarships;
