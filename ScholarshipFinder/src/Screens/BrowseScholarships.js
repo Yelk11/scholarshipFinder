@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, FlatList, Text, ActivityIndicator } from 'react-native';
+import { TouchableOpacity, View, FlatList, Text, ActivityIndicator, SafeAreaView, StyleSheet, StatusBar } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import firestore from '@react-native-firebase/firestore';
 import { firebase } from '@react-native-firebase/firestore';
@@ -14,40 +14,55 @@ const BrowseScholarships = () => {
 
 
 
-    useEffect(() => {
-        const subscriber = firestore().collection('scholarships').get().then((querySnapshot) => {
-            // console.log('Total Scholarships: ', querySnapshot.size);
-            const objectsArray = [];
-            querySnapshot.forEach(documentSnapshot => {
-                // console.log('User ID: ', documentSnapshot.id, documentSnapshot.data());
-                objectsArray.push({
-                    ...documentSnapshot.data(),
-                    key: documentSnapshot.id,
-                });
+    firestore().collection('scholarships').get().then((querySnapshot) => {
+        // console.log('Total Scholarships: ', querySnapshot.size);
+        const objectsArray = [];
+        querySnapshot.forEach(documentSnapshot => {
+            // console.log('User ID: ', documentSnapshot.id, documentSnapshot.data());
+            objectsArray.push({
+                ...documentSnapshot.data(),
+                key: documentSnapshot.id,
             });
-            setScholarships(objectsArray);
-            setLoading(false);
-            console.log(scholarships)
         });
-        return () => subscriber();
-    }, []);
+        setScholarships(objectsArray);
+        setLoading(false);
+    });
     if (loading) {
         return <ActivityIndicator />;
     }
     return (
-        <FlatList
+        <SafeAreaView >
+            <FlatList
+                data={scholarships}
+                renderItem={({ item }) => (
+                    <TouchableOpacity onPress={onScholarshipPressed}>
+                        
+                        <Text style={styles.title}>{item.title}</Text>
+                        <Text>Award: {item.amount}</Text>
+                    </TouchableOpacity>
+                    // <View style={styles.container}>
+                    //     <Text style={styles.title}>{item.title}</Text>
+                    //     <Text>Award: {item.amount}</Text>
 
-            data={scholarships}
-            renderItem={({ item }) => (
-                <View style={{ height: 50, flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                    <Text>User ID: {item.title}</Text>
+                    // </View>
+                )}
 
-                </View>
-            )}
-        />
+            />
+        </SafeAreaView>
     );
 };
 
-
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        padding: 10,
+        backgroundColor: 'powderblue',
+        borderColor: 'black'
+    },
+    title: {
+        fontSize: 25,
+        fontWeight: 'bold'
+    }
+});
 
 export default BrowseScholarships;
