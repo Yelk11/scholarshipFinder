@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { TouchableOpacity, View, FlatList, Text, ActivityIndicator, SafeAreaView, StyleSheet, StatusBar } from 'react-native';
+import { TouchableOpacity, FlatList, Text, ActivityIndicator, SafeAreaView, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import firestore from '@react-native-firebase/firestore';
-import { firebase } from '@react-native-firebase/firestore';
 const BrowseScholarships = () => {
     const [loading, setLoading] = useState(true); // Set loading to true on component mount
     const [scholarships, setScholarships] = useState([]); // Initial empty array of scholarships
@@ -26,7 +25,7 @@ const BrowseScholarships = () => {
             });
             setScholarships(objectsArray);
             setLoading(false);
-        }); return () => subscriber();
+        }); return () => subscriber;
     }, []);
     if (loading) {
         return <ActivityIndicator />;
@@ -36,16 +35,16 @@ const BrowseScholarships = () => {
             <FlatList
                 data={scholarships}
                 renderItem={({ item }) => (
-                    <TouchableOpacity onPress={onScholarshipPressed}>
+                    <TouchableOpacity onPress={() => navigation.navigate('ScholarshipDetails',
+                        {
+                            name: item.title,
+                            amount: item.amount,
+                            deadline: item.deadline
+                        })}>
 
                         <Text style={styles.title}>{item.title}</Text>
                         <Text>Award: {item.amount}</Text>
                     </TouchableOpacity>
-                    // <View style={styles.container}>
-                    //     <Text style={styles.title}>{item.title}</Text>
-                    //     <Text>Award: {item.amount}</Text>
-
-                    // </View>
                 )}
 
             />
