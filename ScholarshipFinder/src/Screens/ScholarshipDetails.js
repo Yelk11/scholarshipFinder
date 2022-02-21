@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
 import { View, Button, Text, Image, Alert, StyleSheet, useWindowDimensions, ScrollView, SafeAreaView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import CustomButton from '../components/CustomButton/CustomButton';
+import scholarshipSearch from '../../assets/images/scholarship-search-button.png';
+import settingsButton from '../../assets/images/settings-button.png';
+import smallLogo from '../../assets/images/small-logo.png';
+import underlineScreen from '../../assets/images/current-tab.png';
 
 const ScholarshipDetails = () => {
     
@@ -11,6 +13,10 @@ const ScholarshipDetails = () => {
 
     return(
         <View style={styles.container}>
+            <Image style={styles.underlineTopRight} source={underlineScreen} />
+            <Image style={styles.settingsTopLeft} source={settingsButton} />
+            <Image style={styles.scholarshipTopRight} source={scholarshipSearch} />
+            <Image style={styles.logoTopCenter} source={smallLogo} />
             <Text style={styles.headers}>MSI 46k Scholarship / $46,000</Text>
             <Text style={styles.headers}>Requirements</Text>
             <Text style={styles.text}>IT Major</Text>
@@ -62,6 +68,35 @@ const styles = StyleSheet.create({
         width: "100%",
         padding: 2,
         // bottom:
+    },
+
+    scholarshipTopRight : {
+        height: 40,
+        width: 30,
+        position: 'absolute',
+        top: 45, right: 6,
+    },
+
+    settingsTopLeft : {
+        height: 30,
+        width: 50,
+        position: 'absolute',
+        top: 45, left: 2,
+    },
+
+    underlineTopRight : {
+        height: 3,
+        width: 35,
+        position: 'absolute',
+        top: 90, right: 6,
+    },
+
+    logoTopCenter : {
+        height: 40,
+        width: 50,
+        position: 'absolute',
+        top: 45,
+        justifyContent: 'center'
     }
 
 })

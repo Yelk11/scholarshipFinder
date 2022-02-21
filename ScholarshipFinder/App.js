@@ -5,9 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import UserSignIn from './src/Screens/UserSignIn';
-import Question1 from './src/Screens/Question1';
-import Question2 from './src/Screens/Question2';
-import Question3 from './src/Screens/Question3';
+import Questions from './src/Screens/Questions';
 import BrowseScholarships from './src/Screens/BrowseScholarships';
 import ScholarshipDetails from './src/Screens/ScholarshipDetails';
 
@@ -15,13 +13,11 @@ const App = () => {
   const Stack = createNativeStackNavigator();
   return(
     <NavigationContainer>
-       <Stack.Navigator initialRouteName="Question1">
+       <Stack.Navigator initialRouteName="Questions">
          <Stack.Screen name="UserSignIn" component={UserSignInScreen}/>
          <Stack.Screen name="Home" component={HomeScreen} />
          <Stack.Screen name="Details" component={DetailsScreen} />
-         <Stack.Screen name="Question1" component={Question1Screen} />
-         <Stack.Screen name="Question2" component={Question2Screen} />
-         <Stack.Screen name="Question3" component={Question3Screen} />
+         <Stack.Screen name="Questions" component={QuestionsScreen} options={{ headerShown: false }}/>
          <Stack.Screen name="BrowseScholarships" component={BrowseScholarshipsScreen} />
          <Stack.Screen name="ScholarshipDetails" component={ScholarshipDetailsScreen} />
        </Stack.Navigator>
@@ -67,26 +63,10 @@ function DetailsScreen({ navigation }) {
   );
 }
 
-function Question1Screen({ navigation }) {
+function QuestionsScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.root}>
-      <Question1/>
-    </SafeAreaView>
-  );
-}
-
-function Question2Screen({ navigation }) {
-  return (
-    <SafeAreaView style={styles.root}>
-      <Question2/>
-    </SafeAreaView>
-  );
-}
-
-function Question3Screen({ navigation }) {
-  return (
-    <SafeAreaView style={styles.root}>
-      <Question3/>
+      <Questions/>
     </SafeAreaView>
   );
 }
