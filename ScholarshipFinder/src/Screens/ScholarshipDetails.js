@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { View, Button, Text, StyleSheet } from 'react-native';
+import { View, Button, Text, StyleSheet, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import CustomButton from '../components/CustomButton/CustomButton';
 import scholarshipSearch from '../../assets/images/scholarship-search-button.png';
