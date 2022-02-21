@@ -11,9 +11,9 @@ const ScholarshipDetails = (props) => {
 
     return(
         <View style={styles.container}>
-            <Text>Name {props.name}</Text>
-            <Text>Amount {props.amount}</Text>
-            <Text>Deadline: {props.deadline.toDate().toDateString()}</Text>
+            <Text style={styles.title}>Name {props.name}</Text>
+            <Text style={styles.info}>Amount {props.amount}</Text>
+            <Text style={styles.info}>Deadline: {props.deadline.toDate().toDateString()}</Text>
         </View> 
     );
 };
@@ -21,40 +21,13 @@ const ScholarshipDetails = (props) => {
 const styles = StyleSheet.create({
     container : {
         flex : 1,
-        alignItems : "center",
-        justifyContent : "center",
-        bottom: 40
+        
     },
-
-    text : {
-        color: "#000",
-        fontSize: 16,
-        textAlign: 'left',
-        width: "100%",
-        padding: 2,
-        left: 20
-        // bottom:
-    },
-
-    headers : {
-        color: "#000",
-        fontSize: 24,
-        textAlign: 'left',
-        width: "100%",
-        padding: 10,
-        textDecorationLine: 'underline'
-        // bottom:
-    },
-
-    small : {
-        color: "#000",
-        fontSize: 14,
-        textAlign: 'left',
-        width: "100%",
-        padding: 2,
-        // bottom:
+    title:{
+        fontWeight: 'bold',
+        textAlign: 'center',
+        
     }
-
 })
 
 export default ScholarshipDetails;

@@ -36,7 +36,7 @@ const BrowseScholarships = () => {
                             name: item.title,
                             amount: item.amount,
                             deadline: item.deadline
-                        }) }>
+                        })}>
 
                         <Text style={styles.title}>{item.title}</Text>
                         <Text style={styles.info}>Award: {item.amount}</Text>
@@ -49,11 +49,11 @@ const BrowseScholarships = () => {
 };
 
 const styles = StyleSheet.create({
-    container : {
+    container: {
         flex: 1,
         backgroundColor: '#474747'
     },
-    listItem : {
+    listItem: {
         flex: 1,
         backgroundColor: 'gold',
         marginRight: 15,
@@ -61,11 +61,11 @@ const styles = StyleSheet.create({
         marginBottom: 15,
         borderRadius: 10
     },
-    title : {
+    title: {
         marginLeft: 5,
         fontWeight: 'bold'
     },
-    info : {
+    info: {
         marginLeft: 5
     }
 });
