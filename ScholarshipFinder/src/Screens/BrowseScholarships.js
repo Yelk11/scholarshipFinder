@@ -1,43 +1,85 @@
-import React, {useState} from 'react';
-import { View, Button, Text, Image, StyleSheet, useWindowDimensions, ScrollView, SafeAreaView } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { TouchableOpacity, FlatList, Text, ActivityIndicator, SafeAreaView, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+
+import firestore from '@react-native-firebase/firestore';
+
 import CustomButton from '../components/CustomButton/CustomButton';
 import scholarshipSearch from '../../assets/images/scholarship-search-button.png';
 import settingsButton from '../../assets/images/settings-button.png';
 import smallLogo from '../../assets/images/small-logo.png';
 import underlineScreen from '../../assets/images/current-tab.png';
 
+
 const BrowseScholarships = () => {
+    const [loading, setLoading] = useState(true); // Set loading to true on component mount
+    const [scholarships, setScholarships] = useState([]); // Initial empty array of scholarships
 
     const navigation = useNavigation();
 
-    const onScholarshipPressed = () => navigation.navigate('ScholarshipDetails')
-    
-    return(
-        <View style={styles.container}>
-            <Image style={styles.underlineTopRight} source={underlineScreen} />
-            <Image style={styles.settingsTopLeft} source={settingsButton} />
-            <Image style={styles.scholarshipTopRight} source={scholarshipSearch} />
-            <Image style={styles.logoTopCenter} source={smallLogo} />
-            <Text style={styles.text}>Choose from these availale scholarships recommended to you based on your answers!</Text>
-            <CustomButton frontColor="#FFFFFF" backColor="#000" text="MSI 46k Scholarship / $46,000" onPress={onScholarshipPressed}/>
-            <CustomButton frontColor="#FFFFFF" backColor="#000" text="Melinda and Bill Gates Scholarship Foundation / $6,000" onPress={onScholarshipPressed}/>
-            <CustomButton frontColor="#FFFFFF" backColor="#000" text="Founders in Technology / $10,000" onPress={onScholarshipPressed}/>
-            <CustomButton frontColor="#FFFFFF" backColor="#000" text="OU Relatives and Graduates / $2,000" onPress={onScholarshipPressed}/>
-            <CustomButton frontColor="#FFFFFF" backColor="#000" text="Women in Engineering / $3,000" onPress={onScholarshipPressed}/>
-            <CustomButton frontColor="#FFFFFF" backColor="#000" text="Dr. Z's very own personal funding! / $999,999,999,999.99" onPress={onScholarshipPressed}/>
-        </View> 
+
+    useEffect(() => {
+        const subscriber = firestore().collection('scholarships').get().then((querySnapshot) => {
+            // console.log('Total Scholarships: ', querySnapshot.size);
+            const objectsArray = [];
+            querySnapshot.forEach(documentSnapshot => {
+                // console.log('User ID: ', documentSnapshot.id, documentSnapshot.data());
+                objectsArray.push({
+                    ...documentSnapshot.data(),
+                    key: documentSnapshot.id,
+                });
+            });
+            setScholarships(objectsArray);
+            setLoading(false);
+        }); return () => subscriber;
+    }, []);
+    if (loading) {
+        return <ActivityIndicator />;
+    }
+    return (
+        <SafeAreaView style={styles.container}>
+            <FlatList
+                data={scholarships}
+                renderItem={({ item }) => (
+                    <TouchableOpacity style={styles.listItem} onPress={() => navigation.navigate('ScholarshipDetails',
+                        {
+                            name: item.title,
+                            amount: item.amount,
+                            deadline: item.deadline
+                        })}>
+
+                        <Text style={styles.title}>{item.title}</Text>
+                        <Text style={styles.info}>Award: {item.amount}</Text>
+                    </TouchableOpacity>
+                )}
+
+            />
+        </SafeAreaView>
     );
 };
 
 const styles = StyleSheet.create({
-    container : {
-        flex : 1,
-        alignItems : "center",
-        justifyContent : "center",
-        // backgroundColor : "#FFCE31"
-        bottom: 40
+    container: {
+        flex: 1,
+        backgroundColor: '#474747'
     },
+
+    listItem: {
+        flex: 1,
+        backgroundColor: 'gold',
+        marginRight: 15,
+        marginLeft: 15,
+        marginBottom: 15,
+        borderRadius: 10
+    },
+    title: {
+        marginLeft: 5,
+        fontWeight: 'bold'
+    },
+    info: {
+        marginLeft: 5
+    },
+
 
     text : {
         color: "#000",
@@ -76,8 +118,8 @@ const styles = StyleSheet.create({
         width: 35,
         position: 'absolute',
         top: 90, right: 6,
-    }
 
-})
+    }
+});
 
 export default BrowseScholarships;
