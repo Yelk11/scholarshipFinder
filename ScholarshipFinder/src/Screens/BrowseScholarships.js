@@ -8,10 +8,6 @@ const BrowseScholarships = () => {
 
     const navigation = useNavigation();
 
-    const onScholarshipPressed = () => navigation.navigate('ScholarshipDetails')
-
-
-
     useEffect(() => {
         const subscriber = firestore().collection('scholarships').get().then((querySnapshot) => {
             // console.log('Total Scholarships: ', querySnapshot.size);
@@ -31,19 +27,19 @@ const BrowseScholarships = () => {
         return <ActivityIndicator />;
     }
     return (
-        <SafeAreaView >
+        <SafeAreaView style={styles.container}>
             <FlatList
                 data={scholarships}
                 renderItem={({ item }) => (
-                    <TouchableOpacity onPress={() => navigation.navigate('ScholarshipDetails',
+                    <TouchableOpacity style={styles.listItem} onPress={() => navigation.navigate('ScholarshipDetails',
                         {
                             name: item.title,
                             amount: item.amount,
                             deadline: item.deadline
-                        })}>
+                        }) }>
 
                         <Text style={styles.title}>{item.title}</Text>
-                        <Text>Award: {item.amount}</Text>
+                        <Text style={styles.info}>Award: {item.amount}</Text>
                     </TouchableOpacity>
                 )}
 
@@ -53,15 +49,24 @@ const BrowseScholarships = () => {
 };
 
 const styles = StyleSheet.create({
-    container: {
+    container : {
         flex: 1,
-        padding: 10,
-        backgroundColor: 'powderblue',
-        borderColor: 'black'
+        backgroundColor: '#474747'
     },
-    title: {
-        fontSize: 25,
+    listItem : {
+        flex: 1,
+        backgroundColor: 'gold',
+        marginRight: 15,
+        marginLeft: 15,
+        marginBottom: 15,
+        borderRadius: 10
+    },
+    title : {
+        marginLeft: 5,
         fontWeight: 'bold'
+    },
+    info : {
+        marginLeft: 5
     }
 });
 
