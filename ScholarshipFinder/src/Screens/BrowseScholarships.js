@@ -13,20 +13,21 @@ const BrowseScholarships = () => {
 
 
 
-
-    firestore().collection('scholarships').get().then((querySnapshot) => {
-        // console.log('Total Scholarships: ', querySnapshot.size);
-        const objectsArray = [];
-        querySnapshot.forEach(documentSnapshot => {
-            // console.log('User ID: ', documentSnapshot.id, documentSnapshot.data());
-            objectsArray.push({
-                ...documentSnapshot.data(),
-                key: documentSnapshot.id,
+    useEffect(() => {
+        const subscriber = firestore().collection('scholarships').get().then((querySnapshot) => {
+            // console.log('Total Scholarships: ', querySnapshot.size);
+            const objectsArray = [];
+            querySnapshot.forEach(documentSnapshot => {
+                // console.log('User ID: ', documentSnapshot.id, documentSnapshot.data());
+                objectsArray.push({
+                    ...documentSnapshot.data(),
+                    key: documentSnapshot.id,
+                });
             });
-        });
-        setScholarships(objectsArray);
-        setLoading(false);
-    });
+            setScholarships(objectsArray);
+            setLoading(false);
+        }); return () => subscriber();
+    }, []);
     if (loading) {
         return <ActivityIndicator />;
     }
@@ -36,7 +37,7 @@ const BrowseScholarships = () => {
                 data={scholarships}
                 renderItem={({ item }) => (
                     <TouchableOpacity onPress={onScholarshipPressed}>
-                        
+
                         <Text style={styles.title}>{item.title}</Text>
                         <Text>Award: {item.amount}</Text>
                     </TouchableOpacity>
