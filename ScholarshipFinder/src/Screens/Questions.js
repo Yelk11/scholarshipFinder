@@ -16,6 +16,10 @@ const Questions = () => {
 
     const onQuestionPressed = () => navigation.navigate('BrowseScholarships')
 
+    const [shouldShow, setShouldShow] = useState(true);
+
+    const [shouldShow2, setShouldShow2] = useState(true);
+
     const [chooseData, setchooseData] = useState('Select your Major...');
 
     const [isModalVisible, setisModalVisible] = useState(false);
@@ -36,24 +40,33 @@ const Questions = () => {
             <Image style={styles.underlineTopCenter} source={underlineScreen} />
             <View style={styles.flexAdjustment}>
             <ScrollView>
-            <Card>
-            <Text style={styles.text}>Are you a first time college student in your family? (Can be changed later)</Text>
-            <SecondaryCard>
-            <CustomButton frontColor="#000000" backColor="#6FE7C3" text="Yes" onPress={() => Alert.alert("Button Pressed")} />
-            <CustomButton frontColor="#000000" backColor="#EA5E6A" text="No" onPress={() => Alert.alert("Button Pressed")} />
-            </SecondaryCard>
-            </Card>
-            <Card>
-            <Text style={styles.text}>What year of college are you in? (Can be changed later)</Text>
-            <SecondaryCard>
-            <CustomButton frontColor="#000000" backColor="#FFF" text="Incoming College Student" onPress={() => Alert.alert("Button Pressed")} />
-            <CustomButton frontColor="#000000" backColor="#FFF" text="Freshman" onPress={() => Alert.alert("Button Pressed")} />
-            <CustomButton frontColor="#000000" backColor="#FFF" text="Sophomore" onPress={() => Alert.alert("Button Pressed")} />
-            <CustomButton frontColor="#000000" backColor="#FFF" text="Junior" onPress={() => Alert.alert("Button Pressed")} />
-            <CustomButton frontColor="#000000" backColor="#FFF" text="Senior" onPress={() => Alert.alert("Button Pressed")}/>
-            <CustomButton frontColor="#000000" backColor="#FFF" text="Other" onPress={() => Alert.alert("Button Pressed")}/>
-            </SecondaryCard>
-            </Card>
+                {
+                    shouldShow ? (
+                        <Card>
+                        <Text style={styles.text}>Are you a first time college student in your family? (Can be changed later)</Text>
+                        <SecondaryCard>
+                        <CustomButton frontColor="#000000" backColor="#6FE7C3" text="Yes" onPress={() => setShouldShow(!shouldShow)} />
+                        <CustomButton frontColor="#000000" backColor="#EA5E6A" text="No" onPress={() => setShouldShow(!shouldShow)} />
+                        </SecondaryCard>
+                        </Card>
+                    ) : null
+                }
+
+                {   shouldShow2 ? (
+                        <Card>
+                        <Text style={styles.text}>What year of college are you in? (Can be changed later)</Text>
+                        <SecondaryCard>
+                        <CustomButton frontColor="#000000" backColor="#FFF" text="Incoming College Student" onPress={() => setShouldShow2(!shouldShow2)} />
+                        <CustomButton frontColor="#000000" backColor="#FFF" text="Freshman" onPress={() => setShouldShow2(!shouldShow2)} />
+                        <CustomButton frontColor="#000000" backColor="#FFF" text="Sophomore" onPress={() => setShouldShow2(!shouldShow2)} />
+                        <CustomButton frontColor="#000000" backColor="#FFF" text="Junior" onPress={() => setShouldShow2(!shouldShow2)} />
+                        <CustomButton frontColor="#000000" backColor="#FFF" text="Senior" onPress={() => setShouldShow2(!shouldShow2)} />
+                        <CustomButton frontColor="#000000" backColor="#FFF" text="Other" onPress={() => setShouldShow2(!shouldShow2)} />
+                        </SecondaryCard>
+                        </Card>
+                    ) : null
+                }
+
             <Card>
             <Text style={styles.text}>Identify your major: (Can be changed later)</Text>
             <TouchableOpacity onPress={() => changeModalVisibility(true)}>
