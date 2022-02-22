@@ -20,7 +20,7 @@ const ScholarshipDetails = (props) => {
             <Image style={styles.settingsTopLeft} source={settingsButton} />
             <Image style={styles.scholarshipTopRight} source={scholarshipSearch} />
             <Image style={styles.logoTopCenter} source={smallLogo} />
-              <Text style={styles.title}>Name {props.name}</Text>
+                <Text style={styles.title}>Name {props.name}</Text>
             <Text style={styles.info}>Amount {props.amount}</Text>
             <Text style={styles.info}>Deadline: {props.deadline.toDate().toDateString()}</Text>
 
@@ -31,7 +31,8 @@ const ScholarshipDetails = (props) => {
 const styles = StyleSheet.create({
     container : {
         flex : 1,
-        
+        alignItems : "center",
+        justifyContent : "center",
     },
 
     title:{
@@ -74,29 +75,29 @@ const styles = StyleSheet.create({
         height: 40,
         width: 30,
         position: 'absolute',
-        top: 45, right: 6,
+        top: 5, right: 6,
     },
 
     settingsTopLeft : {
         height: 30,
         width: 50,
         position: 'absolute',
-        top: 45, left: 2,
+        top: 5, left: 2,
     },
 
     underlineTopRight : {
         height: 3,
         width: 35,
         position: 'absolute',
-        top: 90, right: 6,
+        top: 50, right: 6,
     },
 
     logoTopCenter : {
         height: 40,
         width: 50,
         position: 'absolute',
-        top: 45,
-        justifyContent: 'center'
+        top: 5,
+        justif5yContent: 'center'
 
     }
 })
