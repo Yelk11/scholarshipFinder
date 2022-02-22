@@ -27,9 +27,7 @@ const UserSignIn = () => {
         console.warn('onUserSignInApple');
     };
 
-    const onSignUpPressed = () => {
-        console.warn('onSignUpPressed');
-    };
+    const onSignUpPressed = () => navigation.navigate("CreateAccount")
     
     return(
     <ScrollView showsVerticalScrollIndicator={false}>
