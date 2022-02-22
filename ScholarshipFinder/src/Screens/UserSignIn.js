@@ -13,7 +13,7 @@ const UserSignIn = () => {
     const navigation = useNavigation();
     const {height} = useWindowDimensions();
 
-    const onUserSignInPressed = () => navigation.navigate('Questions')
+    const onUserSignInPressed = () => navigation.navigate('BrowseScholarships')
     
     const onForgotMyPasswordPressed = () => {
         console.warn('onForgotMyPasswordPressed');
@@ -23,13 +23,11 @@ const UserSignIn = () => {
         console.warn('onUserSignInGoogle');
     };
 
-    const onUserSignInApple = () => {
-        console.warn('onUserSignInApple');
+    const onUserSignInFacebook = () => {
+        console.warn('onUserSignInFacebook');
     };
 
-    const onSignUpPressed = () => {
-        console.warn('onSignUpPressed');
-    };
+    const onSignUpPressed = () => navigation.navigate("CreateAccount")
     
     return(
     <ScrollView showsVerticalScrollIndicator={false}>
@@ -63,7 +61,7 @@ const UserSignIn = () => {
 
             <CustomButton text="Sign In with Google" onPress={onUserSignInGoogle}
             frontColor={"#FAE9EA"} backColor={"#DD4D44"} />
-            <CustomButton text="Sign In with Apple" onPress={onUserSignInApple}
+            <CustomButton text="Sign In with Facebook" onPress={onUserSignInFacebook}
             frontColor={"#363636"} backColor={"#e3e3e3"} />
             <CustomButton text="Don't have an account? Create new account" 
             onPress={onSignUpPressed} type="tertiary" />
