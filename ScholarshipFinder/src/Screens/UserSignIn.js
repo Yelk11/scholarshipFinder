@@ -13,9 +13,7 @@ const UserSignIn = () => {
     const navigation = useNavigation();
     const {height} = useWindowDimensions();
 
-    const onUserSignInPressed = () => {
-        console.warn('Sign in');
-    };
+    const onUserSignInPressed = () => navigation.navigate('Questions')
     
     const onForgotMyPasswordPressed = () => {
         console.warn('onForgotMyPasswordPressed');
