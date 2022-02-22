@@ -8,18 +8,20 @@ import UserSignIn from './src/Screens/UserSignIn';
 import Questions from './src/Screens/Questions';
 import BrowseScholarships from './src/Screens/BrowseScholarships';
 import ScholarshipDetails from './src/Screens/ScholarshipDetails';
+import CreateAccount from './src/Screens/CreateAccount';
 
 const App = () => {
   const Stack = createNativeStackNavigator();
   return(
     <NavigationContainer>
-       <Stack.Navigator initialRouteName="Questions">
+       <Stack.Navigator initialRouteName="UserSignIn">
          <Stack.Screen name="UserSignIn" component={UserSignInScreen}/>
          <Stack.Screen name="Home" component={HomeScreen} />
          <Stack.Screen name="Details" component={DetailsScreen} />
          <Stack.Screen name="Questions" component={QuestionsScreen} options={{ headerShown: false }}/>
          <Stack.Screen name="BrowseScholarships" component={BrowseScholarshipsScreen} />
          <Stack.Screen name="ScholarshipDetails" component={ScholarshipDetailsScreen} />
+         <Stack.Screen name="CreateAccount" component={CreateAccountScreen} />
        </Stack.Navigator>
      </NavigationContainer>
     
@@ -85,6 +87,14 @@ function ScholarshipDetailsScreen({ navigation }) {
       <ScholarshipDetails/>
     </SafeAreaView>
   );
+}
+
+function CreateAccountScreen({ navigation }) {
+  return (
+    <SafeAreaView style={styles.root}>
+      <CreateAccount/>
+    </SafeAreaView>
+  )
 }
 
 export default App;
