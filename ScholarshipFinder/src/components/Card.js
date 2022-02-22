@@ -21,7 +21,7 @@ export default function Card(props) {
                 shadowOpacity: 0.3,
                 shadowRadius: 2,
                 marginHorizontal: 10,
-                marginVertical: 6,
+                marginVertical: 10,
                 //position: 'absolute',
                 //top: 50,
             },

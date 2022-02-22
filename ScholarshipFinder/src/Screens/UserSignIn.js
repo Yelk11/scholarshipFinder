@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { View, Text, Image, StyleSheet, useWindowDimensions, ScrollView, SafeAreaView } from 'react-native';
+import { View, TextInput, Image, StyleSheet, useWindowDimensions, ScrollView, SafeAreaView } from 'react-native';
 import CustomInput from '../components/CustomInput/CustomInput';
 import logo from '../../assets/images/logo-1.png';
 import CustomButton from '../components/CustomButton/CustomButton';
@@ -8,7 +8,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const UserSignIn = () => {
-    const [Username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigation = useNavigation();
     const {height} = useWindowDimensions();
@@ -40,16 +40,22 @@ const UserSignIn = () => {
                 resizeMode="contain"
             />
             
-            <CustomInput placeholder="Username" 
-            value={Username} 
-            onChangeText={text => setUsername(text)}
-            style={styles.input}/>
+            <TextInput placeholder="Email" 
+            value = {email}
+            onChangeText = {text => setEmail(text)}
+            style = { {backgroundColor :'White',
+            width: '100%',
+            borderColor: '#e8e8e8',
+            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5}}/>
 
-            <CustomInput placeholder="Password" 
-            value={password} 
-            onChangeText={text => setPassword(text)}
-            style={styles.input}
-            secureTextEntry={true}/>
+           <TextInput placeholder="Password" 
+            value = {password}
+            onChangeText = {text => setPassword(text)}
+            secureTextEntry={true}
+            style = { {backgroundColor :'White',
+            width: '100%',
+            borderColor: '#e8e8e8',
+            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5}}/>
 
             <CustomButton text="Sign In" onPress={onUserSignInPressed} />
 
