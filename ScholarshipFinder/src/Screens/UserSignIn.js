@@ -41,7 +41,7 @@ const UserSignIn = () => {
             <TextInput placeholder="Email" 
             value = {email}
             onChangeText = {text => setEmail(text)}
-            style = { {backgroundColor :'White',
+            style = { {backgroundColor :'white',
             width: '100%',
             borderColor: '#e8e8e8',
             borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5}}/>
@@ -50,7 +50,7 @@ const UserSignIn = () => {
             value = {password}
             onChangeText = {text => setPassword(text)}
             secureTextEntry={true}
-            style = { {backgroundColor :'White',
+            style = { {backgroundColor :'white',
             width: '100%',
             borderColor: '#e8e8e8',
             borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5}}/>

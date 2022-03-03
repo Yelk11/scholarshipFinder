@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
 
         text: {
             fontWeight: 'bold',
-            color: 'Black',
+            color: 'black',
         },
         text_tertiary: {
             color: 'gray',
