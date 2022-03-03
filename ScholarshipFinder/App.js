@@ -9,12 +9,16 @@ import Questions from './src/Screens/Questions';
 import BrowseScholarships from './src/Screens/BrowseScholarships';
 import ScholarshipDetails from './src/Screens/ScholarshipDetails';
 import CreateAccount from './src/Screens/CreateAccount';
+import WelcomeScreen from './src/Screens/WelcomeScreen';
+import PersonalInfo from './src/Screens/PersonalInfo';
 
 const App = () => {
   const Stack = createNativeStackNavigator();
   return(
     <NavigationContainer>
-       <Stack.Navigator initialRouteName="UserSignIn">
+       <Stack.Navigator initialRouteName="WelcomeScreen">
+         <Stack.Screen name="WelcomeScreen" component={WelcomeScreenScreen}/>
+         <Stack.Screen name="PersonalInfo" component={PersonalInfoScreen}/>
          <Stack.Screen name="UserSignIn" component={UserSignInScreen}/>
          <Stack.Screen name="Home" component={HomeScreen} />
          <Stack.Screen name="Details" component={DetailsScreen} />
@@ -46,6 +50,22 @@ function HomeScreen({ navigation }) {
     </View>
   );
 }
+function WelcomeScreenScreen({ navigation }) {
+  return (
+    <SafeAreaView style={styles.root}>
+      <WelcomeScreen/>
+    </SafeAreaView>
+  );
+}
+
+function PersonalInfoScreen({ navigation }) {
+  return (
+    <SafeAreaView style={styles.root}>
+      <PersonalInfo/>
+    </SafeAreaView>
+  );
+}
+
 function UserSignInScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.root}>

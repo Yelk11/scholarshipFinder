@@ -1,7 +1,11 @@
 import React, {useState, useContext} from 'react';
-import { View, Text, StyleSheet, useWindowDimensions, ScrollView, SafeAreaView, setValue, onChangeText, TextInput } from 'react-native';
+import { View, Text, StyleSheet, useWindowDimensions, ScrollView, SafeAreaView, setValue, onChangeText, TextInput, Image } from 'react-native';
 import CustomButton from '../components/CustomButton/CustomButton';
 import { useNavigation } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import initialLogo from '../../assets/images/logo-initial.png';
+import LoginSystemCard from '../components/LoginSystemCard';
 
 const CreateAccount = () => {
     const [email, setEmail] = useState('');
@@ -10,20 +14,8 @@ const CreateAccount = () => {
     const navigation = useNavigation();
     const {height} = useWindowDimensions();
 
-    const onRegisterPressed = () => { 
-        navigation.navigate('ConfirmationEmail');
-    };
-
-    const onSignInPressed = () => {
-        navigation.navigate('UserSignIn');
-    };
-
-    const OnTermsOFUsePressed = () => {
-        console.warn('OnTermsOFUsePressed');
-    };
-
-    const OnPrivacyPressed = () => {
-        console.warn('OnPrivacyPressed');
+    const onSignUpPressed = () => { 
+        navigation.navigate('Question1');
     };
 
     const onUserSignupGoogle = () => {
@@ -35,69 +27,72 @@ const CreateAccount = () => {
     };
     
     return(
-    <ScrollView showsVerticalScrollIndicator={false}>
-        <View style ={styles.root}>
+        <View style={styles.container}>
+            <Image style={styles.logoTopCenter} source={initialLogo} />
+            <LoginSystemCard>
+                <TextInput placeholder="Email"
+                           placeholderTextColor="#FFFFFF" 
+                           value = {email}
+                           onChangeText = {text => setEmail(text)}
+                           style = { {backgroundColor :'#596066',
+                           width: '100%',
+                           borderColor: '#e8e8e8',
+                           borderWidth: 0.3, borderRadius: 3, paddingHorizontal: 6, marginVertical: 5}}/>
 
-            <Text style= {styles.title}> Create an account</Text>
+                <TextInput placeholder="Password"
+                           placeholderTextColor="#FFFFFF" 
+                           value = {password}
+                           onChangeText = {text => setPassword(text)}
+                           secureTextEntry={true}
+                           style = { {backgroundColor :'#596066',
+                           width: '100%',
+                           borderColor: '#e8e8e8',
+                           borderWidth: 0.3, borderRadius: 3, paddingHorizontal: 6, marginVertical: 2}}/>
 
-            <TextInput placeholder="Email" 
-            value = {email}
-            onChangeText = {text => setEmail(text)}
-            style = { {backgroundColor :'White',
-            width: '100%',
-            borderColor: '#e8e8e8',
-            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5}}/>
+                <TextInput placeholder=" Confirm Password"
+                           placeholderTextColor="#FFFFFF" 
+                           value = {ConfirmPassword}
+                           onChangeText = {text => setConfirmPassword(text)}
+                           secureTextEntry={true}
+                           style = { {backgroundColor :'#596066',
+                           width: '100%',
+                           borderColor: '#e8e8e8',
+                           borderWidth: 0.3, borderRadius: 3, paddingHorizontal: 6, marginVertical: 2}}/>           
 
-            <TextInput placeholder="Password" 
-            value = {password}
-            onChangeText = {text => setPassword(text)}
-            secureTextEntry={true}
-            style = { {backgroundColor :'White',
-            width: '100%',
-            borderColor: '#e8e8e8',
-            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5}}/>
+                <CustomButton frontColor="#000000" backColor="#FFF" text="Sign Up" onPress={onSignUpPressed} />
 
-            <TextInput placeholder="Confirm Password" 
-            value = {ConfirmPassword}
-            onChangeText = {text => setConfirmPassword(text)}
-            secureTextEntry={true}
-            style = { {backgroundColor :'White',
-            width: '100%',
-            borderColor: '#e8e8e8',
-            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5}}/>     
-
-            <CustomButton text="Register" onPress={() => navigation.navigate("Questions")} />
-
-
-            <CustomButton text="Sign up with Google" onPress={onUserSignupGoogle}
-            frontColor={"#FAE9EA"} backColor={"#DD4D44"} />
-            <CustomButton text="Sign up with Facebook" onPress={onUserSignupFacebook}
-            frontColor={"#363636"} backColor={"#e3e3e3"} />
-
-            <CustomButton text="Have an account? Sign in" 
-            onPress={onSignInPressed} type="TERTIARY" />
+                <CustomButton text="Sign Up with Google" onPress={onUserSignupGoogle}
+                frontColor={"#FAE9EA"} backColor={"#DD4D44"} />
+                <CustomButton text="Sign Up with Facebook" onPress={onUserSignupFacebook}
+                frontColor={"#363636"} backColor={"#e3e3e3"} />
+            </LoginSystemCard>
         </View>
-    </ScrollView>
-    );
+);
 };
 
 const styles = StyleSheet.create({
-    root: {
-        alignItems: 'center',
-        padding: 20,
-        justifyContent: 'center',
-        flex: 1,
+    container : {
+        flex : 1,
+        //flexStart: .2,
+        alignItems : "center",
+        justifyContent : "center",
+        backgroundColor : "#3E4347",
+        flexDirection: "row",
+        //display:"flex",
     },
 
-    title: {
-        fontSize: 24,
-        fontWeight: 'bold',
-        color: '#2e3c56',
-        margin:10,
+    flexAdjustment : {
+        flex: 30,
+        top: 3,
     },
-    text: { color: 'gray',
-    marginVertical: 10,},
-    link: {color: '#FDB075', },
+
+    logoTopCenter : {
+        height: 100,
+        width: 100,
+        position: 'absolute',
+        top: 55,
+        justifyContent: 'center'
+    },
 });
 
 export default CreateAccount;
