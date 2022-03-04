@@ -50,7 +50,7 @@ const PersonalInfo = () => {
 
                         <PersonalCard>
                         <Text style={styles.text}>My name is</Text>
-                        <TextInput style={styles.enteredText} placeholder="First Name"
+                        <TextInput placeholder="First Name"
                                    placeholderTextColor="#FFFFFF" 
                                    value = {FName}
                                    onChangeText = {text => setFirstName(text)}
