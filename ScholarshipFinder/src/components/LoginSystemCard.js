@@ -29,7 +29,7 @@ export default function LoginSystemCard(props) {
 
             cardContent : {
                 marginHorizontal: 10,
-                marginVertical: -20,
+                marginVertical: 20,
             }
 
     
