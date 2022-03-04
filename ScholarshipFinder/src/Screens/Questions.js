@@ -34,20 +34,13 @@ const Questions = () => {
     
     return(
         <View style={styles.container}>
-            <Image style={styles.settingsTopLeft} source={settingsButton} />
-            <Image style={styles.scholarshipTopRight} source={scholarshipSearch} />
-            <Image style={styles.logoTopCenter} source={smallLogo} />
-            <Image style={styles.underlineTopCenter} source={underlineScreen} />
-            <View style={styles.flexAdjustment}>
             <ScrollView>
                 {
                     shouldShow ? (
                         <Card>
                         <Text style={styles.text}>Are you a first time college student in your family? (Can be changed later)</Text>
-                        <SecondaryCard>
                         <CustomButton frontColor="#000000" backColor="#6FE7C3" text="Yes" onPress={() => setShouldShow(!shouldShow)} />
                         <CustomButton frontColor="#000000" backColor="#EA5E6A" text="No" onPress={() => setShouldShow(!shouldShow)} />
-                        </SecondaryCard>
                         </Card>
                     ) : null
                 }
@@ -88,9 +81,17 @@ const Questions = () => {
             <CustomButton frontColor="#000000" backColor="#FFF" text="Submit" onPress={onQuestionPressed}/>
             </SecondaryCard>
             </Card>
+
+            <Card>
+            <Text style={styles.text}>I (will) attend school at (Can be changed later)</Text>
+            <SecondaryCard>
+            <CustomButton frontColor="#000000" backColor="#6FE7C3" text="Yes" onPress={() => setShouldShow(!shouldShow)} />
+            <CustomButton frontColor="#000000" backColor="#EA5E6A" text="No" onPress={() => setShouldShow(!shouldShow)} />
+            </SecondaryCard>
+            </Card>
+
             </ScrollView>
             </View>
-        </View> 
     );
 };
 
@@ -98,14 +99,8 @@ const styles = StyleSheet.create({
     container : {
         flex : 1,
         //flexStart: .2,
-        alignItems : "center",
         justifyContent : "center",
-        //backgroundColor : "#FFCE31",
-    },
-
-    flexAdjustment : {
-        flex: .9,
-        top: 30
+        backgroundColor : "#3E4347",
     },
 
     text : {
