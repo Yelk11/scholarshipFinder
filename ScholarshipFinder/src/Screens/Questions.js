@@ -38,20 +38,17 @@ const Questions = () => {
             <ScrollView>
                 {
                     shouldShow ? (
-                        <Card>
-                        <Text style={styles.text}>Are you a first time college student in your family? (Can be changed later)</Text>
                         <SecondaryCard>
+                        <Text style={styles.text}>Are you a first time college student in your family? (Can be changed later)</Text>
                         <CustomButton frontColor="#000000" backColor="#6FE7C3" text="Yes" onPress={() => setShouldShow(!shouldShow)} />
                         <CustomButton frontColor="#000000" backColor="#EA5E6A" text="No" onPress={() => setShouldShow(!shouldShow)} />
                         </SecondaryCard>
-                        </Card>
                     ) : null
                 }
 
                 {   shouldShow2 ? (
-                        <Card>
-                        <Text style={styles.text}>What year of college are you in? (Can be changed later)</Text>
                         <SecondaryCard>
+                        <Text style={styles.text}>What year of college are you in? (Can be changed later)</Text>
                         <CustomButton frontColor="#000000" backColor="#FFF" text="Incoming College Student" onPress={() => setShouldShow2(!shouldShow2)} />
                         <CustomButton frontColor="#000000" backColor="#FFF" text="Freshman" onPress={() => setShouldShow2(!shouldShow2)} />
                         <CustomButton frontColor="#000000" backColor="#FFF" text="Sophomore" onPress={() => setShouldShow2(!shouldShow2)} />
@@ -59,11 +56,10 @@ const Questions = () => {
                         <CustomButton frontColor="#000000" backColor="#FFF" text="Senior" onPress={() => setShouldShow2(!shouldShow2)} />
                         <CustomButton frontColor="#000000" backColor="#FFF" text="Other" onPress={() => setShouldShow2(!shouldShow2)} />
                         </SecondaryCard>
-                        </Card>
                     ) : null
                 }
 
-            <Card>
+            <SecondaryCard>
             <Text style={styles.text}>Identify your major: (Can be changed later)</Text>
             <TouchableOpacity onPress={() => changeModalVisibility(true)}>
                 <Text style={styles.dropdown}>{chooseData}</Text>
@@ -80,10 +76,15 @@ const Questions = () => {
                 />
 
             </Modal>
-            <SecondaryCard>
             <CustomButton frontColor="#000000" backColor="#FFF" text="Submit" onPress={onQuestionPressed}/>
             </SecondaryCard>
-            </Card>
+            <Text style={styles.text}>I (will) attend school at</Text>
+            
+            <SecondaryCard>
+
+            
+
+            </SecondaryCard>
             </ScrollView>
             </View>
     );
@@ -103,8 +104,8 @@ const styles = StyleSheet.create({
     },
 
     text : {
-        color: "white",
-        fontSize: 20,
+        color: "black",
+        fontSize: 18,
         textAlign: 'center',
     },
 
