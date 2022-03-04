@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { View, Button, Text, Image, StyleSheet, useWindowDimensions, ScrollView, SafeAreaView, TouchableOpacity, Modal, Alert } from 'react-native';
+import { View, Button, Text, TextInput, Image, StyleSheet, useWindowDimensions, ScrollView, SafeAreaView, TouchableOpacity, Modal, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import CustomButton from '../components/CustomButton/CustomButton';
 import scholarshipSearch from '../../assets/images/scholarship-search-button.png';
@@ -39,7 +39,7 @@ const Questions = () => {
                 {
                     shouldShow ? (
                         <SecondaryCard>
-                        <Text style={styles.text}>Are you a first time college student in your family? (Can be changed later)</Text>
+                        <Text style={styles.text}>Are you a first time college student in your family?</Text>
                         <CustomButton frontColor="#000000" backColor="#6FE7C3" text="Yes" onPress={() => setShouldShow(!shouldShow)} />
                         <CustomButton frontColor="#000000" backColor="#EA5E6A" text="No" onPress={() => setShouldShow(!shouldShow)} />
                         </SecondaryCard>
@@ -48,7 +48,7 @@ const Questions = () => {
 
                 {   shouldShow2 ? (
                         <SecondaryCard>
-                        <Text style={styles.text}>What year of college are you in? (Can be changed later)</Text>
+                        <Text style={styles.text}>What year of college are you in?</Text>
                         <CustomButton frontColor="#000000" backColor="#FFF" text="Incoming College Student" onPress={() => setShouldShow2(!shouldShow2)} />
                         <CustomButton frontColor="#000000" backColor="#FFF" text="Freshman" onPress={() => setShouldShow2(!shouldShow2)} />
                         <CustomButton frontColor="#000000" backColor="#FFF" text="Sophomore" onPress={() => setShouldShow2(!shouldShow2)} />
@@ -60,7 +60,7 @@ const Questions = () => {
                 }
 
             <SecondaryCard>
-            <Text style={styles.text}>Identify your major: (Can be changed later)</Text>
+            <Text style={styles.text}>Identify your major:</Text>
             <TouchableOpacity onPress={() => changeModalVisibility(true)}>
                 <Text style={styles.dropdown}>{chooseData}</Text>
             </TouchableOpacity>
@@ -76,15 +76,32 @@ const Questions = () => {
                 />
 
             </Modal>
-            <CustomButton frontColor="#000000" backColor="#FFF" text="Submit" onPress={onQuestionPressed}/>
             </SecondaryCard>
-            <Text style={styles.text}>I (will) attend school at</Text>
             
             <SecondaryCard>
-
-            
-
+            <Text style={styles.text}>I (will) attend school at</Text>
+            <TextInput placeholder="College/University"
+                        placeholderTextColor="#FFFFFF" 
+                        //value = {FName}
+                        //onChangeText = {text => setFirstName(text)}
+                        style = { {backgroundColor :'#596066', borderColor: '#e8e8e8', 
+                        borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"}}/>
+            <Text style={styles.text}>seeking a</Text>
+            <TextInput placeholder="Degree"
+                        placeholderTextColor="#FFFFFF" 
+                        //value = {LName}
+                        //onChangeText = {text => setLastName(text)}
+                        style = { {backgroundColor :'#596066', borderColor: '#e8e8e8',
+                        borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"}}/>
+            <Text style={styles.text}>with a GPA of</Text>
+            <TextInput placeholder="GPA"
+                        placeholderTextColor="#FFFFFF" 
+                        //value = {LName}
+                        //onChangeText = {text => setLastName(text)}
+                        style = { {backgroundColor :'#596066', borderColor: '#e8e8e8',
+                        borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"}}/>
             </SecondaryCard>
+            <CustomButton frontColor="#000000" backColor="#FFF" text="Submit" onPress={onQuestionPressed}/>
             </ScrollView>
             </View>
     );
@@ -105,7 +122,7 @@ const styles = StyleSheet.create({
 
     text : {
         color: "black",
-        fontSize: 18,
+        fontSize: 16,
         textAlign: 'center',
     },
 
