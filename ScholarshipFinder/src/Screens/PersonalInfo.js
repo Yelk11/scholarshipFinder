@@ -2,16 +2,11 @@ import React, {useState} from 'react';
 import { View, Button, TextInput, Text, Image, StyleSheet, useWindowDimensions, ScrollView, SafeAreaView, TouchableOpacity, Modal, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import CustomButton from '../components/CustomButton/CustomButton';
-import scholarshipSearch from '../../assets/images/scholarship-search-button.png';
-import settingsButton from '../../assets/images/settings-button.png';
-import smallLogo from '../../assets/images/small-logo.png';
-import underlineScreen from '../../assets/images/current-tab.png';
-import Card from '../components/Card';
-import SecondaryCard from '../components/SecondaryCard';
-import { ListofMajors } from '../components/ListOfMajors';
-import { RaceType } from '../components/RaceType';
 import PersonalCard from '../components/PersonalCard';
 import DateTimePicker from '@react-native-community/datetimepicker';
+//import DateTimePicker from 'react-native-modal-datetime-picker';
+import { DateTimePickerProps } from 'react-native-modal-datetime-picker';
+
 
 const PersonalInfo = () => {
 
@@ -24,6 +19,13 @@ const PersonalInfo = () => {
     const [date, setDate] = useState(new Date(1598051730000));
     const [mode, setMode] = useState('date');
     const [show, setShow] = useState(false);
+    const [race, setRace] = useState('');
+    const [CitizinshipStatus, setCitizenship] = useState('');
+    const [gender, setGender] = useState('');
+    const [city, setCity] = useState('');
+    const [state, setState] = useState('');
+    const [zip, setZip] = useState('');
+    const [country, setCountry] = useState('');
 
     const onChange = (event, selectedDate) => {
         const currentDate = selectedDate || date;
@@ -31,19 +33,25 @@ const PersonalInfo = () => {
         setDate(currentDate);
       };
     
+      const showDatepicker = () => {
+        showMode('date');
+      };
+
       const showMode = (currentMode) => {
         setShow(true);
         setMode(currentMode);
       };
-    
-      const showDatepicker = () => {
-        showMode('date');
-      };
-    
-      const showTimepicker = () => {
-        showMode('time');
-      };
-    
+
+    //    handlePicker = () => {
+    //     this.setState({
+    //         isVisible: false
+    //     })};
+
+    //  hidePicker = () => {
+    //     this.setState({
+    //         isVisible: false
+    //     })};
+
     return(
         <View style={styles.container}>
             <ScrollView>
@@ -71,10 +79,10 @@ const PersonalInfo = () => {
                             <DateTimePicker
                             testID="dateTimePicker"
                             value={date}
-                            mode={mode}
-                            is24Hour={true}
                             display="default"
                             onChange={onChange}
+                            // onConfirm={this.handlePicker}
+                            // onCancel={this.hidePicker}
                             />
                         )}
                         <TextInput placeholder="MM/DD/YYYY"
@@ -89,20 +97,20 @@ const PersonalInfo = () => {
                         <Text style={styles.text}>I am a</Text>
                         <TextInput placeholder="Race / Ethnicity"
                                    placeholderTextColor="#FFFFFF" 
-                                   //value = {date}
-                                   onChangeText = {text => setDate(text)}
+                                   value = {race}
+                                   onChangeText = {text => setRace(text)}
                                    style = { {backgroundColor :'#596066', borderColor: '#e8e8e8',
                                    borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"}}/>
                         <TextInput placeholder="Citizenship Status"
                                    placeholderTextColor="#FFFFFF" 
-                                   //value = {date}
-                                   onChangeText = {text => setDate(text)}
+                                   value = {CitizinshipStatus}
+                                   onChangeText = {text => setCitizenship(text)}
                                    style = { {backgroundColor :'#596066', borderColor: '#e8e8e8',
                                    borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"}}/>
                         <TextInput placeholder="Gender"
                                    placeholderTextColor="#FFFFFF" 
-                                   //value = {date}
-                                   onChangeText = {text => setDate(text)}
+                                   value = {gender}
+                                   onChangeText = {text => setGender(text)}
                                    style = { {backgroundColor :'#596066', borderColor: '#e8e8e8',
                                    borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"}}/>
                         </PersonalCard>
@@ -111,26 +119,26 @@ const PersonalInfo = () => {
                         <Text style={styles.text}>I live in</Text>
                         <TextInput placeholder="City"
                                    placeholderTextColor="#FFFFFF" 
-                                   //value = {date}
-                                   onChangeText = {text => setDate(text)}
+                                   value = {city}
+                                   onChangeText = {text => setCity(text)}
                                    style = { {backgroundColor :'#596066', borderColor: '#e8e8e8',
                                    borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"}}/>
                         <TextInput placeholder="State"
                                    placeholderTextColor="#FFFFFF" 
-                                   //value = {date}
-                                   onChangeText = {text => setDate(text)}
+                                   value = {state}
+                                   onChangeText = {text => setState(text)}
                                    style = { {backgroundColor :'#596066', borderColor: '#e8e8e8',
                                    borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"}}/>
                         <TextInput placeholder="ZIP"
                                    placeholderTextColor="#FFFFFF" 
-                                   //value = {date}
-                                   onChangeText = {text => setDate(text)}
+                                   value = {zip}
+                                   onChangeText = {text => setZip(text)}
                                    style = { {backgroundColor :'#596066', borderColor: '#e8e8e8',
                                    borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"}}/>
                         <TextInput placeholder="Country"
                                    placeholderTextColor="#FFFFFF" 
-                                   //value = {date}
-                                   onChangeText = {text => setDate(text)}
+                                   value = {country}
+                                   onChangeText = {text => setCountry(text)}
                                    style = { {backgroundColor :'#596066', borderColor: '#e8e8e8',
                                    borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"}}/>
                         </PersonalCard>

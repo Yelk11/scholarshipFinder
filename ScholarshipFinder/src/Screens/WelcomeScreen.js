@@ -9,7 +9,7 @@ const WelcomeScreen = () => {
 
     const navigation = useNavigation();
 
-    const onUserSignInPressed = () => navigation.navigate('PersonalInfo');
+    const onUserSignInPressed = () => navigation.navigate('UserSignIn');
     const onUserCreateAccountPressed = () => navigation.navigate('CreateAccount');
     
     return(
@@ -56,14 +56,6 @@ const styles = StyleSheet.create({
         top: 55,
         justifyContent: 'center'
     },
-
-    // underlineTopCenter : {
-    //     height: 10,
-    //     width: 50,
-    //     justifyContent: 'center',
-    //     position: 'absolute',
-    //     top: 100,
-    // },
 
 })
 

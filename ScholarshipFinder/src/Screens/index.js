@@ -5,3 +5,4 @@ export {default} from './ScholarshipDetails';
 export {default} from './CreateAccount';
 export {default} from './WelcomeScreen';
 export {default} from './PersonalInfo';
+export {default} from './SuccessfullAccount';

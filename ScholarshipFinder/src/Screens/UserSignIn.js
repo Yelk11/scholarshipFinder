@@ -7,6 +7,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import initialLogo from '../../assets/images/logo-initial.png';
 import LoginSystemCard from '../components/LoginSystemCard';
+import LoginButton from '../components/CustomButton/LoginButton';
 
 const UserSignIn = () => {
     const [email, setEmail] = useState('');
@@ -14,7 +15,7 @@ const UserSignIn = () => {
     const navigation = useNavigation();
     const {height} = useWindowDimensions();
 
-    const onUserSignInPressed = () => navigation.navigate('Questions')
+    const onUserSignInPressed = () => navigation.navigate('PersonalInfo')
     
     const onForgotMyPasswordPressed = () => {
         console.warn('onForgotMyPasswordPressed');
@@ -51,14 +52,14 @@ const UserSignIn = () => {
                            borderColor: '#e8e8e8',
                            borderWidth: 0.3, borderRadius: 3, paddingHorizontal: 6, marginVertical: 2}}/>
 
-                <CustomButton frontColor="#000000" backColor="#FFF" text="Login" onPress={onUserSignInPressed} />
+                <LoginButton frontColor="#000000" backColor="#FFF" text="Login" onPress={onUserSignInPressed} />
 
-                <CustomButton text="Forgot my password" textStyle= {{color:"#039BE5"}} onPress={onForgotMyPasswordPressed} type="clear" />
+                <LoginButton text="Forgot my password" textStyle= {{color:"#039BE5"}} onPress={onForgotMyPasswordPressed} type="clear" />
 
-                <CustomButton text="Sign In with Google" onPress={onUserSignInGoogle}
+                <LoginButton text="Sign In with Google" onPress={onUserSignInGoogle}
                 frontColor={"#FAE9EA"} backColor={"#DD4D44"} />
-                <CustomButton text="Sign In with Facebook" onPress={onUserSignInFacebook}
-                frontColor={"#363636"} backColor={"#e3e3e3"} />
+                <LoginButton text="Sign In with Facebook" onPress={onUserSignInFacebook}
+                frontColor={"#FAE9EA"} backColor={"#4267B2"} />
             </LoginSystemCard>
         </View>
 );
