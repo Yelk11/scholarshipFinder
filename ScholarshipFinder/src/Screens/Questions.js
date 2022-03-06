@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { View, Button, Text, Image, StyleSheet, useWindowDimensions, ScrollView, SafeAreaView, TouchableOpacity, Modal, Alert } from 'react-native';
+import { View, Button, Text, TextInput, Image, StyleSheet, useWindowDimensions, ScrollView, SafeAreaView, TouchableOpacity, Modal, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import CustomButton from '../components/CustomButton/CustomButton';
 import scholarshipSearch from '../../assets/images/scholarship-search-button.png';
@@ -37,17 +37,15 @@ const Questions = () => {
     
     return(
         <View style={styles.container}>
-            <Image style={styles.settingsTopLeft} source={settingsButton} />
-            <Image style={styles.scholarshipTopRight} source={scholarshipSearch} />
-            <Image style={styles.logoTopCenter} source={smallLogo} />
-            <Image style={styles.underlineTopCenter} source={underlineScreen} />
-            <View style={styles.flexAdjustment}>
+
             <ScrollView>
                 {
                     shouldShow ? (
-                        <Card>
-                        <Text style={styles.text}>Are you a first time college student in your family? (Can be changed later)</Text>
                         <SecondaryCard>
+
+                        <Text style={styles.text}>Are you a first time college student in your family?</Text>
+
+
                         <CustomButton frontColor="#000000" backColor="#6FE7C3" text="Yes" onPress={() => {
                             setShouldShow(!shouldShow)
                             try {
@@ -64,15 +62,17 @@ const Questions = () => {
                                 alert('Save failed');
                               }
                         }} />
+
                         </SecondaryCard>
-                        </Card>
                     ) : null
                 }
 
                 {   shouldShow2 ? (
-                        <Card>
-                        <Text style={styles.text}>What year of college are you in? (Can be changed later)</Text>
                         <SecondaryCard>
+
+                        <Text style={styles.text}>What year of college are you in?</Text>
+
+
                         <CustomButton frontColor="#000000" backColor="#FFF" text="Incoming College Student" onPress={() => {
                             setShouldShow2(!shouldShow2)
                             try {
@@ -122,13 +122,13 @@ const Questions = () => {
                                 alert('Save failed');
                               }
                         }} />
+
                         </SecondaryCard>
-                        </Card>
                     ) : null
                 }
 
-            <Card>
-            <Text style={styles.text}>Identify your major: (Can be changed later)</Text>
+            <SecondaryCard>
+            <Text style={styles.text}>Identify your major:</Text>
             <TouchableOpacity onPress={() => changeModalVisibility(true)}>
                 <Text style={styles.dropdown}>{chooseData}</Text>
             </TouchableOpacity>
@@ -144,13 +144,34 @@ const Questions = () => {
                 />
 
             </Modal>
-            <SecondaryCard>
-            <CustomButton frontColor="#000000" backColor="#FFF" text="Submit" onPress={onQuestionPressed}/>
             </SecondaryCard>
-            </Card>
+            
+            <SecondaryCard>
+            <Text style={styles.text}>I (will) attend school at</Text>
+            <TextInput placeholder="College/University"
+                        placeholderTextColor="#FFFFFF" 
+                        //value = {FName}
+                        //onChangeText = {text => setFirstName(text)}
+                        style = { {backgroundColor :'#596066', borderColor: '#e8e8e8', 
+                        borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"}}/>
+            <Text style={styles.text}>seeking a</Text>
+            <TextInput placeholder="Degree"
+                        placeholderTextColor="#FFFFFF" 
+                        //value = {LName}
+                        //onChangeText = {text => setLastName(text)}
+                        style = { {backgroundColor :'#596066', borderColor: '#e8e8e8',
+                        borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"}}/>
+            <Text style={styles.text}>with a GPA of</Text>
+            <TextInput placeholder="GPA"
+                        placeholderTextColor="#FFFFFF" 
+                        //value = {LName}
+                        //onChangeText = {text => setLastName(text)}
+                        style = { {backgroundColor :'#596066', borderColor: '#e8e8e8',
+                        borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"}}/>
+            </SecondaryCard>
+            <CustomButton frontColor="#000000" backColor="#FFF" text="Submit" onPress={onQuestionPressed}/>
             </ScrollView>
             </View>
-        </View> 
     );
 };
 
@@ -158,9 +179,8 @@ const styles = StyleSheet.create({
     container : {
         flex : 1,
         //flexStart: .2,
-        alignItems : "center",
         justifyContent : "center",
-        //backgroundColor : "#FFCE31",
+        backgroundColor : "#3E4347",
     },
 
     flexAdjustment : {
@@ -169,8 +189,8 @@ const styles = StyleSheet.create({
     },
 
     text : {
-        color: "white",
-        fontSize: 20,
+        color: "black",
+        fontSize: 16,
         textAlign: 'center',
     },
 
