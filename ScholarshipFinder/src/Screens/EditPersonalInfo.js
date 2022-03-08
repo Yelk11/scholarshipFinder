@@ -339,6 +339,18 @@ const styles = StyleSheet.create({
     flexAdjustment : {
         flex: .9,
         top: 35
+    },
+
+    dropdown:{
+        color: "black",
+        fontSize: 20,
+        textAlign: 'center',
+        width: '100%',
+        padding: 10,
+        marginVertical: 5,
+        alignItems: 'center',
+        borderRadius: 5,
+        backgroundColor: "white"
     }
 })
 
