@@ -112,7 +112,9 @@ const CreateAccount = () => {
             onPress={onSignInPressed} type="TERTIARY" />
 
         </View>
-);
+        </ScrollView>
+        </View>
+    );
 };
 
 const styles = StyleSheet.create({
