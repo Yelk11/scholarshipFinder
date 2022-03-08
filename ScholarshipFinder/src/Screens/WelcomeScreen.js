@@ -27,12 +27,10 @@ const WelcomeScreen = () => {
 const styles = StyleSheet.create({
     container : {
         flex : 1,
-        //flexStart: .2,
         alignItems : "center",
         justifyContent : "center",
         backgroundColor : "#3E4347",
         flexDirection: "row",
-        //display:"flex",
     },
 
     flexAdjustment : {

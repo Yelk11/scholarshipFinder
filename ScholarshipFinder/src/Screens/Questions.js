@@ -9,7 +9,7 @@ import underlineScreen from '../../assets/images/current-tab.png';
 import Card from '../components/Card';
 import SecondaryCard from '../components/SecondaryCard';
 import { ListofMajors } from '../components/ListOfMajors';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
