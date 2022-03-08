@@ -3,7 +3,7 @@ import { View, Button, TextInput, Text, Image, StyleSheet, useWindowDimensions, 
 import { useNavigation } from '@react-navigation/native';
 import CustomButton from '../components/CustomButton/CustomButton';
 import PersonalCard from '../components/PersonalCard';
-import DateTimePicker from '@react-native-community/datetimepicker';
+//import DateTimePicker from '@react-native-community/datetimepicker';
 //import DateTimePicker from 'react-native-modal-datetime-picker';
 import { DateTimePickerProps } from 'react-native-modal-datetime-picker';
 
