@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import { View, Button, Text, StyleSheet, Image } from 'react-native';
+import { View, Button, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import CustomButton from '../components/CustomButton/CustomButton';
 import scholarshipFilter from '../../assets/images/yellow-filter.png';
-import settingsButton from '../../assets/images/yellow-settings-button.png';
+import YellowSettingsButton from '../../assets/images/yellow-settings-button.png';
 import smallLogo from '../../assets/images/app-logo-dark-background.png';
 import SettingsCard from '../SettingsCard';
 import SettingsButton from '../components/CustomButton/SettingsButton';
@@ -14,24 +14,26 @@ const Settings = (props) => {
     
     const navigation = useNavigation();
 
+    const GoToPersonalInfo = () => navigation.navigate('EditPersonalInfo')
+
+    const LogoutPressed = () => navigation.navigate('Logout')
+
     return(
         <View style={styles.container}>
-            <Image style={styles.settingsTopLeft} source={settingsButton} />
+            <Image style={styles.settingsTopLeft} source={YellowSettingsButton} />
             <Image style={styles.scholarshipTopRight} source={scholarshipFilter} />
             <Image style={styles.logoTopCenter} source={smallLogo} />
-            <View>
             <SettingsCard>
                 <Text style={styles.headertext}>Welcome Back!</Text>
                 <Text style={styles.text}>AsianGirls</Text>
-                <SettingsButton text="Profile"></SettingsButton>
+                <SettingsButton text="Profile" onPress={GoToPersonalInfo}></SettingsButton>
                 <SettingsButton text="Scholarship Feed"></SettingsButton>
                 <SettingsButton text="Post A Scholarship"></SettingsButton>
                 <SettingsButton text="FAQs"></SettingsButton>
                 <SettingsButton text="App Review"></SettingsButton>
-                <LogoutButton text="Logout"></LogoutButton>
+                <LogoutButton text="Logout" onPress={LogoutPressed}></LogoutButton>
                 <Image style={styles.logout} source={LogoutIcon}/>
             </SettingsCard>
-            </View>
         </View> 
     );
 };

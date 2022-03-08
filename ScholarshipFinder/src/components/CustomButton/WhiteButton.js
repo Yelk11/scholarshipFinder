@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, TextInput, StyleSheet, Pressable} from 'react-native'
 
-const SettingsButton = ({onPress, text, type = "PRIMARY", backColor, frontColor}) => {
+const WhiteButton = ({onPress, text, type = "PRIMARY", backColor, frontColor}) => {
     return(
         <Pressable onPress={onPress} style={[styles.container, styles['container_${type}'],
         backColor ? {backgroundColor: backColor} : {} ]}>
@@ -13,14 +13,16 @@ const SettingsButton = ({onPress, text, type = "PRIMARY", backColor, frontColor}
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#FFCE31',
+        backgroundColor: '#FFF',
         width: '100%',
-    
-        padding: 15,
-        marginVertical: 7.5,
+        justifyContent: 'center',
+        padding: 10,
+        marginTop: 15,
+        marginBottom: 15,
         alignItems: 'center',
-        borderRadius: 15,
-        //borderWidth: 1,
+        borderRadius: 25,
+        borderWidth: 1,
+        borderColor: "black"
         },
 
         container_Primary: {
@@ -30,7 +32,6 @@ const styles = StyleSheet.create({
         container_tertiary: {},
 
         text: {
-            fontWeight: 'bold',
             color: 'black',
             fontSize: 20,
         },
@@ -38,4 +39,4 @@ const styles = StyleSheet.create({
             color: 'gray',
         }
     });
-export default SettingsButton;
+export default WhiteButton;
