@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, TextInput, StyleSheet, Pressable} from 'react-native'
 
-const CustomButton = ({onPress, text, type = "PRIMARY", backColor, frontColor}) => {
+const LoginButton = ({onPress, text, type = "PRIMARY", backColor, frontColor}) => {
     return(
         <Pressable onPress={onPress} style={[styles.container, styles['container_${type}'],
         backColor ? {backgroundColor: backColor} : {} ]}>
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
         width: '100%',
     
         padding: 10,
-        marginVertical: 15,
+        marginVertical: 7,
         alignItems: 'center',
         borderRadius: 25,
         },
@@ -30,10 +30,10 @@ const styles = StyleSheet.create({
 
         text: {
             fontWeight: 'bold',
-            color: 'black',
+            color: 'Black',
         },
         text_tertiary: {
             color: 'gray',
         }
     });
-export default CustomButton;
+export default LoginButton;

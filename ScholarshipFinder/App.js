@@ -3,22 +3,31 @@ import * as React from 'react';
 import { Button, View, Text, SafeAreaView, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
 import UserSignIn from './src/Screens/UserSignIn';
 import Questions from './src/Screens/Questions';
 import BrowseScholarships from './src/Screens/BrowseScholarships';
 import ScholarshipDetails from './src/Screens/ScholarshipDetails';
 import CreateAccount from './src/Screens/CreateAccount';
+
+import WelcomeScreen from './src/Screens/WelcomeScreen';
+import PersonalInfo from './src/Screens/PersonalInfo';
+import SuccessfullAccount from './src/Screens/SuccessfullAccount';
+
 import Settings from './src/Screens/Settings';
 import EditPersonalInfo from './src/Screens/EditPersonalInfo';
 import AccountClosed from './src/Screens/AccountClosed';
 import Logout from './src/Screens/Logout';
 
+
 const App = () => {
   const Stack = createNativeStackNavigator();
   return(
     <NavigationContainer>
-       <Stack.Navigator initialRouteName="Settings">
+
+       <Stack.Navigator initialRouteName="WelcomeScreen">
+         <Stack.Screen name="WelcomeScreen" component={WelcomeScreenScreen}/>
+         <Stack.Screen name="SuccessfullAccount" component={SuccessfullAccountScreen}/>
+         <Stack.Screen name="PersonalInfo" component={PersonalInfoScreen}/>
          <Stack.Screen name="UserSignIn" component={UserSignInScreen}/>
          <Stack.Screen name="Home" component={HomeScreen} />
          <Stack.Screen name="Details" component={DetailsScreen} />
@@ -54,6 +63,30 @@ function HomeScreen({ navigation }) {
     </View>
   );
 }
+function WelcomeScreenScreen({ navigation }) {
+  return (
+    <SafeAreaView style={styles.root}>
+      <WelcomeScreen/>
+    </SafeAreaView>
+  );
+}
+
+function PersonalInfoScreen({ navigation }) {
+  return (
+    <SafeAreaView style={styles.root}>
+      <PersonalInfo/>
+    </SafeAreaView>
+  );
+}
+
+function SuccessfullAccountScreen({ navigation }) {
+  return (
+    <SafeAreaView style={styles.root}>
+      <SuccessfullAccount/>
+    </SafeAreaView>
+  );
+}
+
 function UserSignInScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.root}>

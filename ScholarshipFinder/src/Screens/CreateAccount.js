@@ -1,7 +1,12 @@
 import React, {useState, useContext} from 'react';
-import { View, Text, StyleSheet, useWindowDimensions, ScrollView, SafeAreaView, setValue, onChangeText, TextInput } from 'react-native';
+import { View, Text, StyleSheet, useWindowDimensions, ScrollView, SafeAreaView, setValue, onChangeText, TextInput, Image } from 'react-native';
 import CustomButton from '../components/CustomButton/CustomButton';
 import { useNavigation } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import initialLogo from '../../assets/images/logo-initial.png';
+import LoginSystemCard from '../components/LoginSystemCard';
+import LoginButton from '../components/CustomButton/LoginButton';
 
 const CreateAccount = () => {
     const [email, setEmail] = useState('');
@@ -10,20 +15,8 @@ const CreateAccount = () => {
     const navigation = useNavigation();
     const {height} = useWindowDimensions();
 
-    const onRegisterPressed = () => { 
-        navigation.navigate('ConfirmationEmail');
-    };
-
-    const onSignInPressed = () => {
-        navigation.navigate('UserSignIn');
-    };
-
-    const OnTermsOFUsePressed = () => {
-        console.warn('OnTermsOFUsePressed');
-    };
-
-    const OnPrivacyPressed = () => {
-        console.warn('OnPrivacyPressed');
+    const onSignUpPressed = () => { 
+        navigation.navigate('SuccessfullAccount');
     };
 
     const onUserSignupGoogle = () => {
@@ -35,6 +28,47 @@ const CreateAccount = () => {
     };
     
     return(
+
+        <View style={styles.container}>
+            <Image style={styles.logoTopCenter} source={initialLogo} />
+            <LoginSystemCard>
+                <TextInput placeholder="Email"
+                           placeholderTextColor="#FFFFFF" 
+                           value = {email}
+                           onChangeText = {text => setEmail(text)}
+                           style = { {backgroundColor :'#596066',
+                           width: '100%',
+                           borderColor: '#e8e8e8',
+                           borderWidth: 0.3, borderRadius: 3, paddingHorizontal: 6, marginVertical: 5}}/>
+
+                <TextInput placeholder="Password"
+                           placeholderTextColor="#FFFFFF" 
+                           value = {password}
+                           onChangeText = {text => setPassword(text)}
+                           secureTextEntry={true}
+                           style = { {backgroundColor :'#596066',
+                           width: '100%',
+                           borderColor: '#e8e8e8',
+                           borderWidth: 0.3, borderRadius: 3, paddingHorizontal: 6, marginVertical: 2}}/>
+
+                <TextInput placeholder=" Confirm Password"
+                           placeholderTextColor="#FFFFFF" 
+                           value = {ConfirmPassword}
+                           onChangeText = {text => setConfirmPassword(text)}
+                           secureTextEntry={true}
+                           style = { {backgroundColor :'#596066',
+                           width: '100%',
+                           borderColor: '#e8e8e8',
+                           borderWidth: 0.3, borderRadius: 3, paddingHorizontal: 6, marginVertical: 2}}/>           
+
+                <LoginButton frontColor="#000000" backColor="#FFF" text="Sign Up" onPress={onSignUpPressed} />
+
+                <LoginButton text="Sign Up with Google" onPress={onUserSignupGoogle}
+                frontColor={"#FAE9EA"} backColor={"#DD4D44"} />
+                <LoginButton text="Sign Up with Facebook" onPress={onUserSignupFacebook}
+                frontColor={"#FAE9EA"} backColor={"#4267B2"} />
+            </LoginSystemCard>
+
     <ScrollView showsVerticalScrollIndicator={false}>
         <View style ={styles.root}>
 
@@ -76,28 +110,34 @@ const CreateAccount = () => {
 
             <CustomButton text="Have an account? Sign in" 
             onPress={onSignInPressed} type="TERTIARY" />
+
         </View>
-    </ScrollView>
-    );
+);
 };
 
 const styles = StyleSheet.create({
-    root: {
-        alignItems: 'center',
-        padding: 20,
-        justifyContent: 'center',
-        flex: 1,
+    container : {
+        flex : 1,
+        //flexStart: .2,
+        alignItems : "center",
+        justifyContent : "center",
+        backgroundColor : "#3E4347",
+        flexDirection: "row",
+        //display:"flex",
     },
 
-    title: {
-        fontSize: 24,
-        fontWeight: 'bold',
-        color: '#2e3c56',
-        margin:10,
+    flexAdjustment : {
+        flex: 30,
+        top: 3,
     },
-    text: { color: 'gray',
-    marginVertical: 10,},
-    link: {color: '#FDB075', },
+
+    logoTopCenter : {
+        height: 100,
+        width: 100,
+        position: 'absolute',
+        top: 55,
+        justifyContent: 'center'
+    },
 });
 
 export default CreateAccount;

@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
-import { View, TextInput, Image, StyleSheet, useWindowDimensions, ScrollView, SafeAreaView } from 'react-native';
+import { View, TextInput, Image, Text, StyleSheet, useWindowDimensions, ScrollView, SafeAreaView } from 'react-native';
 import CustomInput from '../components/CustomInput/CustomInput';
-import logo from '../../assets/images/logo-1.png';
 import CustomButton from '../components/CustomButton/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import initialLogo from '../../assets/images/logo-initial.png';
+import LoginSystemCard from '../components/LoginSystemCard';
+import LoginButton from '../components/CustomButton/LoginButton';
 
 const UserSignIn = () => {
     const [email, setEmail] = useState('');
@@ -13,7 +15,10 @@ const UserSignIn = () => {
     const navigation = useNavigation();
     const {height} = useWindowDimensions();
 
-    const onUserSignInPressed = () => navigation.navigate('BrowseScholarships')
+
+    const onUserSignInPressed = () => navigation.navigate('PersonalInfo')
+
+
     
     const onForgotMyPasswordPressed = () => {
         console.warn('onForgotMyPasswordPressed');
@@ -26,61 +31,69 @@ const UserSignIn = () => {
     const onUserSignInFacebook = () => {
         console.warn('onUserSignInFacebook');
     };
-
-    const onSignUpPressed = () => navigation.navigate("CreateAccount")
     
     return(
-    <ScrollView showsVerticalScrollIndicator={false}>
-        <View style ={styles.root}>
-            <Image
-                source={logo}
-                style={[styles.logo, {height: height * 0.3}]}
-                resizeMode="contain"
-            />
-            
-            <TextInput placeholder="Email" 
-            value = {email}
-            onChangeText = {text => setEmail(text)}
-            style = { {backgroundColor :'white',
-            width: '100%',
-            borderColor: '#e8e8e8',
-            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5}}/>
 
-           <TextInput placeholder="Password" 
-            value = {password}
-            onChangeText = {text => setPassword(text)}
-            secureTextEntry={true}
-            style = { {backgroundColor :'white',
-            width: '100%',
-            borderColor: '#e8e8e8',
-            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5}}/>
+        <View style={styles.container}>
+            <Image style={styles.logoTopCenter} source={initialLogo} />
+            <LoginSystemCard>
+                <TextInput placeholder="Email"
+                           placeholderTextColor="#FFFFFF" 
+                           value = {email}
+                           onChangeText = {text => setEmail(text)}
+                           style = { {backgroundColor :'#596066',
+                           width: '100%',
+                           borderColor: '#e8e8e8',
+                           borderWidth: 0.3, borderRadius: 3, paddingHorizontal: 6, marginVertical: 5}}/>
 
-            <CustomButton text="Sign In" onPress={onUserSignInPressed} />
+                <TextInput placeholder="Password"
+                           placeholderTextColor="#FFFFFF" 
+                           value = {password}
+                           onChangeText = {text => setPassword(text)}
+                           secureTextEntry={true}
+                           style = { {backgroundColor :'#596066',
+                           width: '100%',
+                           borderColor: '#e8e8e8',
+                           borderWidth: 0.3, borderRadius: 3, paddingHorizontal: 6, marginVertical: 2}}/>
 
-            <CustomButton text="Forgot my password" onPress={onForgotMyPasswordPressed} type="tertiary" />
 
-            <CustomButton text="Sign In with Google" onPress={onUserSignInGoogle}
-            frontColor={"#FAE9EA"} backColor={"#DD4D44"} />
-            <CustomButton text="Sign In with Facebook" onPress={onUserSignInFacebook}
-            frontColor={"#363636"} backColor={"#e3e3e3"} />
-            <CustomButton text="Don't have an account? Create new account" 
-            onPress={onSignUpPressed} type="tertiary" />
+                <LoginButton frontColor="#000000" backColor="#FFF" text="Login" onPress={onUserSignInPressed} />
+
+                <LoginButton text="Forgot my password" textStyle= {{color:"#039BE5"}} onPress={onForgotMyPasswordPressed} type="clear" />
+
+
+                <LoginButton text="Sign In with Google" onPress={onUserSignInGoogle}
+                frontColor={"#FAE9EA"} backColor={"#DD4D44"} />
+                <LoginButton text="Sign In with Facebook" onPress={onUserSignInFacebook}
+                frontColor={"#FAE9EA"} backColor={"#4267B2"} />
+            </LoginSystemCard>
+
         </View>
-    </ScrollView>
-    );
+);
 };
 
 const styles = StyleSheet.create({
-    root: {
-        alignItems: 'center',
-        padding: 20,
-        justifyContent: 'center',
-        flex: 1,
+    container : {
+        flex : 1,
+        //flexStart: .2,
+        alignItems : "center",
+        justifyContent : "center",
+        backgroundColor : "#3E4347",
+        flexDirection: "row",
+        //display:"flex",
     },
-    logo: {
-        width:'65%',
-        maxHeight:200,
-        maxWidth:150,
+
+    flexAdjustment : {
+        flex: 30,
+        top: 3,
+    },
+
+    logoTopCenter : {
+        height: 100,
+        width: 100,
+        position: 'absolute',
+        top: 55,
+        justifyContent: 'center'
     },
 });
 
