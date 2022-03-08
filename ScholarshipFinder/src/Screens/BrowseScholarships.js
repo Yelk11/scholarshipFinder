@@ -88,7 +88,6 @@ const styles = StyleSheet.create({
         textAlign: 'left',
         width: "100%",
         padding: 20,
-        // bottom:
     },
 
     scholarshipTopRight : {

@@ -178,7 +178,6 @@ const Questions = () => {
 const styles = StyleSheet.create({
     container : {
         flex : 1,
-        //flexStart: .2,
         justifyContent : "center",
         backgroundColor : "#3E4347",
     },

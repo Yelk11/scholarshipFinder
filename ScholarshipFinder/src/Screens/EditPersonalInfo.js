@@ -293,7 +293,7 @@ const styles = StyleSheet.create({
         width: "100%",
         padding: 10,
         textDecorationLine: 'underline'
-        // bottom:
+
     },
 
     small : {
@@ -302,7 +302,6 @@ const styles = StyleSheet.create({
         textAlign: 'left',
         width: "100%",
         padding: 2,
-        // bottom:
     },
 
     scholarshipTopRight : {
