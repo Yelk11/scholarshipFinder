@@ -28,6 +28,7 @@ const CreateAccount = () => {
     };
     
     return(
+
         <View style={styles.container}>
             <Image style={styles.logoTopCenter} source={initialLogo} />
             <LoginSystemCard>
@@ -67,6 +68,49 @@ const CreateAccount = () => {
                 <LoginButton text="Sign Up with Facebook" onPress={onUserSignupFacebook}
                 frontColor={"#FAE9EA"} backColor={"#4267B2"} />
             </LoginSystemCard>
+
+    <ScrollView showsVerticalScrollIndicator={false}>
+        <View style ={styles.root}>
+
+            <Text style= {styles.title}> Create an account</Text>
+
+            <TextInput placeholder="Email" 
+            value = {email}
+            onChangeText = {text => setEmail(text)}
+            style = { {backgroundColor :'white',
+            width: '100%',
+            borderColor: '#e8e8e8',
+            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5}}/>
+
+            <TextInput placeholder="Password" 
+            value = {password}
+            onChangeText = {text => setPassword(text)}
+            secureTextEntry={true}
+            style = { {backgroundColor :'white',
+            width: '100%',
+            borderColor: '#e8e8e8',
+            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5}}/>
+
+            <TextInput placeholder="Confirm Password" 
+            value = {ConfirmPassword}
+            onChangeText = {text => setConfirmPassword(text)}
+            secureTextEntry={true}
+            style = { {backgroundColor :'white',
+            width: '100%',
+            borderColor: '#e8e8e8',
+            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5}}/>     
+
+            <CustomButton text="Register" onPress={() => navigation.navigate("Questions")} />
+
+
+            <CustomButton text="Sign up with Google" onPress={onUserSignupGoogle}
+            frontColor={"#FAE9EA"} backColor={"#DD4D44"} />
+            <CustomButton text="Sign up with Facebook" onPress={onUserSignupFacebook}
+            frontColor={"#363636"} backColor={"#e3e3e3"} />
+
+            <CustomButton text="Have an account? Sign in" 
+            onPress={onSignInPressed} type="TERTIARY" />
+
         </View>
 );
 };

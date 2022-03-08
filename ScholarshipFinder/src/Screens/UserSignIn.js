@@ -15,7 +15,10 @@ const UserSignIn = () => {
     const navigation = useNavigation();
     const {height} = useWindowDimensions();
 
+
     const onUserSignInPressed = () => navigation.navigate('PersonalInfo')
+
+
     
     const onForgotMyPasswordPressed = () => {
         console.warn('onForgotMyPasswordPressed');
@@ -30,6 +33,7 @@ const UserSignIn = () => {
     };
     
     return(
+
         <View style={styles.container}>
             <Image style={styles.logoTopCenter} source={initialLogo} />
             <LoginSystemCard>
@@ -52,15 +56,18 @@ const UserSignIn = () => {
                            borderColor: '#e8e8e8',
                            borderWidth: 0.3, borderRadius: 3, paddingHorizontal: 6, marginVertical: 2}}/>
 
+
                 <LoginButton frontColor="#000000" backColor="#FFF" text="Login" onPress={onUserSignInPressed} />
 
                 <LoginButton text="Forgot my password" textStyle= {{color:"#039BE5"}} onPress={onForgotMyPasswordPressed} type="clear" />
+
 
                 <LoginButton text="Sign In with Google" onPress={onUserSignInGoogle}
                 frontColor={"#FAE9EA"} backColor={"#DD4D44"} />
                 <LoginButton text="Sign In with Facebook" onPress={onUserSignInFacebook}
                 frontColor={"#FAE9EA"} backColor={"#4267B2"} />
             </LoginSystemCard>
+
         </View>
 );
 };
