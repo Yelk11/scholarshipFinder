@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { View, Button, TouchableOpacity, Text, TextInput, StyleSheet, ScrollView, Image } from 'react-native';
+import { View, Button, TouchableOpacity, Modal, Text, TextInput, StyleSheet, ScrollView, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import scholarshipFilter from '../../assets/images/yellow-filter.png';
 import BackButton from '../../assets/images/back-button.png';
@@ -9,6 +9,8 @@ import LogoutButton from '../components/CustomButton/LogoutButton';
 import LogoutIcon from '../../assets/images/logout-icon.png'
 import SecondaryCard from '../components/SecondaryCard';
 import WhiteButton from '../components/CustomButton/WhiteButton';
+import CustomButton from '../components/CustomButton/CustomButton';
+import { ListofMajors } from '../components/ListOfMajors';
 
 const EditPersonalInfo = (props) => {
     
@@ -17,6 +19,24 @@ const EditPersonalInfo = (props) => {
     const GoBack = () => navigation.navigate('Settings')
 
     const CloseAccountPressed = () => navigation.navigate('AccountClosed')
+
+    const onQuestionPressed = () => navigation.navigate('BrowseScholarships')
+
+    const [shouldShow, setShouldShow] = useState(true);
+
+    const [shouldShow2, setShouldShow2] = useState(true);
+
+    const [chooseData, setchooseData] = useState('Select your Major...');
+
+    const [isModalVisible, setisModalVisible] = useState(false);
+
+    const changeModalVisibility = (bool) => {
+        setisModalVisible(bool)
+    }
+
+    const setData = (option) => {
+        setchooseData(option)
+    }
 
     return(
         <View style={styles.container}>
@@ -97,6 +117,138 @@ const EditPersonalInfo = (props) => {
 	            style = { {backgroundColor :'#596066', borderColor: '#e8e8e8',
 	            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"}}/>
             </SecondaryCard>
+
+                            {
+                    shouldShow ? (
+                        <SecondaryCard>
+
+                        <Text style={styles.text}>Are you a first time college student in your family?</Text>
+
+
+                        <CustomButton frontColor="#000000" backColor="#6FE7C3" text="Yes" onPress={() => {
+                            setShouldShow(!shouldShow)
+                            try {
+                                //await AsyncStorage.setItem('@first_college_student', true)
+                              } catch (e) {
+                                alert('Save failed');
+                              }
+                        }} />
+                        <CustomButton frontColor="#000000" backColor="#EA5E6A" text="No" onPress={() => {
+                            setShouldShow(!shouldShow)
+                            try {
+                                //await AsyncStorage.setItem('@first_college_student', false)
+                              } catch (e) {
+                                alert('Save failed');
+                              }
+                        }} />
+
+                        </SecondaryCard>
+                    ) : null
+                }
+
+                {   shouldShow2 ? (
+                        <SecondaryCard>
+
+                        <Text style={styles.text}>What year of college are you in?</Text>
+
+
+                        <CustomButton frontColor="#000000" backColor="#FFF" text="Incoming College Student" onPress={() => {
+                            setShouldShow2(!shouldShow2)
+                            try {
+                                //await AsyncStorage.setItem('@college_year', 0)
+                              } catch (e) {
+                                alert('Save failed');
+                              }
+                        }} />
+                        <CustomButton frontColor="#000000" backColor="#FFF" text="Freshman" onPress={() => {
+                            setShouldShow2(!shouldShow2)
+                            try {
+                                //await AsyncStorage.setItem('@college_year', 1)
+                              } catch (e) {
+                                alert('Save failed');
+                              }
+                        }} />
+                        <CustomButton frontColor="#000000" backColor="#FFF" text="Sophomore" onPress={() => {
+                            setShouldShow2(!shouldShow2)
+                            try {
+                                //await AsyncStorage.setItem('@college_year', 2)
+                              } catch (e) {
+                                alert('Save failed');
+                              }
+                        }} />
+                        <CustomButton frontColor="#000000" backColor="#FFF" text="Junior" onPress={() => {
+                            setShouldShow2(!shouldShow2)
+                            try {
+                                //await AsyncStorage.setItem('@college_year', 3)
+                              } catch (e) {
+                                alert('Save failed');
+                              }
+                        
+                        }} />
+                        <CustomButton frontColor="#000000" backColor="#FFF" text="Senior" onPress={() => {
+                            setShouldShow2(!shouldShow2)
+                            try {
+                                //await AsyncStorage.setItem('@college_year', 4)
+                              } catch (e) {
+                                alert('Save failed');
+                              }
+                        }} />
+                        <CustomButton frontColor="#000000" backColor="#FFF" text="Other" onPress={() => {
+                            setShouldShow2(!shouldShow2)
+                            try {
+                                //await AsyncStorage.setItem('@college_year', 5)
+                              } catch (e) {
+                                alert('Save failed');
+                              }
+                        }} />
+
+                        </SecondaryCard>
+                    ) : null
+                }
+
+            <SecondaryCard>
+            <Text style={styles.text}>Identify your major:</Text>
+            <TouchableOpacity onPress={() => changeModalVisibility(true)}>
+                <Text style={styles.dropdown}>{chooseData}</Text>
+            </TouchableOpacity>
+            <Modal
+            transparent={true}
+            animationType='fade'
+            visible={isModalVisible}
+            nRequestClose={() => changeModalVisibility(false)}
+            >
+                <ListofMajors
+                    changeModalVisibility={changeModalVisibility}
+                    setData={setData}
+                />
+
+            </Modal>
+            </SecondaryCard>
+            
+            <SecondaryCard>
+            <Text style={styles.text}>I (will) attend school at</Text>
+            <TextInput placeholder="College/University"
+                        placeholderTextColor="#FFFFFF" 
+                        //value = {FName}
+                        //onChangeText = {text => setFirstName(text)}
+                        style = { {backgroundColor :'#596066', borderColor: '#e8e8e8', 
+                        borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"}}/>
+            <Text style={styles.text}>seeking a</Text>
+            <TextInput placeholder="Degree"
+                        placeholderTextColor="#FFFFFF" 
+                        //value = {LName}
+                        //onChangeText = {text => setLastName(text)}
+                        style = { {backgroundColor :'#596066', borderColor: '#e8e8e8',
+                        borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"}}/>
+            <Text style={styles.text}>with a GPA of</Text>
+            <TextInput placeholder="GPA"
+                        placeholderTextColor="#FFFFFF" 
+                        //value = {LName}
+                        //onChangeText = {text => setLastName(text)}
+                        style = { {backgroundColor :'#596066', borderColor: '#e8e8e8',
+                        borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"}}/>
+            </SecondaryCard>
+            <CustomButton frontColor="#000000" backColor="#FFF" text="Save Changes" onPress={onQuestionPressed}/>
 
             <WhiteButton text="Close Account" onPress={CloseAccountPressed}></WhiteButton>
 
