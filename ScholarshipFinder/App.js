@@ -9,12 +9,13 @@ import Questions from './src/Screens/Questions';
 import BrowseScholarships from './src/Screens/BrowseScholarships';
 import ScholarshipDetails from './src/Screens/ScholarshipDetails';
 import CreateAccount from './src/Screens/CreateAccount';
+import Settings from './src/Screens/Settings';
 
 const App = () => {
   const Stack = createNativeStackNavigator();
   return(
     <NavigationContainer>
-       <Stack.Navigator initialRouteName="UserSignIn">
+       <Stack.Navigator initialRouteName="Settings">
          <Stack.Screen name="UserSignIn" component={UserSignInScreen}/>
          <Stack.Screen name="Home" component={HomeScreen} />
          <Stack.Screen name="Details" component={DetailsScreen} />
@@ -22,6 +23,7 @@ const App = () => {
          <Stack.Screen name="BrowseScholarships" component={BrowseScholarshipsScreen} />
          <Stack.Screen name="ScholarshipDetails" component={ScholarshipDetailsScreen} />
          <Stack.Screen name="CreateAccount" component={CreateAccountScreen} />
+         <Stack.Screen name="Settings" component={SettingsScreen} />
        </Stack.Navigator>
      </NavigationContainer>
     
@@ -94,6 +96,14 @@ function CreateAccountScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.root}>
       <CreateAccount/>
+    </SafeAreaView>
+  )
+}
+
+function SettingsScreen({ navigation }) {
+  return (
+    <SafeAreaView style={styles.root}>
+      <Settings/>
     </SafeAreaView>
   )
 }

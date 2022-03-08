@@ -49,7 +49,7 @@ const Questions = () => {
                         <CustomButton frontColor="#000000" backColor="#6FE7C3" text="Yes" onPress={() => {
                             setShouldShow(!shouldShow)
                             try {
-                                await AsyncStorage.setItem('@first_college_student', true)
+                                //await AsyncStorage.setItem('@first_college_student', true)
                               } catch (e) {
                                 alert('Save failed');
                               }
@@ -57,7 +57,7 @@ const Questions = () => {
                         <CustomButton frontColor="#000000" backColor="#EA5E6A" text="No" onPress={() => {
                             setShouldShow(!shouldShow)
                             try {
-                                await AsyncStorage.setItem('@first_college_student', false)
+                                //await AsyncStorage.setItem('@first_college_student', false)
                               } catch (e) {
                                 alert('Save failed');
                               }
@@ -76,7 +76,7 @@ const Questions = () => {
                         <CustomButton frontColor="#000000" backColor="#FFF" text="Incoming College Student" onPress={() => {
                             setShouldShow2(!shouldShow2)
                             try {
-                                await AsyncStorage.setItem('@college_year', 0)
+                                //await AsyncStorage.setItem('@college_year', 0)
                               } catch (e) {
                                 alert('Save failed');
                               }
@@ -84,7 +84,7 @@ const Questions = () => {
                         <CustomButton frontColor="#000000" backColor="#FFF" text="Freshman" onPress={() => {
                             setShouldShow2(!shouldShow2)
                             try {
-                                await AsyncStorage.setItem('@college_year', 1)
+                                //await AsyncStorage.setItem('@college_year', 1)
                               } catch (e) {
                                 alert('Save failed');
                               }
@@ -92,7 +92,7 @@ const Questions = () => {
                         <CustomButton frontColor="#000000" backColor="#FFF" text="Sophomore" onPress={() => {
                             setShouldShow2(!shouldShow2)
                             try {
-                                await AsyncStorage.setItem('@college_year', 2)
+                                //await AsyncStorage.setItem('@college_year', 2)
                               } catch (e) {
                                 alert('Save failed');
                               }
@@ -100,7 +100,7 @@ const Questions = () => {
                         <CustomButton frontColor="#000000" backColor="#FFF" text="Junior" onPress={() => {
                             setShouldShow2(!shouldShow2)
                             try {
-                                await AsyncStorage.setItem('@college_year', 3)
+                                //await AsyncStorage.setItem('@college_year', 3)
                               } catch (e) {
                                 alert('Save failed');
                               }
@@ -109,7 +109,7 @@ const Questions = () => {
                         <CustomButton frontColor="#000000" backColor="#FFF" text="Senior" onPress={() => {
                             setShouldShow2(!shouldShow2)
                             try {
-                                await AsyncStorage.setItem('@college_year', 4)
+                                //await AsyncStorage.setItem('@college_year', 4)
                               } catch (e) {
                                 alert('Save failed');
                               }
@@ -117,7 +117,7 @@ const Questions = () => {
                         <CustomButton frontColor="#000000" backColor="#FFF" text="Other" onPress={() => {
                             setShouldShow2(!shouldShow2)
                             try {
-                                await AsyncStorage.setItem('@college_year', 5)
+                                //await AsyncStorage.setItem('@college_year', 5)
                               } catch (e) {
                                 alert('Save failed');
                               }
