@@ -9,12 +9,16 @@ import Questions from './src/Screens/Questions';
 import BrowseScholarships from './src/Screens/BrowseScholarships';
 import ScholarshipDetails from './src/Screens/ScholarshipDetails';
 import CreateAccount from './src/Screens/CreateAccount';
+import Settings from './src/Screens/Settings';
+import EditPersonalInfo from './src/Screens/EditPersonalInfo';
+import AccountClosed from './src/Screens/AccountClosed';
+import Logout from './src/Screens/Logout';
 
 const App = () => {
   const Stack = createNativeStackNavigator();
   return(
     <NavigationContainer>
-       <Stack.Navigator initialRouteName="UserSignIn">
+       <Stack.Navigator initialRouteName="Settings">
          <Stack.Screen name="UserSignIn" component={UserSignInScreen}/>
          <Stack.Screen name="Home" component={HomeScreen} />
          <Stack.Screen name="Details" component={DetailsScreen} />
@@ -22,6 +26,10 @@ const App = () => {
          <Stack.Screen name="BrowseScholarships" component={BrowseScholarshipsScreen} />
          <Stack.Screen name="ScholarshipDetails" component={ScholarshipDetailsScreen} />
          <Stack.Screen name="CreateAccount" component={CreateAccountScreen} />
+         <Stack.Screen name="Settings" component={SettingsScreen} options={{ headerShown: false }}/>
+         <Stack.Screen name="EditPersonalInfo" component={EditPersonalInfoScreen} options={{ headerShown: false }}/>
+         <Stack.Screen name="AccountClosed" component={AccountClosedScreen} options={{ headerShown: false }}/>
+         <Stack.Screen name="Logout" component={LogoutScreen} options={{ headerShown: false }}/>
        </Stack.Navigator>
      </NavigationContainer>
     
@@ -94,6 +102,38 @@ function CreateAccountScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.root}>
       <CreateAccount/>
+    </SafeAreaView>
+  )
+}
+
+function SettingsScreen({ navigation }) {
+  return (
+    <SafeAreaView style={styles.root}>
+      <Settings/>
+    </SafeAreaView>
+  )
+}
+
+function EditPersonalInfoScreen({ navigation }) {
+  return (
+    <SafeAreaView style={styles.root}>
+      <EditPersonalInfo/>
+    </SafeAreaView>
+  )
+}
+
+function AccountClosedScreen({ navigation }) {
+  return (
+    <SafeAreaView style={styles.root}>
+      <AccountClosed/>
+    </SafeAreaView>
+  )
+}
+
+function LogoutScreen({ navigation }) {
+  return (
+    <SafeAreaView style={styles.root}>
+      <Logout/>
     </SafeAreaView>
   )
 }
