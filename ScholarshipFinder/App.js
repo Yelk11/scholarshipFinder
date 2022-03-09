@@ -18,30 +18,48 @@ import EditPersonalInfo from './src/Screens/EditPersonalInfo';
 import AccountClosed from './src/Screens/AccountClosed';
 import Logout from './src/Screens/Logout';
 
+import auth from '@react-native-firebase/auth';
 
 const App = () => {
   const Stack = createNativeStackNavigator();
-  return(
+
+ 
+  return (
     <NavigationContainer>
 
-       <Stack.Navigator initialRouteName="WelcomeScreen">
-         <Stack.Screen name="WelcomeScreen" component={WelcomeScreenScreen}/>
-         <Stack.Screen name="SuccessfullAccount" component={SuccessfullAccountScreen}/>
-         <Stack.Screen name="PersonalInfo" component={PersonalInfoScreen}/>
-         <Stack.Screen name="UserSignIn" component={UserSignInScreen}/>
-         <Stack.Screen name="Home" component={HomeScreen} />
-         <Stack.Screen name="Details" component={DetailsScreen} />
-         <Stack.Screen name="Questions" component={QuestionsScreen} options={{ headerShown: false }}/>
-         <Stack.Screen name="BrowseScholarships" component={BrowseScholarshipsScreen} />
-         <Stack.Screen name="ScholarshipDetails" component={ScholarshipDetailsScreen} />
-         <Stack.Screen name="CreateAccount" component={CreateAccountScreen} />
-         <Stack.Screen name="Settings" component={SettingsScreen} options={{ headerShown: false }}/>
-         <Stack.Screen name="EditPersonalInfo" component={EditPersonalInfoScreen} options={{ headerShown: false }}/>
-         <Stack.Screen name="AccountClosed" component={AccountClosedScreen} options={{ headerShown: false }}/>
-         <Stack.Screen name="Logout" component={LogoutScreen} options={{ headerShown: false }}/>
-       </Stack.Navigator>
-     </NavigationContainer>
-    
+      <Stack.Navigator
+        initialRouteName="WelcomeScreen"
+        screenOptions={{
+
+          headerRight: () => (
+            <Button
+              onPress={() =>
+                auth()
+                  .signOut()
+                  .then(() => console.log('User signed out!'))}
+              title="Info"
+              color="#fff"
+            />
+          ),
+        }}
+      >
+        <Stack.Screen name="WelcomeScreen" component={WelcomeScreenScreen} />
+        <Stack.Screen name="SuccessfullAccount" component={SuccessfullAccountScreen} />
+        <Stack.Screen name="PersonalInfo" component={PersonalInfoScreen} />
+        <Stack.Screen name="UserSignIn" component={UserSignInScreen} />
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Details" component={DetailsScreen} />
+        <Stack.Screen name="Questions" component={QuestionsScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="BrowseScholarships" component={BrowseScholarshipsScreen} />
+        <Stack.Screen name="ScholarshipDetails" component={ScholarshipDetailsScreen} />
+        <Stack.Screen name="CreateAccount" component={CreateAccountScreen} />
+        <Stack.Screen name="Settings" component={SettingsScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="EditPersonalInfo" component={EditPersonalInfoScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="AccountClosed" component={AccountClosedScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Logout" component={LogoutScreen} options={{ headerShown: false }} />
+      </Stack.Navigator>
+    </NavigationContainer >
+
   );
 }
 
@@ -66,7 +84,7 @@ function HomeScreen({ navigation }) {
 function WelcomeScreenScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.root}>
-      <WelcomeScreen/>
+      <WelcomeScreen />
     </SafeAreaView>
   );
 }
@@ -74,7 +92,7 @@ function WelcomeScreenScreen({ navigation }) {
 function PersonalInfoScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.root}>
-      <PersonalInfo/>
+      <PersonalInfo />
     </SafeAreaView>
   );
 }
@@ -82,7 +100,7 @@ function PersonalInfoScreen({ navigation }) {
 function SuccessfullAccountScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.root}>
-      <SuccessfullAccount/>
+      <SuccessfullAccount />
     </SafeAreaView>
   );
 }
@@ -90,7 +108,7 @@ function SuccessfullAccountScreen({ navigation }) {
 function UserSignInScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.root}>
-      <UserSignIn/>
+      <UserSignIn />
     </SafeAreaView>
   );
 }
@@ -109,7 +127,7 @@ function DetailsScreen({ navigation }) {
 function QuestionsScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.root}>
-      <Questions/>
+      <Questions />
     </SafeAreaView>
   );
 }
@@ -117,7 +135,7 @@ function QuestionsScreen({ navigation }) {
 function BrowseScholarshipsScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.root}>
-      <BrowseScholarships/>
+      <BrowseScholarships />
     </SafeAreaView>
   );
 }
@@ -126,7 +144,7 @@ function ScholarshipDetailsScreen({ route, navigation }) {
   const { name, amount, deadline } = route.params;
   return (
     <SafeAreaView style={styles.root}>
-      <ScholarshipDetails name={name} amount={amount} deadline={deadline}/>
+      <ScholarshipDetails name={name} amount={amount} deadline={deadline} />
     </SafeAreaView>
   );
 }
@@ -134,7 +152,7 @@ function ScholarshipDetailsScreen({ route, navigation }) {
 function CreateAccountScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.root}>
-      <CreateAccount/>
+      <CreateAccount />
     </SafeAreaView>
   )
 }
@@ -142,7 +160,7 @@ function CreateAccountScreen({ navigation }) {
 function SettingsScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.root}>
-      <Settings/>
+      <Settings />
     </SafeAreaView>
   )
 }
@@ -150,7 +168,7 @@ function SettingsScreen({ navigation }) {
 function EditPersonalInfoScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.root}>
-      <EditPersonalInfo/>
+      <EditPersonalInfo />
     </SafeAreaView>
   )
 }
@@ -158,7 +176,7 @@ function EditPersonalInfoScreen({ navigation }) {
 function AccountClosedScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.root}>
-      <AccountClosed/>
+      <AccountClosed />
     </SafeAreaView>
   )
 }
@@ -166,7 +184,7 @@ function AccountClosedScreen({ navigation }) {
 function LogoutScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.root}>
-      <Logout/>
+      <Logout />
     </SafeAreaView>
   )
 }

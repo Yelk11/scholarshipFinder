@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, { useState, useContext } from 'react';
 import { View, Text, StyleSheet, useWindowDimensions, ScrollView, SafeAreaView, setValue, onChangeText, TextInput, Image } from 'react-native';
 import CustomButton from '../components/CustomButton/CustomButton';
 import { useNavigation } from '@react-navigation/native';
@@ -8,33 +8,35 @@ import initialLogo from '../../assets/images/logo-initial.png';
 import LoginSystemCard from '../components/LoginSystemCard';
 import LoginButton from '../components/CustomButton/LoginButton';
 
+import auth from '@react-native-firebase/auth';
+
 const CreateAccount = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [ConfirmPassword, setConfirmPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
     const navigation = useNavigation();
-    const {height} = useWindowDimensions();
+    const { height } = useWindowDimensions();
 
-    const onSignInPressed = () => { 
+    const onSignInPressed = () => {
         navigation.navigate('UserSignIn');
     };
-    const onSignUpPressed = () => { 
+    const onSignUpPressed = () => {
         navigation.navigate('SuccessfullAccount');
     };
 
     const onUserSignupGoogle = () => {
         console.warn('onUserSignupGoogle');
     };
-  
-      const onUserSignupFacebook = () => {
+
+    const onUserSignupFacebook = () => {
         console.warn('onUserSignupFacebook');
     };
-    
-    return(
+
+    return (
 
         <View style={styles.container}>
             <Image style={styles.logoTopCenter} source={initialLogo} />
-            <LoginSystemCard>
+            {/* <LoginSystemCard>
                 <TextInput placeholder="Email"
                            placeholderTextColor="#FFFFFF" 
                            value = {email}
@@ -70,71 +72,99 @@ const CreateAccount = () => {
                 frontColor={"#FAE9EA"} backColor={"#DD4D44"} />
                 <LoginButton text="Sign Up with Facebook" onPress={onUserSignupFacebook}
                 frontColor={"#FAE9EA"} backColor={"#4267B2"} />
-            </LoginSystemCard>
+            </LoginSystemCard> */}
 
-    <ScrollView showsVerticalScrollIndicator={false}>
-        <View style ={styles.root}>
+            <ScrollView showsVerticalScrollIndicator={false}>
+                <View style={styles.root}>
 
-            <Text style= {styles.title}> Create an account</Text>
+                    <Text style={styles.title}> Create an account</Text>
 
-            <TextInput placeholder="Email" 
-            value = {email}
-            onChangeText = {text => setEmail(text)}
-            style = { {backgroundColor :'white',
-            width: '100%',
-            borderColor: '#e8e8e8',
-            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5}}/>
+                    <TextInput placeholder="Email"
+                        value={email}
+                        onChangeText={text => setEmail(text)}
+                        style={{
+                            backgroundColor: 'white',
+                            width: '100%',
+                            borderColor: '#e8e8e8',
+                            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5
+                        }} />
 
-            <TextInput placeholder="Password" 
-            value = {password}
-            onChangeText = {text => setPassword(text)}
-            secureTextEntry={true}
-            style = { {backgroundColor :'white',
-            width: '100%',
-            borderColor: '#e8e8e8',
-            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5}}/>
+                    <TextInput placeholder="Password"
+                        value={password}
+                        onChangeText={text => setPassword(text)}
+                        secureTextEntry={true}
+                        style={{
+                            backgroundColor: 'white',
+                            width: '100%',
+                            borderColor: '#e8e8e8',
+                            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5
+                        }} />
 
-            <TextInput placeholder="Confirm Password" 
-            value = {ConfirmPassword}
-            onChangeText = {text => setConfirmPassword(text)}
-            secureTextEntry={true}
-            style = { {backgroundColor :'white',
-            width: '100%',
-            borderColor: '#e8e8e8',
-            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5}}/>     
+                    <TextInput placeholder="Confirm Password"
+                        value={confirmPassword}
+                        onChangeText={text => setConfirmPassword(text)}
+                        secureTextEntry={true}
+                        style={{
+                            backgroundColor: 'white',
+                            width: '100%',
+                            borderColor: '#e8e8e8',
+                            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5
+                        }} />
 
-            <CustomButton text="Register" onPress={() => navigation.navigate("Questions")} />
+                    <CustomButton text="Register" onPress={() => {
+                        if (password == confirmPassword) {
+                            auth()
+                                .createUserWithEmailAndPassword(email, password)
+                                .then(() => {
+                                    console.log('User account created & signed in!');
+                                    navigation.navigate("Questions")
+                                }).catch(error => {
+                                    if (error.code === 'auth/email-already-in-use') {
+                                      console.log('That email address is already in use!');
+                                    }
+                                
+                                    if (error.code === 'auth/invalid-email') {
+                                      console.log('That email address is invalid!');
+                                    }
+                                
+                                    console.error(error);
+                                  })
+                        }
+                    }
 
 
-            <CustomButton text="Sign up with Google" onPress={onUserSignupGoogle}
-            frontColor={"#FAE9EA"} backColor={"#DD4D44"} />
-            <CustomButton text="Sign up with Facebook" onPress={onUserSignupFacebook}
-            frontColor={"#363636"} backColor={"#e3e3e3"} />
+                    } />
 
-            <CustomButton text="Have an account? Sign in" 
-            onPress={onSignInPressed} type="TERTIARY" />
 
-        </View>
-        </ScrollView>
+                    <CustomButton text="Sign up with Google" onPress={onUserSignupGoogle}
+                        frontColor={"#FAE9EA"} backColor={"#DD4D44"} />
+                    <CustomButton text="Sign up with Facebook" onPress={onUserSignupFacebook}
+                        frontColor={"#363636"} backColor={"#e3e3e3"} />
+
+                    <CustomButton text="Have an account? Sign in"
+                        onPress={onSignInPressed} type="TERTIARY" />
+
+                </View>
+            </ScrollView>
         </View>
     );
 };
 
 const styles = StyleSheet.create({
-    container : {
-        flex : 1,
-        alignItems : "center",
-        justifyContent : "center",
-        backgroundColor : "#3E4347",
+    container: {
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "#3E4347",
         flexDirection: "row",
     },
 
-    flexAdjustment : {
+    flexAdjustment: {
         flex: 30,
         top: 3,
     },
 
-    logoTopCenter : {
+    logoTopCenter: {
         height: 100,
         width: 100,
         position: 'absolute',
