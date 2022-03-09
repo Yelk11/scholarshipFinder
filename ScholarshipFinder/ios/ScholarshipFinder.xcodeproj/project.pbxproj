@@ -14,6 +14,7 @@
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		AB8DE9E313C25DA27A18D9C0 /* libPods-ScholarshipFinder-ScholarshipFinderTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E8DB5A8A37ED1251603C7251 /* libPods-ScholarshipFinder-ScholarshipFinderTests.a */; };
 		B41CB966E43CF881012F8E25 /* libPods-ScholarshipFinder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 547C916B9FA82BB74F1AC27D /* libPods-ScholarshipFinder.a */; };
+		C940DC4727D8E5C200EA58B3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C940DC4627D8E5C200EA58B3 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		876B2266449F38540EA6451B /* Pods-ScholarshipFinder-ScholarshipFinderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScholarshipFinder-ScholarshipFinderTests.release.xcconfig"; path = "Target Support Files/Pods-ScholarshipFinder-ScholarshipFinderTests/Pods-ScholarshipFinder-ScholarshipFinderTests.release.xcconfig"; sourceTree = "<group>"; };
 		89C5330DDC16E63F716D0426 /* Pods-ScholarshipFinder-ScholarshipFinderTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScholarshipFinder-ScholarshipFinderTests.debug.xcconfig"; path = "Target Support Files/Pods-ScholarshipFinder-ScholarshipFinderTests/Pods-ScholarshipFinder-ScholarshipFinderTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A3A82222BB58CC92F3B207A7 /* Pods-ScholarshipFinder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScholarshipFinder.debug.xcconfig"; path = "Target Support Files/Pods-ScholarshipFinder/Pods-ScholarshipFinder.debug.xcconfig"; sourceTree = "<group>"; };
+		C940DC4627D8E5C200EA58B3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E8DB5A8A37ED1251603C7251 /* libPods-ScholarshipFinder-ScholarshipFinderTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ScholarshipFinder-ScholarshipFinderTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -88,6 +90,7 @@
 			children = (
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
+				C940DC4627D8E5C200EA58B3 /* GoogleService-Info.plist */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
@@ -114,7 +117,6 @@
 				89C5330DDC16E63F716D0426 /* Pods-ScholarshipFinder-ScholarshipFinderTests.debug.xcconfig */,
 				876B2266449F38540EA6451B /* Pods-ScholarshipFinder-ScholarshipFinderTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -246,6 +248,7 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				C940DC4727D8E5C200EA58B3 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,6 +503,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = ScholarshipFinder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -525,6 +529,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = ScholarshipFinder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
