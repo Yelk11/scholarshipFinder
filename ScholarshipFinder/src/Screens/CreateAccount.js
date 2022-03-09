@@ -15,6 +15,9 @@ const CreateAccount = () => {
     const navigation = useNavigation();
     const {height} = useWindowDimensions();
 
+    const onSignInPressed = () => { 
+        navigation.navigate('UserSignIn');
+    };
     const onSignUpPressed = () => { 
         navigation.navigate('SuccessfullAccount');
     };
