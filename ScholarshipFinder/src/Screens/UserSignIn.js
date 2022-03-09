@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, TextInput, Image, Text, StyleSheet, useWindowDimensions, ScrollView, SafeAreaView } from 'react-native';
 import CustomInput from '../components/CustomInput/CustomInput';
 import CustomButton from '../components/CustomButton/CustomButton';
@@ -8,18 +8,37 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import initialLogo from '../../assets/images/logo-initial.png';
 import LoginSystemCard from '../components/LoginSystemCard';
 import LoginButton from '../components/CustomButton/LoginButton';
+import auth from '@react-native-firebase/auth';
 
 const UserSignIn = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigation = useNavigation();
-    const {height} = useWindowDimensions();
+    const { height } = useWindowDimensions();
+    const [initializing, setInitializing] = useState(true);
+    const [user, setUser] = useState();
+
+    function onAuthStateChanged(user) {
+        setUser(user);
+        if (initializing) setInitializing(false);
+    }
+
+    useEffect(() => {
+        const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+        return subscriber; // unsubscribe on unmount
+    }, []);
+    const onUserSignInPressed = () => {
+        auth()
+            .signInWithEmailAndPassword(email, password)
+            .then(() => {
+                console.log('User signed in!');
+                navigation.navigate('PersonalInfo')
+            })
+        
+    }
 
 
-    const onUserSignInPressed = () => navigation.navigate('PersonalInfo')
 
-
-    
     const onForgotMyPasswordPressed = () => {
         console.warn('onForgotMyPasswordPressed');
     };
@@ -31,64 +50,67 @@ const UserSignIn = () => {
     const onUserSignInFacebook = () => {
         console.warn('onUserSignInFacebook');
     };
+    if (initializing) return null;
     
-    return(
+    return (
 
         <View style={styles.container}>
             <Image style={styles.logoTopCenter} source={initialLogo} />
             <LoginSystemCard>
                 <TextInput placeholder="Email"
-                           placeholderTextColor="#FFFFFF" 
-                           value = {email}
-                           onChangeText = {text => setEmail(text)}
-                           style = { {backgroundColor :'#596066',
-                           width: '100%',
-                           borderColor: '#e8e8e8',
-                           borderWidth: 0.3, borderRadius: 3, paddingHorizontal: 6, marginVertical: 5}}/>
+                    placeholderTextColor="#FFFFFF"
+                    value={email}
+                    onChangeText={text => setEmail(text)}
+                    style={{
+                        backgroundColor: '#596066',
+                        width: '100%',
+                        borderColor: '#e8e8e8',
+                        borderWidth: 0.3, borderRadius: 3, paddingHorizontal: 6, marginVertical: 5
+                    }} />
 
                 <TextInput placeholder="Password"
-                           placeholderTextColor="#FFFFFF" 
-                           value = {password}
-                           onChangeText = {text => setPassword(text)}
-                           secureTextEntry={true}
-                           style = { {backgroundColor :'#596066',
-                           width: '100%',
-                           borderColor: '#e8e8e8',
-                           borderWidth: 0.3, borderRadius: 3, paddingHorizontal: 6, marginVertical: 2}}/>
+                    placeholderTextColor="#FFFFFF"
+                    value={password}
+                    onChangeText={text => setPassword(text)}
+                    secureTextEntry={true}
+                    style={{
+                        backgroundColor: '#596066',
+                        width: '100%',
+                        borderColor: '#e8e8e8',
+                        borderWidth: 0.3, borderRadius: 3, paddingHorizontal: 6, marginVertical: 2
+                    }} />
 
 
                 <LoginButton frontColor="#000000" backColor="#FFF" text="Login" onPress={onUserSignInPressed} />
 
-                <LoginButton text="Forgot my password" textStyle= {{color:"#039BE5"}} onPress={onForgotMyPasswordPressed} type="clear" />
+                <LoginButton text="Forgot my password" textStyle={{ color: "#039BE5" }} onPress={onForgotMyPasswordPressed} type="clear" />
 
 
                 <LoginButton text="Sign In with Google" onPress={onUserSignInGoogle}
-                frontColor={"#FAE9EA"} backColor={"#DD4D44"} />
+                    frontColor={"#FAE9EA"} backColor={"#DD4D44"} />
                 <LoginButton text="Sign In with Facebook" onPress={onUserSignInFacebook}
-                frontColor={"#FAE9EA"} backColor={"#4267B2"} />
+                    frontColor={"#FAE9EA"} backColor={"#4267B2"} />
             </LoginSystemCard>
 
         </View>
-);
+    );
 };
 
 const styles = StyleSheet.create({
-    container : {
-        flex : 1,
-        //flexStart: .2,
-        alignItems : "center",
-        justifyContent : "center",
-        backgroundColor : "#3E4347",
+    container: {
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "#3E4347",
         flexDirection: "row",
-        //display:"flex",
     },
 
-    flexAdjustment : {
+    flexAdjustment: {
         flex: 30,
         top: 3,
     },
 
-    logoTopCenter : {
+    logoTopCenter: {
         height: 100,
         width: 100,
         position: 'absolute',
