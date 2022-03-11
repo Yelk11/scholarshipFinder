@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
         width: 30,
         position: 'absolute',
         top: 17.5,
-        left: 200
+        left: 180
     },
     
     like: {
@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
         width: 30,
         position: 'absolute',
         top: 19.5,
-        right: 200
+        right: 180
     }
 
 })
