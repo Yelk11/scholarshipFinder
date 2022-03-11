@@ -30,7 +30,7 @@ const App = () => {
     <NavigationContainer>
 
       <Stack.Navigator
-        initialRouteName="BrowseScholarships"
+        initialRouteName="WelcomeScreen"
         screenOptions={{
 
           headerRight: () => (
