@@ -19,6 +19,8 @@ import AccountClosed from './src/Screens/AccountClosed';
 import Logout from './src/Screens/Logout';
 
 import auth from '@react-native-firebase/auth';
+import PostScholarship from './src/Screens/PostScholarship';
+import ScholarshipSubmitted from './src/Screens/ScholarshipSubmitted';
 
 const App = () => {
   const Stack = createNativeStackNavigator();
@@ -28,7 +30,7 @@ const App = () => {
     <NavigationContainer>
 
       <Stack.Navigator
-        initialRouteName="WelcomeScreen"
+        initialRouteName="Settings"
         screenOptions={{
 
           headerRight: () => (
@@ -57,6 +59,8 @@ const App = () => {
         <Stack.Screen name="EditPersonalInfo" component={EditPersonalInfoScreen} options={{ headerShown: false }} />
         <Stack.Screen name="AccountClosed" component={AccountClosedScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Logout" component={LogoutScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="PostScholarship" component={PostScholarshipScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="ScholarshipSubmitted" component={ScholarshipSubmittedScreen} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer >
 
@@ -185,6 +189,22 @@ function LogoutScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.root}>
       <Logout />
+    </SafeAreaView>
+  )
+}
+
+function PostScholarshipScreen({ navigation }) {
+  return (
+    <SafeAreaView style={styles.root}>
+      <PostScholarship />
+    </SafeAreaView>
+  )
+}
+
+function ScholarshipSubmittedScreen({ navigation }) {
+  return (
+    <SafeAreaView style={styles.root}>
+      <ScholarshipSubmitted />
     </SafeAreaView>
   )
 }
