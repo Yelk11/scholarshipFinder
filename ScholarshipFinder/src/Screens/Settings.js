@@ -3,7 +3,7 @@ import { View, Button, Text, TouchableOpacity, StyleSheet, Image } from 'react-n
 import { useNavigation } from '@react-navigation/native';
 import CustomButton from '../components/CustomButton/CustomButton';
 import scholarshipFilter from '../../assets/images/yellow-filter.png';
-import YellowSettingsButton from '../../assets/images/yellow-settings-button.png';
+import YellowSettingsButton from '../../assets/images/settings-gear.png';
 import smallLogo from '../../assets/images/app-logo-dark-background.png';
 import SettingsCard from '../SettingsCard';
 import SettingsButton from '../components/CustomButton/SettingsButton';
@@ -18,6 +18,8 @@ const Settings = (props) => {
 
     const LogoutPressed = () => navigation.navigate('Logout')
 
+    const PostScholarshipPressed = () => navigation.navigate('PostScholarship')
+
     return(
         <View style={styles.container}>
             <Image style={styles.settingsTopLeft} source={YellowSettingsButton} />
@@ -28,7 +30,7 @@ const Settings = (props) => {
                 <Text style={styles.text}>AsianGirls</Text>
                 <SettingsButton text="Profile" onPress={GoToPersonalInfo}></SettingsButton>
                 <SettingsButton text="Scholarship Feed"></SettingsButton>
-                <SettingsButton text="Post A Scholarship"></SettingsButton>
+                <SettingsButton text="Post A Scholarship" onPress={PostScholarshipPressed}></SettingsButton>
                 <SettingsButton text="FAQs"></SettingsButton>
                 <SettingsButton text="App Review"></SettingsButton>
                 <LogoutButton text="Logout" onPress={LogoutPressed}></LogoutButton>
@@ -93,7 +95,7 @@ const styles = StyleSheet.create({
     },
 
     settingsTopLeft : {
-        height: 30,
+        height: 50,
         width: 50,
         position: 'absolute',
         top: 5, left: 2,

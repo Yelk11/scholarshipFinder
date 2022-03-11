@@ -13,3 +13,5 @@ export {default} from './EditPersonalInfo';
 export {default} from './Logout';
 export {default} from './AccountClosed';
 
+export {default} from './PostScholarship';
+export {default} from './ScholarshipSubmitted';
