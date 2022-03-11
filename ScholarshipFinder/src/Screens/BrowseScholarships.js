@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { TouchableOpacity, FlatList, Text, ActivityIndicator, SafeAreaView, StyleSheet } from 'react-native';
+import { TouchableOpacity, FlatList, Image, Text, ActivityIndicator, View, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import firestore from '@react-native-firebase/firestore';
@@ -7,8 +7,17 @@ import firestore from '@react-native-firebase/firestore';
 import CustomButton from '../components/CustomButton/CustomButton';
 import scholarshipSearch from '../../assets/images/scholarship-search-button.png';
 import settingsButton from '../../assets/images/settings-button.png';
-import smallLogo from '../../assets/images/small-logo.png';
+import smallLogo from '../../assets/images/app-logo-dark-background.png';
 import underlineScreen from '../../assets/images/current-tab.png';
+import ScholarshipCard from '../components/ScholarshipCard';
+import AccentCard from '../components/AccentCard';
+import ApplyButton from '../components/CustomButton/ApplyButton';
+import LikeButton from '../../assets/images/like-button.png';
+import ShareButton from '../../assets/images/share-button.png';
+import scholarshipFilter from '../../assets/images/yellow-filter.png';
+import YellowSettingsButton from '../../assets/images/settings-gear.png';
+import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
+import WhiteCircle from '../../assets/images/white-circle.png';
 
 
 const BrowseScholarships = () => {
@@ -37,36 +46,51 @@ const BrowseScholarships = () => {
         return <ActivityIndicator />;
     }
     return (
-        <SafeAreaView style={styles.container}>
+        <View style={styles.container}>
+            <Image style={styles.settingsTopLeft} source={YellowSettingsButton} />
+            <Image style={styles.scholarshipTopRight} source={scholarshipFilter} />
+            <Image style={styles.logoTopCenter} source={smallLogo} />
+            <View style={styles.flexAdjustment}>
             <FlatList
                 data={scholarships}
                 renderItem={({ item }) => (
-                    <TouchableOpacity style={styles.listItem} onPress={() => navigation.navigate('ScholarshipDetails',
-                        {
-                            name: item.title,
-                            amount: item.amount,
-                            deadline: item.deadline
-                        })}>
+                    <><ScholarshipCard>
+                        <Pressable style={styles.listItem} onPress={() => navigation.navigate('ScholarshipDetails',
+                            {
+                                name: item.title,
+                                amount: item.amount,
+                                deadline: item.deadline
+                            })}>
 
-                        <Text style={styles.title}>{item.title}</Text>
-                        <Text style={styles.info}>Award: {item.amount}</Text>
-                    </TouchableOpacity>
+                            <Text style={styles.title}>{item.title}</Text>
+                            <Text style={styles.info}>Award: {item.amount}</Text>
+                            <Image style={styles.circleOne} source={WhiteCircle}/>
+                            <Image style={styles.circleTwo} source={WhiteCircle}/>
+                            <Image style={styles.circleThree} source={WhiteCircle}/>
+                        </Pressable>
+                    </ScholarshipCard>
+                    <AccentCard>
+                    <Image style={styles.like} source={LikeButton} />
+                    <Image style={styles.share} source={ShareButton} />
+                        <ApplyButton text="Apply!"/>
+                    </AccentCard></>
                 )}
 
             />
-        </SafeAreaView>
+            </View>
+        </View>
     );
 };
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        justifyContent: 'center',
         backgroundColor: '#474747'
     },
 
     listItem: {
         flex: 1,
-        backgroundColor: 'gold',
         marginRight: 15,
         marginLeft: 15,
         marginBottom: 15,
@@ -74,10 +98,12 @@ const styles = StyleSheet.create({
     },
     title: {
         marginLeft: 5,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: 'black'
     },
     info: {
-        marginLeft: 5
+        marginLeft: 5,
+        color: "black"
     },
 
 
@@ -91,25 +117,26 @@ const styles = StyleSheet.create({
     },
 
     scholarshipTopRight : {
-        height: 40,
-        width: 30,
+        height: 50,
+        width: 50,
         position: 'absolute',
-        top: 45, right: 6,
+        top: 5, right: 10,
     },
 
     settingsTopLeft : {
-        height: 30,
+        height: 50,
         width: 50,
         position: 'absolute',
-        top: 45, left: 2,
+        top: 5, 
+        left: 6,
     },
 
     logoTopCenter : {
-        height: 40,
+        height: 50,
         width: 50,
         position: 'absolute',
-        top: 45,
-        justifyContent: 'center'
+        top: 5,
+        left: 175
     },
 
     underlineTopRight : {
@@ -118,7 +145,54 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: 90, right: 6,
 
+    },
+
+    share: {
+        height: 30,
+        width: 30,
+        position: 'absolute',
+        top: 17.5,
+        left: 200
+    },
+    
+    like: {
+        height: 30,
+        width: 30,
+        position: 'absolute',
+        top: 19.5,
+        right: 200
+    },
+
+    flexAdjustment : {
+        flex: .9,
+        top: 35
+    },
+
+    circleOne: {
+        height: 80,
+        width: 80,
+        left: 10,
+        marginTop: 10,
+        marginBottom: 10
+    },
+
+    circleTwo: {
+        height: 80,
+        width: 80,
+        position: 'absolute',
+        top: 48.5,
+        right: 150
+    },
+
+    circleThree: {
+        height: 80,
+        width: 80,
+        position: 'absolute',
+        top: 48.5,
+        right: 15
     }
+
+
 });
 
 export default BrowseScholarships;
