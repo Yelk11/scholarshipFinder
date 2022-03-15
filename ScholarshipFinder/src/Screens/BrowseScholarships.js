@@ -63,11 +63,10 @@ const BrowseScholarships = () => {
                             })}>
 
                             <Text style={styles.title}>{item.title}</Text>
-                            <Text style={styles.info}>Award: {item.amount}</Text>
                             <View style={styles.circleContainer}>
                                 <View style={styles.circle}><Text style={styles.circleText}>INSERT MATCH %</Text></View>
                                 <View style={styles.circle}><Text style={styles.circleText}>${item.amount}</Text></View>
-                                <View style={styles.circle}><Text style={styles.circleText}>{item.deadline.toDate().getMonth().toString()}/{item.deadline.toDate().getDate().toString()}</Text></View>
+                                <View style={styles.circle}><Text style={styles.circleText}>Due {'\n'} {item.deadline.toDate().getMonth().toString()}/{item.deadline.toDate().getDate().toString()}</Text></View>
                             </View>
                             
 
@@ -181,7 +180,8 @@ const styles = StyleSheet.create({
         borderColor: 'black',
         borderWidth: 5,
         borderRadius: 80/2,
-        justifyContent:'center'
+        justifyContent:'center',
+        backgroundColor:'white'
     },
     circleText:{
         textAlign:'center'
