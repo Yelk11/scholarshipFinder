@@ -65,14 +65,12 @@ const BrowseScholarships = () => {
                             <Text style={styles.title}>{item.title}</Text>
                             <Text style={styles.info}>Award: {item.amount}</Text>
                             <View style={styles.circleContainer}>
-                                <View style={styles.circle} ></View>
-                                <View style={styles.circle} ></View>
-                                <View style={styles.circle} ></View>
+                                <View style={styles.circle}><Text style={styles.circleText}>INSERT MATCH %</Text></View>
+                                <View style={styles.circle}><Text style={styles.circleText}>${item.amount}</Text></View>
+                                <View style={styles.circle}><Text style={styles.circleText}>DEADLINE</Text></View>
                             </View>
                             
-                            {/* <Image style={styles.circleOne} source={WhiteCircle}/>
-                            <Image style={styles.circleTwo} source={WhiteCircle}/>
-                            <Image style={styles.circleThree} source={WhiteCircle}/> */}
+
                         </Pressable>
                     </ScholarshipCard>
                     <AccentCard>
@@ -182,34 +180,12 @@ const styles = StyleSheet.create({
         width:80,
         borderColor: 'black',
         borderWidth: 5,
-
+        borderRadius: 80/2,
+        justifyContent:'center'
     },
-
-    circleOne: {
-        height: 80,
-        width: 80,
-        left: 10,
-        marginTop: 10,
-        marginBottom: 10
-    },
-
-    circleTwo: {
-        height: 80,
-        width: 80,
-        position: 'absolute',
-        top: 48.5,
-        right: 150
-    },
-
-    circleThree: {
-        height: 80,
-        width: 80,
-        position: 'absolute',
-        top: 48.5,
-        right: 15
+    circleText:{
+        textAlign:'center'
     }
-
-
 });
 
 export default BrowseScholarships;
