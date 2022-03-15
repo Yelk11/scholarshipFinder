@@ -63,10 +63,13 @@ const BrowseScholarships = () => {
                             })}>
 
                             <Text style={styles.title}>{item.title}</Text>
-                            <Text style={styles.info}>Award: {item.amount}</Text>
-                            <Image style={styles.circleOne} source={WhiteCircle}/>
-                            <Image style={styles.circleTwo} source={WhiteCircle}/>
-                            <Image style={styles.circleThree} source={WhiteCircle}/>
+                            <View style={styles.circleContainer}>
+                                <View style={styles.circle}><Text style={styles.circleText}>INSERT MATCH %</Text></View>
+                                <View style={styles.circle}><Text style={styles.circleText}>${item.amount}</Text></View>
+                                <View style={styles.circle}><Text style={styles.circleText}>Due {'\n'} {item.deadline.toDate().getMonth().toString()}/{item.deadline.toDate().getDate().toString()}</Text></View>
+                            </View>
+                            
+
                         </Pressable>
                     </ScholarshipCard>
                     <AccentCard>
@@ -88,7 +91,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         backgroundColor: '#474747'
     },
-
+    circleContainer:{
+        flexDirection:'row',
+        justifyContent:'space-evenly'
+    },
     listItem: {
         flex: 1,
         marginRight: 15,
@@ -167,32 +173,19 @@ const styles = StyleSheet.create({
         flex: .9,
         top: 35
     },
-
-    circleOne: {
+    circle: {
+        fllex: 1,
         height: 80,
-        width: 80,
-        left: 10,
-        marginTop: 10,
-        marginBottom: 10
+        width:80,
+        borderColor: 'black',
+        borderWidth: 5,
+        borderRadius: 80/2,
+        justifyContent:'center',
+        backgroundColor:'white'
     },
-
-    circleTwo: {
-        height: 80,
-        width: 80,
-        position: 'absolute',
-        top: 48.5,
-        right: 150
-    },
-
-    circleThree: {
-        height: 80,
-        width: 80,
-        position: 'absolute',
-        top: 48.5,
-        right: 15
+    circleText:{
+        textAlign:'center'
     }
-
-
 });
 
 export default BrowseScholarships;
