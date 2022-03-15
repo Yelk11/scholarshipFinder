@@ -67,7 +67,7 @@ const BrowseScholarships = () => {
                             <View style={styles.circleContainer}>
                                 <View style={styles.circle}><Text style={styles.circleText}>INSERT MATCH %</Text></View>
                                 <View style={styles.circle}><Text style={styles.circleText}>${item.amount}</Text></View>
-                                <View style={styles.circle}><Text style={styles.circleText}>DEADLINE</Text></View>
+                                <View style={styles.circle}><Text style={styles.circleText}>{item.deadline.toDate().getMonth().toString()}/{item.deadline.toDate().getDate().toString()}</Text></View>
                             </View>
                             
 
