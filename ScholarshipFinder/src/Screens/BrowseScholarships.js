@@ -64,9 +64,15 @@ const BrowseScholarships = () => {
 
                             <Text style={styles.title}>{item.title}</Text>
                             <Text style={styles.info}>Award: {item.amount}</Text>
-                            <Image style={styles.circleOne} source={WhiteCircle}/>
+                            <View style={styles.circleContainer}>
+                                <View style={styles.circle} ></View>
+                                <View style={styles.circle} ></View>
+                                <View style={styles.circle} ></View>
+                            </View>
+                            
+                            {/* <Image style={styles.circleOne} source={WhiteCircle}/>
                             <Image style={styles.circleTwo} source={WhiteCircle}/>
-                            <Image style={styles.circleThree} source={WhiteCircle}/>
+                            <Image style={styles.circleThree} source={WhiteCircle}/> */}
                         </Pressable>
                     </ScholarshipCard>
                     <AccentCard>
@@ -88,7 +94,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         backgroundColor: '#474747'
     },
-
+    circleContainer:{
+        flexDirection:'row',
+        justifyContent:'space-evenly'
+    },
     listItem: {
         flex: 1,
         marginRight: 15,
@@ -166,6 +175,14 @@ const styles = StyleSheet.create({
     flexAdjustment : {
         flex: .9,
         top: 35
+    },
+    circle: {
+        fllex: 1,
+        height: 80,
+        width:80,
+        borderColor: 'black',
+        borderWidth: 5,
+
     },
 
     circleOne: {
