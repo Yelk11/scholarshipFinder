@@ -32,7 +32,7 @@ const UserSignIn = () => {
             .signInWithEmailAndPassword(email, password)
             .then(() => {
                 console.log('User signed in!');
-                navigation.navigate('PersonalInfo')
+                navigation.navigate('BrowseScholarships')
             })
         
     }
@@ -85,11 +85,6 @@ const UserSignIn = () => {
 
                 <LoginButton text="Forgot my password" textStyle={{ color: "#039BE5" }} onPress={onForgotMyPasswordPressed} type="clear" />
 
-
-                <LoginButton text="Sign In with Google" onPress={onUserSignInGoogle}
-                    frontColor={"#FAE9EA"} backColor={"#DD4D44"} />
-                <LoginButton text="Sign In with Facebook" onPress={onUserSignInFacebook}
-                    frontColor={"#FAE9EA"} backColor={"#4267B2"} />
             </LoginSystemCard>
 
         </View>

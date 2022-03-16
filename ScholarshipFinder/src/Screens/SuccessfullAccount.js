@@ -22,8 +22,6 @@ const SuccessfullAccount = () => {
         <View style={styles.container}>
             <Text style={styles.text}>Your Account was successfully created</Text>
             <LoginSystemCard>       
-
-                <LoginButton frontColor="#000000" backColor="#FFF" text="Continue" onPress={onContinuePressed} />
                 <LoginButton frontColor="#000000" backColor="#FFF" text="Browse Scholarships now" onPress={onScholarshipsPressed} />
             </LoginSystemCard>
         </View>
