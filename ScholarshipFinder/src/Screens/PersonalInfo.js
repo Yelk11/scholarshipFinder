@@ -129,7 +129,7 @@ const PersonalInfo = () => {
                         }} />
                 </PersonalCard>
 
-                <PersonalCard>
+                {/* <PersonalCard>
                     <Text style={styles.text}>I live in</Text>
                     <TextInput placeholder="City"
                         placeholderTextColor="#FFFFFF"
@@ -163,7 +163,7 @@ const PersonalInfo = () => {
                             backgroundColor: '#596066', borderColor: '#e8e8e8',
                             borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"
                         }} />
-                </PersonalCard>
+                </PersonalCard> */}
 
 
 
