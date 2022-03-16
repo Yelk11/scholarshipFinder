@@ -17,11 +17,17 @@ const Questions = () => {
 
     const navigation = useNavigation();
 
-    const onQuestionPressed = () => navigation.navigate('BrowseScholarships')
+    const onSubmitPressed = () => navigation.navigate('SuccessfullAccount')
 
     const [shouldShow, setShouldShow] = useState(true);
 
     const [shouldShow2, setShouldShow2] = useState(true);
+
+    const [shouldShow3, setShouldShow3] = useState(true);
+
+    const [shouldShow4, setShouldShow4] = useState(true);
+
+    const [shouldShow5, setShouldShow5] = useState(true);
 
     const [chooseData, setchooseData] = useState('Select your Major...');
 
@@ -47,6 +53,121 @@ const Questions = () => {
         <View style={styles.container}>
 
             <ScrollView>
+            <SecondaryCard>
+                    <Text style={styles.text}>I attended high school at</Text>
+                    <TextInput placeholder="High School"
+                        placeholderTextColor="#FFFFFF"
+                        //value = {FName}
+                        //onChangeText = {text => setFirstName(text)}
+                        style={{
+                            backgroundColor: '#596066', borderColor: '#e8e8e8',
+                            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"
+                        }} />
+                </SecondaryCard>
+                <SecondaryCard>
+                    <Text style={styles.text}>SAT Math Score</Text>
+                    <TextInput placeholder="200 - 800"
+                        placeholderTextColor="#FFFFFF"
+                        //value = {FName}
+                        //onChangeText = {text => setFirstName(text)}
+                        style={{
+                            backgroundColor: '#596066', borderColor: '#e8e8e8',
+                            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"
+                        }} />
+                    <Text style={styles.text}>SAT Evidence-Based Reading and Writing Score</Text>
+                    <TextInput placeholder="200 - 800"
+                        placeholderTextColor="#FFFFFF"
+                        //value = {LName}
+                        //onChangeText = {text => setLastName(text)}
+                        style={{
+                            backgroundColor: '#596066', borderColor: '#e8e8e8',
+                            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"
+                        }} />
+                    <Text style={styles.text}>ACT Score</Text>
+                    <TextInput placeholder="1 - 36"
+                        placeholderTextColor="#FFFFFF"
+                        //value = {LName}
+                        //onChangeText = {text => setLastName(text)}
+                        style={{
+                            backgroundColor: '#596066', borderColor: '#e8e8e8',
+                            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"
+                        }} />
+                </SecondaryCard>
+                <SecondaryCard>
+                    <Text style={styles.text}>Do you have any athletic interests or participation?</Text>
+                    <Text style={styles.text}>Sport 1</Text>
+                    <TextInput placeholder="Enter a sport here (leave blank if none)"
+                        placeholderTextColor="#FFFFFF"
+                        //value = {FName}
+                        //onChangeText = {text => setFirstName(text)}
+                        style={{
+                            backgroundColor: '#596066', borderColor: '#e8e8e8',
+                            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"
+                        }} />
+                    <Text style={styles.text}>Sport 2</Text>
+                    <TextInput placeholder="Enter a sport here (leave blank if none)"
+                        placeholderTextColor="#FFFFFF"
+                        //value = {LName}
+                        //onChangeText = {text => setLastName(text)}
+                        style={{
+                            backgroundColor: '#596066', borderColor: '#e8e8e8',
+                            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"
+                        }} />
+                    <Text style={styles.text}>Sport 3</Text>
+                    <TextInput placeholder="Enter a sport here (leave blank if none)"
+                        placeholderTextColor="#FFFFFF"
+                        //value = {LName}
+                        //onChangeText = {text => setLastName(text)}
+                        style={{
+                            backgroundColor: '#596066', borderColor: '#e8e8e8',
+                            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"
+                        }} />
+                </SecondaryCard>
+
+                {
+                    shouldShow3 ? (
+                        <SecondaryCard>
+
+                            <Text style={styles.text}>Are you affiliated with the military?</Text>
+
+
+                            <CustomButton frontColor="#000000" backColor="#6FE7C3" text="Yes" onPress={() => {
+                                setShouldShow3(!shouldShow3)       
+                            }} />
+                            <CustomButton frontColor="#000000" backColor="#EA5E6A" text="No" onPress={() => {
+                                setShouldShow3(!shouldShow3)
+                            }} />
+
+                        </SecondaryCard>
+                    ) : null
+                }
+
+                    {shouldShow4 ? (
+                    <SecondaryCard>
+
+                        <Text style={styles.text}>Enter your income level</Text>
+
+
+                        <CustomButton frontColor="#000000" backColor="#FFF" text="Low" onPress={() => {
+                            setShouldShow4(!shouldShow4)
+                        }} />
+                        <CustomButton frontColor="#000000" backColor="#FFF" text="Low-Middle" onPress={() => {
+                            setShouldShow4(!shouldShow4)
+                        }} />
+                        <CustomButton frontColor="#000000" backColor="#FFF" text="Middle" onPress={() => {
+                            setShouldShow4(!shouldShow4)
+                        }} />
+                        <CustomButton frontColor="#000000" backColor="#FFF" text="Middle-High" onPress={() => {
+                            setShouldShow4(!shouldShow4)
+                        }} />
+                        <CustomButton frontColor="#000000" backColor="#FFF" text="High" onPress={() => {
+                            setShouldShow4(!shouldShow4)
+                        }} />
+
+                    </SecondaryCard>
+                ) : null
+                }
+
                 {
                     shouldShow ? (
                         <SecondaryCard>
@@ -144,6 +265,28 @@ const Questions = () => {
                 ) : null
                 }
 
+{
+                    shouldShow5 ? (
+                        <SecondaryCard>
+
+                            <Text style={styles.text}>Do you attend Full-Time or Part-Time?</Text>
+
+
+                            <CustomButton frontColor="#000000" backColor="#FFF" text="Full-Time" onPress={() => {
+                                setShouldShow5(!shouldShow5)       
+                            }} />
+                            <CustomButton frontColor="#000000" backColor="#FFF" text="Part-Time" onPress={() => {
+                                setShouldShow5(!shouldShow5)
+                            }} />
+                            <CustomButton frontColor="#000000" backColor="#FFF" text="Undecided" onPress={() => {
+                                setShouldShow5(!shouldShow5)
+                            }} />
+
+                        </SecondaryCard>
+                    ) : null
+                }
+
+
                 <SecondaryCard>
                     <Text style={styles.text}>Identify your major:</Text>
                     <TouchableOpacity onPress={() => changeModalVisibility(true)}>
@@ -192,7 +335,7 @@ const Questions = () => {
                             borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"
                         }} />
                 </SecondaryCard>
-                <CustomButton frontColor="#000000" backColor="#FFF" text="Submit" onPress={onQuestionPressed} />
+                <CustomButton frontColor="#000000" backColor="#FFF" text="Submit" onPress={onSubmitPressed} />
             </ScrollView>
         </View>
     );

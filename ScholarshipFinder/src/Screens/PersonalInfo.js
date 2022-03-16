@@ -91,17 +91,6 @@ const PersonalInfo = () => {
 
                 <PersonalCard>
                     <Text style={styles.text}>Birthday</Text>
-                    <CustomButton frontColor="#000000" backColor="#FFF" text="Birthday" onPress={showDatepicker} />
-                    {show && (
-                        <DateTimePicker
-                            testID="dateTimePicker"
-                            value={date}
-                            display="default"
-                            onChange={onChange}
-                        // onConfirm={this.handlePicker}
-                        // onCancel={this.hidePicker}
-                        />
-                    )}
                     <TextInput placeholder="MM/DD/YYYY"
                         placeholderTextColor="#FFFFFF"
                         value={date}
