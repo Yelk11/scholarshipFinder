@@ -67,31 +67,33 @@ const BrowseScholarships = () => {
         setIncomeLevel(data.incomeLevel)
 
     }
+
     const onSettingsPressed = () => {
         navigation.navigate('Settings');
     };
+
     useEffect(() => {
         getValue()
         const subscriber = firestore().collection('scholarships')
             // .where('amount','>',amount)
             // .where('deadline', '=', deadline)
-            // where('opens','',data.opens)
-            // where(data.race)
-            // where(data.citizen)
-            // where(data.gender)
-            // where(data.college)
-            // where(data.enrollmentStatus)
-            // where(data.classStanding)
-            // where(data.degree)
-            // where(data.major)
-            // where(data.gpa)
-            // where(data.military)
-            // where(data.highSchool)
-            // where(data.satMath)
-            // where(data.satEBRW)
-            // where(data.act)
-            // where(data.firstCollegeStudent)
-            // where(data.incomeLevel)
+            // .where('opens','',data.opens)
+            // .where(data.race)
+            // .where(data.citizen)
+            // .where(data.gender)
+            // .where(data.college)
+            // .where(data.enrollmentStatus)
+            // .where(data.classStanding)
+            // .where(data.degree)
+            // .where(data.major)
+            // .where(data.gpa)
+            // .where(data.military)
+            // .where(data.highSchool)
+            // .where(data.satMath)
+            // .where(data.satEBRW)
+            // .where(data.act)
+            // .where(data.firstCollegeStudent)
+            // .where(data.incomeLevel)
             .get().then((querySnapshot) => {
                 const objectsArray = [];
                 querySnapshot.forEach(documentSnapshot => {
