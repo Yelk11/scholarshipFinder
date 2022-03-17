@@ -45,16 +45,16 @@ const App = () => {
           ),
         }}
       >
-        <Stack.Screen name="WelcomeScreen" component={WelcomeScreenScreen} />
-        <Stack.Screen name="SuccessfullAccount" component={SuccessfullAccountScreen} />
-        <Stack.Screen name="PersonalInfo" component={PersonalInfoScreen} />
-        <Stack.Screen name="UserSignIn" component={UserSignInScreen} />
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Details" component={DetailsScreen} />
+        <Stack.Screen name="WelcomeScreen" component={WelcomeScreenScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="SuccessfullAccount" component={SuccessfullAccountScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="PersonalInfo" component={PersonalInfoScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="UserSignIn" component={UserSignInScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Details" component={DetailsScreen} options={{ headerShown: false }}/>
         <Stack.Screen name="Questions" component={QuestionsScreen} options={{ headerShown: false }} />
         <Stack.Screen name="BrowseScholarships" component={BrowseScholarshipsScreen} options={{ headerShown: false }} />
         <Stack.Screen name="ScholarshipDetails" component={ScholarshipDetailsScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="CreateAccount" component={CreateAccountScreen} />
+        <Stack.Screen name="CreateAccount" component={CreateAccountScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Settings" component={SettingsScreen} options={{ headerShown: false }} />
         <Stack.Screen name="EditPersonalInfo" component={EditPersonalInfoScreen} options={{ headerShown: false }} />
         <Stack.Screen name="AccountClosed" component={AccountClosedScreen} options={{ headerShown: false }} />
@@ -85,6 +85,7 @@ function HomeScreen({ navigation }) {
     </View>
   );
 }
+
 function WelcomeScreenScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.root}>

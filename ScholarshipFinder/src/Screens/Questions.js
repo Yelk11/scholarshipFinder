@@ -145,7 +145,7 @@ const Questions = () => {
                     {shouldShow4 ? (
                     <SecondaryCard>
 
-                        <Text style={styles.text}>Enter your income level</Text>
+                        <Text style={styles.text}>Select your income level</Text>
 
 
                         <CustomButton frontColor="#000000" backColor="#FFF" text="Low" onPress={() => {

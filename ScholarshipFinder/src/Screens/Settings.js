@@ -20,16 +20,18 @@ const Settings = (props) => {
 
     const PostScholarshipPressed = () => navigation.navigate('PostScholarship')
 
+    const onFeedPressed = () => navigation.navigate('BrowseScholarships')
+
     return(
         <View style={styles.container}>
-            <Image style={styles.settingsTopLeft} source={YellowSettingsButton} />
+            {/* <Image style={styles.settingsTopLeft} source={YellowSettingsButton} /> */}
             <Image style={styles.scholarshipTopRight} source={scholarshipFilter} />
             <Image style={styles.logoTopCenter} source={smallLogo} />
             <SettingsCard>
                 <Text style={styles.headertext}>Welcome Back!</Text>
                 <Text style={styles.text}>AsianGirls</Text>
                 <SettingsButton text="Profile" onPress={GoToPersonalInfo}></SettingsButton>
-                <SettingsButton text="Scholarship Feed"></SettingsButton>
+                <SettingsButton text="Scholarship Feed" onPress={onFeedPressed}></SettingsButton>
                 <SettingsButton text="Post A Scholarship" onPress={PostScholarshipPressed}></SettingsButton>
                 <SettingsButton text="FAQs"></SettingsButton>
                 <SettingsButton text="App Review"></SettingsButton>

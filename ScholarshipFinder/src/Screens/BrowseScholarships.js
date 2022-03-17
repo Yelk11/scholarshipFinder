@@ -26,6 +26,10 @@ const BrowseScholarships = () => {
 
     const navigation = useNavigation();
 
+    const onSettingsPressed = () => {
+        navigation.navigate('Settings');
+    };
+
 
     useEffect(() => {
         const subscriber = firestore().collection('scholarships').get().then((querySnapshot) => {
@@ -47,7 +51,9 @@ const BrowseScholarships = () => {
     }
     return (
         <View style={styles.container}>
-            <Image style={styles.settingsTopLeft} source={YellowSettingsButton} />
+            <Pressable hitSlop={50} onPress={onSettingsPressed}>
+                <Image style={styles.settingsTopLeft} source={YellowSettingsButton} />
+            </Pressable>
             <Image style={styles.scholarshipTopRight} source={scholarshipFilter} />
             <Image style={styles.logoTopCenter} source={smallLogo} />
             <View style={styles.flexAdjustment}>
@@ -133,7 +139,7 @@ const styles = StyleSheet.create({
         height: 50,
         width: 50,
         position: 'absolute',
-        top: 5, 
+        top: -30, 
         left: 6,
     },
 
