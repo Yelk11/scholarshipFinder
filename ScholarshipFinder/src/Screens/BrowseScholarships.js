@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { TouchableOpacity, FlatList, Image, Text, ActivityIndicator, View, StyleSheet } from 'react-native';
+import { FlatList, Image, Text, ActivityIndicator, View, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import firestore from '@react-native-firebase/firestore';
 
-import CustomButton from '../components/CustomButton/CustomButton';
-import scholarshipSearch from '../../assets/images/scholarship-search-button.png';
-import settingsButton from '../../assets/images/settings-button.png';
 import smallLogo from '../../assets/images/app-logo-dark-background.png';
-import underlineScreen from '../../assets/images/current-tab.png';
 import ScholarshipCard from '../components/ScholarshipCard';
 import AccentCard from '../components/AccentCard';
 import ApplyButton from '../components/CustomButton/ApplyButton';
@@ -17,22 +13,43 @@ import ShareButton from '../../assets/images/share-button.png';
 import scholarshipFilter from '../../assets/images/yellow-filter.png';
 import YellowSettingsButton from '../../assets/images/settings-gear.png';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
-import WhiteCircle from '../../assets/images/white-circle.png';
 
 
 const BrowseScholarships = () => {
     const [loading, setLoading] = useState(true); // Set loading to true on component mount
     const [scholarships, setScholarships] = useState([]); // Initial empty array of scholarships
 
+    const [amount, setAmount] = useState([]);
+    const [deadline, setDeadline] = useState([]);
+    const [opens, setOpens] = useState([]);
+    const [race , setRace] = useState([]);
+    const [citizenship , setCitizen] = useState([]);
+    const [gender , setGender] = useState([]);
+    const [college , setCollege] = useState([]);
+    const [enrollmentStatus , setEnrollment] = useState([]);
+    const [classStanding, setClassStanding] = useState([]);
+    const [degree, setDegree ] = useState([]);
+    const [major, setMajor] = useState([]);
+    const [gpa, setGpa] = useState([]);
+    const [military, setMilitary] = useState([]);
+    const [highSchool, setHighSchool] = useState([]);
+    const [satMath, setSatMath] = useState([]);
+    const [satEBRW, setSatEBRW] = useState([]);
+    const [act, setACT] = useState([]);
+    const [firstCollegeStudent, setFirstCollegeStudent] = useState([]);
+    const [incomeLevel, setIncomeLevel] = useState([]);
+
+
+
     const navigation = useNavigation();
 
 
     useEffect(() => {
-        const subscriber = firestore().collection('scholarships').get().then((querySnapshot) => {
-            // console.log('Total Scholarships: ', querySnapshot.size);
+        const subscriber = firestore().collection('scholarships')
+            .where("amount",">",50)
+            .get().then((querySnapshot) => {
             const objectsArray = [];
             querySnapshot.forEach(documentSnapshot => {
-                // console.log('User ID: ', documentSnapshot.id, documentSnapshot.data());
                 objectsArray.push({
                     ...documentSnapshot.data(),
                     key: documentSnapshot.id,
