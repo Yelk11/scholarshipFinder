@@ -16,7 +16,20 @@ const Questions = () => {
             .collection('user_info')
             .doc(auth().currentUser.uid)
             .set({
-                college_year: 'sophomore'
+                highSchool: highSchool,
+                satMath: satMath,
+                satEBRW: satEBRW,
+                act: act,
+                // sport: sport
+                military:military,
+                incomeLevel: incomeLevel,
+                firstCollegeStudent: firstCollegeStudent,
+                classStanding: classStanding,
+                enrollmentStatus: enrollmentStatus,
+                major: major,
+                college: college,
+                degree: degree,
+                gpa: gpa
             }, { merge: true })
         navigation.navigate('SuccessfullAccount')
     }
@@ -76,7 +89,7 @@ const Questions = () => {
                         placeholderTextColor="#FFFFFF"
                         value={satMath}
                         onChangeText={text => setSatMath(text)}
-                        style={styles.inputBox}/>
+                        style={styles.inputBox} />
                     <Text style={styles.text}>SAT Evidence-Based Reading and Writing Score</Text>
                     <TextInput placeholder="200 - 800"
                         placeholderTextColor="#FFFFFF"
@@ -109,7 +122,7 @@ const Questions = () => {
                         placeholderTextColor="#FFFFFF"
                         //value = {LName}
                         //onChangeText = {text => setLastName(text)}
-                        style={styles.inputBox}/>
+                        style={styles.inputBox} />
                 </SecondaryCard>
 
                 {
@@ -267,20 +280,20 @@ const Questions = () => {
                     <Text style={styles.text}>I (will) attend school at</Text>
                     <TextInput placeholder="College/University"
                         placeholderTextColor="#FFFFFF"
-                        value = {college}
-                        onChangeText = {text => setCollege(text)}
-                        style={styles.inputBox}/>
+                        value={college}
+                        onChangeText={text => setCollege(text)}
+                        style={styles.inputBox} />
                     <Text style={styles.text}>seeking a</Text>
                     <TextInput placeholder="Degree"
                         placeholderTextColor="#FFFFFF"
-                        value = {degree}
-                        onChangeText = {text => setDegree(text)}
+                        value={degree}
+                        onChangeText={text => setDegree(text)}
                         style={styles.inputBox} />
                     <Text style={styles.text}>with a GPA of</Text>
                     <TextInput placeholder="GPA"
                         placeholderTextColor="#FFFFFF"
-                        value = {gpa}
-                        onChangeText = {text => setGpa(text)}
+                        value={gpa}
+                        onChangeText={text => setGpa(text)}
                         style={styles.inputBox} />
                 </SecondaryCard>
                 <CustomButton frontColor="#000000" backColor="#FFF" text="Submit" onPress={onSubmitPressed} />
@@ -295,7 +308,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         backgroundColor: "#3E4347",
     },
-    inputBox:{
+    inputBox: {
         backgroundColor: '#596066', borderColor: '#e8e8e8',
         borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"
     },
