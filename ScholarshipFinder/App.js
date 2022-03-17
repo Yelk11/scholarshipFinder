@@ -38,7 +38,7 @@ const App = () => {
               onPress={() =>
                 auth()
                   .signOut()
-                  .then(() => console.log('User signed out!'))}
+                  .then(() => console.log('User signed out'))}
               title="Info"
               color="#fff"
             />
