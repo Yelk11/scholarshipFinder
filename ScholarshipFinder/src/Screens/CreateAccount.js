@@ -43,6 +43,7 @@ const CreateAccount = () => {
 
                     <TextInput placeholder="Email"
                         placeholderTextColor="#FFFFFF"
+                        color="#FFF"
                         value={email}
                         onChangeText={text => setEmail(text)}
                         style={{
@@ -54,6 +55,7 @@ const CreateAccount = () => {
 
                     <TextInput placeholder="Password"
                         placeholderTextColor="#FFFFFF"
+                        color="#FFF"
                         value={password}
                         onChangeText={text => setPassword(text)}
                         secureTextEntry={true}
@@ -66,6 +68,7 @@ const CreateAccount = () => {
 
                     <TextInput placeholder="Confirm Password"
                         placeholderTextColor="#FFFFFF"
+                        color="#FFF"
                         value={confirmPassword}
                         onChangeText={text => setConfirmPassword(text)}
                         secureTextEntry={true}

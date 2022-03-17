@@ -15,3 +15,5 @@ export {default} from './AccountClosed';
 
 export {default} from './PostScholarship';
 export {default} from './ScholarshipSubmitted';
+
+export {default} from './ForgotPassword';

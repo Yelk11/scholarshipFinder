@@ -37,19 +37,10 @@ const UserSignIn = () => {
         
     }
 
-
-
     const onForgotMyPasswordPressed = () => {
-        console.warn('onForgotMyPasswordPressed');
+        navigation.navigate('ForgotPassword');
     };
 
-    const onUserSignInGoogle = () => {
-        console.warn('onUserSignInGoogle');
-    };
-
-    const onUserSignInFacebook = () => {
-        console.warn('onUserSignInFacebook');
-    };
     if (initializing) return null;
     
     return (
@@ -59,6 +50,7 @@ const UserSignIn = () => {
             <LoginSystemCard>
                 <TextInput placeholder="Email"
                     placeholderTextColor="#FFFFFF"
+                    color="#FFF"
                     value={email}
                     onChangeText={text => setEmail(text)}
                     style={{
@@ -70,6 +62,7 @@ const UserSignIn = () => {
 
                 <TextInput placeholder="Password"
                     placeholderTextColor="#FFFFFF"
+                    color="#FFF"
                     value={password}
                     onChangeText={text => setPassword(text)}
                     secureTextEntry={true}
