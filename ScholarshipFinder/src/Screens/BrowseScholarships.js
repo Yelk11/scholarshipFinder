@@ -3,6 +3,7 @@ import { FlatList, Image, Text, ActivityIndicator, View, StyleSheet } from 'reac
 import { useNavigation } from '@react-navigation/native';
 
 import firestore from '@react-native-firebase/firestore';
+import auth from '@react-native-firebase/auth';
 
 import smallLogo from '../../assets/images/app-logo-dark-background.png';
 import ScholarshipCard from '../components/ScholarshipCard';
@@ -26,7 +27,7 @@ const BrowseScholarships = () => {
     const [citizenship , setCitizen] = useState([]);
     const [gender , setGender] = useState([]);
     const [college , setCollege] = useState([]);
-    const [enrollmentStatus , setEnrollment] = useState([]);
+    const [enrollmentStatus , setEnrollmentStatus] = useState([]);
     const [classStanding, setClassStanding] = useState([]);
     const [degree, setDegree ] = useState([]);
     const [major, setMajor] = useState([]);
@@ -42,11 +43,38 @@ const BrowseScholarships = () => {
 
 
     const navigation = useNavigation();
+    
+    const getValue = async () =>{
+        const user = await firestore().collection('user_info').doc(auth().currentUser.uid).get();
+        const data = user.data()
+        setAmount(data.amount)
+        setDeadline(data.deadline)
+        setOpens(data.opens)
+        setRace(data.race)
+        setCitizen(data.citizen)
+        setGender(data.gender)
+        setCollege(data.college)
+        setEnrollmentStatus(data.enrollmentStatus)
+        setClassStanding(data.classStanding)
+        setDegree(data.degree)
+        setMajor(data.major)
+        setGpa(data.gpa)
+        setMilitary(data.military)
+        setHighSchool(data.highSchool)
+        setSatMath(data.satMath)
+        setSatEBRW(data.satEBRW)
+        setACT(data.act)
+        setFirstCollegeStudent(data.firstCollegeStudent)
+        setIncomeLevel(data.incomeLevel)
 
-
+    }
     useEffect(() => {
+        getValue()
         const subscriber = firestore().collection('scholarships')
-            .where("amount",">",50)
+            .where('amount','>',amount)
+            // .where('deadline', '=', deadline)
+            
+
             .get().then((querySnapshot) => {
             const objectsArray = [];
             querySnapshot.forEach(documentSnapshot => {
