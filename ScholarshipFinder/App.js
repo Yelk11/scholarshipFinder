@@ -21,6 +21,7 @@ import Logout from './src/Screens/Logout';
 import auth from '@react-native-firebase/auth';
 import PostScholarship from './src/Screens/PostScholarship';
 import ScholarshipSubmitted from './src/Screens/ScholarshipSubmitted';
+import ForgotPassword from './src/Screens/ForgotPassword';
 
 const App = () => {
   const Stack = createNativeStackNavigator();
@@ -61,6 +62,7 @@ const App = () => {
         <Stack.Screen name="Logout" component={LogoutScreen} options={{ headerShown: false }} />
         <Stack.Screen name="PostScholarship" component={PostScholarshipScreen} options={{ headerShown: false }} />
         <Stack.Screen name="ScholarshipSubmitted" component={ScholarshipSubmittedScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer >
 
@@ -206,6 +208,14 @@ function ScholarshipSubmittedScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.root}>
       <ScholarshipSubmitted />
+    </SafeAreaView>
+  )
+}
+
+function ForgotPasswordScreen({ navigation }) {
+  return (
+    <SafeAreaView style={styles.root}>
+      <ForgotPassword />
     </SafeAreaView>
   )
 }
