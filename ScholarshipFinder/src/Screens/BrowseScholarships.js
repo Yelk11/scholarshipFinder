@@ -71,18 +71,33 @@ const BrowseScholarships = () => {
     useEffect(() => {
         getValue()
         const subscriber = firestore().collection('scholarships')
-            .where('amount','>',amount)
+            // .where('amount','>',amount)
             // .where('deadline', '=', deadline)
-            
-
+            // where('opens','',data.opens)
+            // where(data.race)
+            // where(data.citizen)
+            // where(data.gender)
+            // where(data.college)
+            // where(data.enrollmentStatus)
+            // where(data.classStanding)
+            // where(data.degree)
+            // where(data.major)
+            // where(data.gpa)
+            // where(data.military)
+            // where(data.highSchool)
+            // where(data.satMath)
+            // where(data.satEBRW)
+            // where(data.act)
+            // where(data.firstCollegeStudent)
+            // where(data.incomeLevel)
             .get().then((querySnapshot) => {
-            const objectsArray = [];
-            querySnapshot.forEach(documentSnapshot => {
-                objectsArray.push({
-                    ...documentSnapshot.data(),
-                    key: documentSnapshot.id,
+                const objectsArray = [];
+                querySnapshot.forEach(documentSnapshot => {
+                    objectsArray.push({
+                        ...documentSnapshot.data(),
+                        key: documentSnapshot.id,
+                    });
                 });
-            });
             setScholarships(objectsArray);
             setLoading(false);
         }); return () => subscriber;
@@ -111,7 +126,7 @@ const BrowseScholarships = () => {
                             <View style={styles.circleContainer}>
                                 <View style={styles.circle}><Text style={styles.circleText}>INSERT MATCH %</Text></View>
                                 <View style={styles.circle}><Text style={styles.circleText}>${item.amount}</Text></View>
-                                <View style={styles.circle}><Text style={styles.circleText}>Due {'\n'} {item.deadline.toDate().getMonth().toString()}/{item.deadline.toDate().getDate().toString()}</Text></View>
+                                {/* <View style={styles.circle}><Text style={styles.circleText}>Due {'\n'} {item.deadline.toDate().getMonth().toString()}/{item.deadline.toDate().getDate().toString()}</Text></View> */}
                             </View>
                             
 
