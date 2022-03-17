@@ -107,6 +107,47 @@ const EditPersonalInfo = (props) => {
             </SecondaryCard>
 
             <SecondaryCard>
+                    <Text style={styles.text}>I attended high school at</Text>
+                    <TextInput placeholder="High School"
+                        placeholderTextColor="#FFFFFF"
+                        //value = {FName}
+                        //onChangeText = {text => setFirstName(text)}
+                        style={{
+                            backgroundColor: '#596066', borderColor: '#e8e8e8',
+                            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"
+                        }} />
+                </SecondaryCard>
+                <SecondaryCard>
+                    <Text style={styles.text}>SAT Math Score</Text>
+                    <TextInput placeholder="200 - 800"
+                        placeholderTextColor="#FFFFFF"
+                        //value = {FName}
+                        //onChangeText = {text => setFirstName(text)}
+                        style={{
+                            backgroundColor: '#596066', borderColor: '#e8e8e8',
+                            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"
+                        }} />
+                    <Text style={styles.text}>SAT Evidence-Based Reading and Writing Score</Text>
+                    <TextInput placeholder="200 - 800"
+                        placeholderTextColor="#FFFFFF"
+                        //value = {LName}
+                        //onChangeText = {text => setLastName(text)}
+                        style={{
+                            backgroundColor: '#596066', borderColor: '#e8e8e8',
+                            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"
+                        }} />
+                    <Text style={styles.text}>ACT Score</Text>
+                    <TextInput placeholder="1 - 36"
+                        placeholderTextColor="#FFFFFF"
+                        //value = {LName}
+                        //onChangeText = {text => setLastName(text)}
+                        style={{
+                            backgroundColor: '#596066', borderColor: '#e8e8e8',
+                            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"
+                        }} />
+                </SecondaryCard>
+
+            <SecondaryCard>
                     <Text style={styles.text}>Do you have any athletic interests or participation?</Text>
                     <Text style={styles.text}>Sport 1</Text>
                     <TextInput placeholder="Enter a sport here (leave blank if none)"
@@ -158,7 +199,7 @@ const EditPersonalInfo = (props) => {
                     {shouldShow4 ? (
                     <SecondaryCard>
 
-                        <Text style={styles.text}>Enter your income level</Text>
+                        <Text style={styles.text}>Select your income level</Text>
 
 
                         <CustomButton frontColor="#000000" backColor="#FFF" text="Low" onPress={() => {

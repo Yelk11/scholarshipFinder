@@ -36,88 +36,56 @@ const CreateAccount = () => {
 
         <View style={styles.container}>
             <Image style={styles.logoTopCenter} source={initialLogo} />
-            {/* <LoginSystemCard>
-                <TextInput placeholder="Email"
-                           placeholderTextColor="#FFFFFF" 
-                           value = {email}
-                           onChangeText = {text => setEmail(text)}
-                           style = { {backgroundColor :'#596066',
-                           width: '100%',
-                           borderColor: '#e8e8e8',
-                           borderWidth: 0.3, borderRadius: 3, paddingHorizontal: 6, marginVertical: 5}}/>
 
-                <TextInput placeholder="Password"
-                           placeholderTextColor="#FFFFFF" 
-                           value = {password}
-                           onChangeText = {text => setPassword(text)}
-                           secureTextEntry={true}
-                           style = { {backgroundColor :'#596066',
-                           width: '100%',
-                           borderColor: '#e8e8e8',
-                           borderWidth: 0.3, borderRadius: 3, paddingHorizontal: 6, marginVertical: 2}}/>
+                    <LoginSystemCard>
 
-                <TextInput placeholder=" Confirm Password"
-                           placeholderTextColor="#FFFFFF" 
-                           value = {ConfirmPassword}
-                           onChangeText = {text => setConfirmPassword(text)}
-                           secureTextEntry={true}
-                           style = { {backgroundColor :'#596066',
-                           width: '100%',
-                           borderColor: '#e8e8e8',
-                           borderWidth: 0.3, borderRadius: 3, paddingHorizontal: 6, marginVertical: 2}}/>           
-
-                <LoginButton frontColor="#000000" backColor="#FFF" text="Sign Up" onPress={onSignUpPressed} />
-
-                <LoginButton text="Sign Up with Google" onPress={onUserSignupGoogle}
-                frontColor={"#FAE9EA"} backColor={"#DD4D44"} />
-                <LoginButton text="Sign Up with Facebook" onPress={onUserSignupFacebook}
-                frontColor={"#FAE9EA"} backColor={"#4267B2"} />
-            </LoginSystemCard> */}
-
-            <ScrollView showsVerticalScrollIndicator={false}>
-                <View style={styles.root}>
-
-                    <Text style={styles.title}> Create an account</Text>
+                    <Text style={styles.title}>Create an account</Text>
 
                     <TextInput placeholder="Email"
+                        placeholderTextColor="#FFFFFF"
+                        color="#FFF"
                         value={email}
                         onChangeText={text => setEmail(text)}
                         style={{
-                            backgroundColor: 'white',
+                            backgroundColor: '#596066',
                             width: '100%',
                             borderColor: '#e8e8e8',
                             borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5
                         }} />
 
                     <TextInput placeholder="Password"
+                        placeholderTextColor="#FFFFFF"
+                        color="#FFF"
                         value={password}
                         onChangeText={text => setPassword(text)}
                         secureTextEntry={true}
                         style={{
-                            backgroundColor: 'white',
+                            backgroundColor: '#596066',
                             width: '100%',
                             borderColor: '#e8e8e8',
                             borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5
                         }} />
 
                     <TextInput placeholder="Confirm Password"
+                        placeholderTextColor="#FFFFFF"
+                        color="#FFF"
                         value={confirmPassword}
                         onChangeText={text => setConfirmPassword(text)}
                         secureTextEntry={true}
                         style={{
-                            backgroundColor: 'white',
+                            backgroundColor: '#596066',
                             width: '100%',
                             borderColor: '#e8e8e8',
                             borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5
                         }} />
 
-                    <CustomButton text="Register" onPress={() => {
+                    <LoginButton text="Register" onPress={() => {
                         if (password == confirmPassword) {
                             auth()
                                 .createUserWithEmailAndPassword(email, password)
                                 .then(() => {
                                     console.log('User account created & signed in!');
-                                    navigation.navigate("Questions")
+                                    navigation.navigate("PersonalInfo")
                                 }).catch(error => {
                                     if (error.code === 'auth/email-already-in-use') {
                                       console.log('That email address is already in use!');
@@ -136,17 +104,12 @@ const CreateAccount = () => {
                     } />
 
 
-                    <CustomButton text="Sign up with Google" onPress={onUserSignupGoogle}
-                        frontColor={"#FAE9EA"} backColor={"#DD4D44"} />
-                    <CustomButton text="Sign up with Facebook" onPress={onUserSignupFacebook}
-                        frontColor={"#363636"} backColor={"#e3e3e3"} />
-
-                    <CustomButton text="Have an account? Sign in"
+                    <LoginButton text="Have an account? Sign in"
                         onPress={onSignInPressed} type="TERTIARY" />
+                    
+                    </LoginSystemCard>
 
                 </View>
-            </ScrollView>
-        </View>
     );
 };
 
@@ -157,6 +120,10 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         backgroundColor: "#3E4347",
         flexDirection: "row",
+    },
+
+    title: {
+        fontWeight: 'bold'
     },
 
     flexAdjustment: {

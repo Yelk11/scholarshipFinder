@@ -23,13 +23,13 @@ const BrowseScholarships = () => {
     const [amount, setAmount] = useState([]);
     const [deadline, setDeadline] = useState([]);
     const [opens, setOpens] = useState([]);
-    const [race , setRace] = useState([]);
-    const [citizenship , setCitizen] = useState([]);
-    const [gender , setGender] = useState([]);
-    const [college , setCollege] = useState([]);
-    const [enrollmentStatus , setEnrollmentStatus] = useState([]);
+    const [race, setRace] = useState([]);
+    const [citizenship, setCitizen] = useState([]);
+    const [gender, setGender] = useState([]);
+    const [college, setCollege] = useState([]);
+    const [enrollmentStatus, setEnrollmentStatus] = useState([]);
     const [classStanding, setClassStanding] = useState([]);
-    const [degree, setDegree ] = useState([]);
+    const [degree, setDegree] = useState([]);
     const [major, setMajor] = useState([]);
     const [gpa, setGpa] = useState([]);
     const [military, setMilitary] = useState([]);
@@ -41,10 +41,9 @@ const BrowseScholarships = () => {
     const [incomeLevel, setIncomeLevel] = useState([]);
 
 
-
     const navigation = useNavigation();
-    
-    const getValue = async () =>{
+
+    const getValue = async () => {
         const user = await firestore().collection('user_info').doc(auth().currentUser.uid).get();
         const data = user.data()
         setAmount(data.amount)
@@ -68,6 +67,9 @@ const BrowseScholarships = () => {
         setIncomeLevel(data.incomeLevel)
 
     }
+    const onSettingsPressed = () => {
+        navigation.navigate('Settings');
+    };
     useEffect(() => {
         getValue()
         const subscriber = firestore().collection('scholarships')
@@ -98,48 +100,50 @@ const BrowseScholarships = () => {
                         key: documentSnapshot.id,
                     });
                 });
-            setScholarships(objectsArray);
-            setLoading(false);
-        }); return () => subscriber;
+                setScholarships(objectsArray);
+                setLoading(false);
+            }); return () => subscriber;
     }, []);
     if (loading) {
         return <ActivityIndicator />;
     }
     return (
         <View style={styles.container}>
-            <Image style={styles.settingsTopLeft} source={YellowSettingsButton} />
+            <Pressable hitSlop={50} onPress={onSettingsPressed}>
+                <Image style={styles.settingsTopLeft} source={YellowSettingsButton} />
+            </Pressable>
             <Image style={styles.scholarshipTopRight} source={scholarshipFilter} />
             <Image style={styles.logoTopCenter} source={smallLogo} />
             <View style={styles.flexAdjustment}>
-            <FlatList
-                data={scholarships}
-                renderItem={({ item }) => (
-                    <><ScholarshipCard>
-                        <Pressable style={styles.listItem} onPress={() => navigation.navigate('ScholarshipDetails',
-                            {
-                                name: item.title,
-                                amount: item.amount,
-                                deadline: item.deadline
-                            })}>
+                <FlatList
+                    data={scholarships}
+                    renderItem={({ item }) => (
+                        <><ScholarshipCard>
+                            <Pressable style={styles.listItem} onPress={() => navigation.navigate('ScholarshipDetails',
+                                {
+                                    name: item.title,
+                                    amount: item.amount,
+                                    deadline: item.deadline
+                                })}>
 
-                            <Text style={styles.title}>{item.title}</Text>
-                            <View style={styles.circleContainer}>
-                                <View style={styles.circle}><Text style={styles.circleText}>INSERT MATCH %</Text></View>
-                                <View style={styles.circle}><Text style={styles.circleText}>${item.amount}</Text></View>
-                                {/* <View style={styles.circle}><Text style={styles.circleText}>Due {'\n'} {item.deadline.toDate().getMonth().toString()}/{item.deadline.toDate().getDate().toString()}</Text></View> */}
-                            </View>
-                            
+                                <Text style={styles.title}>{item.title}</Text>
+                                <View style={styles.circleContainer}>
+                                    <View style={styles.circle}><Text style={styles.circleText}>INSERT MATCH %</Text></View>
+                                    <View style={styles.circle}><Text style={styles.circleText}>${item.amount}</Text></View>
+                                    {/* <View style={styles.circle}><Text style={styles.circleText}>Due {'\n'} {item.deadline.toDate().getMonth().toString()}/{item.deadline.toDate().getDate().toString()}</Text></View> */}
+                                </View>
 
-                        </Pressable>
-                    </ScholarshipCard>
-                    <AccentCard>
-                    <Image style={styles.like} source={LikeButton} />
-                    <Image style={styles.share} source={ShareButton} />
-                        <ApplyButton text="Apply!"/>
-                    </AccentCard></>
-                )}
 
-            />
+                            </Pressable>
+                        </ScholarshipCard>
+                            <AccentCard>
+                                <Image style={styles.like} source={LikeButton} />
+                                <Image style={styles.share} source={ShareButton} />
+                                <ApplyButton text="Apply!" />
+                            </AccentCard></>
+                    )}
+
+                />
             </View>
         </View>
     );
@@ -151,9 +155,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         backgroundColor: '#474747'
     },
-    circleContainer:{
-        flexDirection:'row',
-        justifyContent:'space-evenly'
+    circleContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-evenly'
     },
     listItem: {
         flex: 1,
@@ -173,7 +177,7 @@ const styles = StyleSheet.create({
     },
 
 
-    text : {
+    text: {
         color: "#000",
         fontSize: 24,
         // backgroundColor : "#3E4347",
@@ -182,22 +186,22 @@ const styles = StyleSheet.create({
         padding: 20,
     },
 
-    scholarshipTopRight : {
+    scholarshipTopRight: {
         height: 50,
         width: 50,
         position: 'absolute',
         top: 5, right: 10,
     },
 
-    settingsTopLeft : {
+    settingsTopLeft: {
         height: 50,
         width: 50,
         position: 'absolute',
-        top: 5, 
+        top: -30,
         left: 6,
     },
 
-    logoTopCenter : {
+    logoTopCenter: {
         height: 50,
         width: 50,
         position: 'absolute',
@@ -205,7 +209,7 @@ const styles = StyleSheet.create({
         left: 175
     },
 
-    underlineTopRight : {
+    underlineTopRight: {
         height: 3,
         width: 35,
         position: 'absolute',
@@ -220,7 +224,7 @@ const styles = StyleSheet.create({
         top: 17.5,
         left: 200
     },
-    
+
     like: {
         height: 30,
         width: 30,
@@ -229,22 +233,22 @@ const styles = StyleSheet.create({
         right: 200
     },
 
-    flexAdjustment : {
+    flexAdjustment: {
         flex: .9,
         top: 35
     },
     circle: {
         fllex: 1,
         height: 80,
-        width:80,
+        width: 80,
         borderColor: 'black',
         borderWidth: 5,
-        borderRadius: 80/2,
-        justifyContent:'center',
-        backgroundColor:'white'
+        borderRadius: 80 / 2,
+        justifyContent: 'center',
+        backgroundColor: 'white'
     },
-    circleText:{
-        textAlign:'center'
+    circleText: {
+        textAlign: 'center'
     }
 });
 

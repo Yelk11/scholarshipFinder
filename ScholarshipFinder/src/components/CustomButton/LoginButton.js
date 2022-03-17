@@ -13,7 +13,7 @@ const LoginButton = ({onPress, text, type = "PRIMARY", backColor, frontColor}) =
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#3B71F3',
+        backgroundColor: '#FFF',
         width: '100%',
     
         padding: 10,
