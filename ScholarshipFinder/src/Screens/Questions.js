@@ -1,15 +1,9 @@
 import React, { useState } from 'react';
-import { View, Button, Text, TextInput, Image, StyleSheet, useWindowDimensions, ScrollView, SafeAreaView, TouchableOpacity, Modal, Alert } from 'react-native';
+import { View, Text, TextInput, StyleSheet, ScrollView, TouchableOpacity, Modal } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import CustomButton from '../components/CustomButton/CustomButton';
-import scholarshipSearch from '../../assets/images/scholarship-search-button.png';
-import settingsButton from '../../assets/images/settings-button.png';
-import smallLogo from '../../assets/images/small-logo.png';
-import underlineScreen from '../../assets/images/current-tab.png';
-import Card from '../components/Card';
 import SecondaryCard from '../components/SecondaryCard';
 import { ListofMajors } from '../components/ListOfMajors';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
 
