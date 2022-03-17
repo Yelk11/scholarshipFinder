@@ -21,15 +21,15 @@ const Questions = () => {
                 satEBRW: satEBRW,
                 act: act,
                 // sport: sport
-                military:military,
-                incomeLevel: incomeLevel,
-                firstCollegeStudent: firstCollegeStudent,
-                classStanding: classStanding,
-                enrollmentStatus: enrollmentStatus,
-                major: major,
-                college: college,
-                degree: degree,
-                gpa: gpa
+                // military:military,
+                // incomeLevel: incomeLevel,
+                // firstCollegeStudent: firstCollegeStudent,
+                // classStanding: classStanding,
+                // enrollmentStatus: enrollmentStatus,
+                // major: major,
+                // college: college,
+                // degree: degree,
+                // gpa: gpa
             }, { merge: true })
         navigation.navigate('SuccessfullAccount')
     }
@@ -48,20 +48,20 @@ const Questions = () => {
     const [isModalVisible, setisModalVisible] = useState(false);
 
     const ref = firestore().collection('user_info').doc(auth().currentUser.uid)
-    const [highSchool, setHighSchol] = useState();
-    const [satMath, setSatMath] = useState();
-    const [satEBRW, setSatEBRW] = useState();
-    const [act, setAct] = useState();
+    const [highSchool, setHighSchool] = useState('');
+    const [satMath, setSatMath] = useState('');
+    const [satEBRW, setSatEBRW] = useState('');
+    const [act, setAct] = useState('');
     // const [sport, setSport] = useState([]);
-    const [military, setMilitary] = useState();
-    const [incomeLevel, setIncomeLevel] = useState();
-    const [firstCollegeStudent, setFirstCollegeStudent] = useState();
-    const [classStanding, setClassStanding] = useState();
-    const [enrollmentStatus, setEnrollmentStatus] = useState();
-    const [major, setMajor] = useState();
-    const [college, setCollege] = useState();
-    const [degree, setDegree] = useState();
-    const [gpa, setGpa] = useState();
+    const [military, setMilitary] = useState('');
+    const [incomeLevel, setIncomeLevel] = useState('');
+    const [firstCollegeStudent, setFirstCollegeStudent] = useState('');
+    const [classStanding, setClassStanding] = useState('');
+    const [enrollmentStatus, setEnrollmentStatus] = useState('');
+    const [major, setMajor] = useState('');
+    const [college, setCollege] = useState('');
+    const [degree, setDegree] = useState('');
+    const [gpa, setGpa] = useState('');
 
     const changeModalVisibility = (bool) => {
         setisModalVisible(bool)
