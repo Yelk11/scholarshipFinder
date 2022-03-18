@@ -9,21 +9,24 @@ db = firestore.client()
 
 
 data = {
-    u'amount': 2,
-    u'deadline': u'enddate',
-    u'opens': u'date',
-    u'organization': u'net solutions',
-    u'apply_url': u'applylink',
-    u'info_url': u'informationlink',
+    u'amount': 1000,
+    u'deadline': u'April 30, 2022',
+    u'organization': u'niche',
+    u'apply_url': u'https://www.niche.com/colleges/scholarships/save-for-college-scholarship/',
+    u'info_url': u'https://www.niche.com/colleges/scholarships/save-for-college-scholarship/',
 
 }
+
+# Add a new doc in collection 'scholarship' with ID '$1,000 Save For College Scholarship'
+db.collection(u'scholarships').document(u'$1,000 Save For College Scholarship').set(data)
+
 #********READ EACH HEADING BELOW********
 
 #***********BASIC SCHOLARSHIP SCRIPT LAYOUT***********
 #    u'amount': 2,
 #    u'deadline': u'enddate',
 #    u'opens': u'date',
-#    u'organization': u'net solutions',
+#    u'organization': u'net_solutions',
 #    u'apply_url': u'applylink',
 #    u'info_url': u'informationlink',
 
@@ -51,5 +54,3 @@ data = {
 # Array needs [] and commas to work
 # Boolean needs 1 AND 0, 1 is true and 0 is false
 # Timestamp isn't able to work
-# Add a new doc in collection 'cities' with ID 'LA'
-db.collection(u'scholarships').document(U'TEST 2').set(data)
