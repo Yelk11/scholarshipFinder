@@ -41,7 +41,7 @@ data = {
 }
 
 # Add a new doc in collection 'scholarship' with auto generated ID
-db.collection(u'test').document().set(data)
+db.collection(u'new_scholarships').document().set(data)
 
 #********READ EACH HEADING BELOW********
 
