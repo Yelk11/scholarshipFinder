@@ -73,7 +73,6 @@ const BrowseScholarships = () => {
                                 <View style={styles.circle}><Text style={styles.circleText}>INSERT MATCH %</Text></View>
                                 <View style={styles.circle}><Text style={styles.circleText}>${item.amount}</Text></View>
                                 {/* <View style={styles.circle}><Text style={styles.circleText}>Due {'\n'} {item.deadline.toDate().getMonth().toString()}/{item.deadline.toDate().getDate().toString()}</Text></View> */}
-                                //TODO
                             </View>
                             
 
