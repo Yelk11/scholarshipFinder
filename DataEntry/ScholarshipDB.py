@@ -1,24 +1,47 @@
 
 import firebase_admin
 from firebase_admin import credentials, firestore
+import datetime
 
-cred = credentials.Certificate("DataEntry/scholarshipfinder-fb492-firebase-adminsdk-illqy-a6c643e370.json")
+cred = credentials.Certificate("scholarshipfinder-fb492-firebase-adminsdk-illqy-a6c643e370.json")
 firebase_admin.initialize_app(cred)
 
 db = firestore.client()
 
 
+
+
 data = {
-    u'amount': 1000,
-    u'deadline': u'April 30, 2022',
-    u'organization': u'niche',
-    u'apply_url': u'https://www.niche.com/colleges/scholarships/save-for-college-scholarship/',
-    u'info_url': u'https://www.niche.com/colleges/scholarships/save-for-college-scholarship/',
+
+    u'title' : u'',
+    u'amount' : u'',
+    u'deadline' : datetime.datetime.strptime("01/30/22 00:00", "%m/%d/%y %H:%M"),
+    u'opens' : u'',
+    u'organization' : u'',
+    u'apply_url' : u'',
+    u'info_url' : u'',
+    u'race' : [], # 'black', 'white', 'asian'
+    u'us_citizen' : [], # us_citizen, permanent_resident, international_student, other
+    u'sex' : ['male', 'female', 'non-binary'], # male, female, non-binary
+    u'college' : [],
+    u'high_school' : [],
+    u'enrollment_status' : [], # full, part
+    u'class_standing' : [], #hs_freshman, hs_sophomore, hs_junior, hs_senior, freshman, sophomore, junior, senior
+    u'degree' : [], # ged, associate, bachelor, master, phd
+    u'major' : [], # see list of majors
+    u'gpa' : 0, # lowest eligible gpa
+    u'military' : [],
+    u'athletic_interests' : [],
+    u'sat_math' : 0, # lowest eligible score
+    u'sat_ebrw' : 0, # lowest eligible score
+    u'act' : 0, # lowest eligible score
+    u'first_college_student' : [], # first, not_first
+    u'income_level' : [], # low, low-mid, middle, mid-high, high
 
 }
 
-# Add a new doc in collection 'scholarship' with ID '$1,000 Save For College Scholarship'
-db.collection(u'scholarships').document(u'$1,000 Save For College Scholarship').set(data)
+# Add a new doc in collection 'scholarship' with auto generated ID
+db.collection(u'test').document().set(data)
 
 #********READ EACH HEADING BELOW********
 
