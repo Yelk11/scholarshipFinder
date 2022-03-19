@@ -117,35 +117,35 @@ const BrowseScholarships = () => {
             <Image style={styles.scholarshipTopRight} source={scholarshipFilter} />
             <Image style={styles.logoTopCenter} source={smallLogo} />
             <View style={styles.flexAdjustment}>
-                <FlatList
-                    data={scholarships}
-                    renderItem={({ item }) => (
-                        <><ScholarshipCard>
-                            <Pressable style={styles.listItem} onPress={() => navigation.navigate('ScholarshipDetails',
-                                {
-                                    name: item.title,
-                                    amount: item.amount,
-                                    deadline: item.deadline
-                                })}>
+            <FlatList
+                data={scholarships}
+                renderItem={({ item }) => (
+                    <><ScholarshipCard>
+                        <Pressable style={styles.listItem} onPress={() => navigation.navigate('ScholarshipDetails',
+                            {
+                                name: item.title,
+                                amount: item.amount,
+                                deadline: item.deadline
+                            })}>
 
-                                <Text style={styles.title}>{item.title}</Text>
-                                <View style={styles.circleContainer}>
-                                    <View style={styles.circle}><Text style={styles.circleText}>INSERT MATCH %</Text></View>
-                                    <View style={styles.circle}><Text style={styles.circleText}>${item.amount}</Text></View>
-                                    {/* <View style={styles.circle}><Text style={styles.circleText}>Due {'\n'} {item.deadline.toDate().getMonth().toString()}/{item.deadline.toDate().getDate().toString()}</Text></View> */}
-                                </View>
+                            <Text style={styles.title}>{item.title}</Text>
+                            <View style={styles.circleContainer}>
+                                <View style={styles.circle}><Text style={styles.circleText}>INSERT MATCH %</Text></View>
+                                <View style={styles.circle}><Text style={styles.circleText}>${item.amount}</Text></View>
+                                {/* <View style={styles.circle}><Text style={styles.circleText}>Due {'\n'} {item.deadline.toDate().getMonth().toString()}/{item.deadline.toDate().getDate().toString()}</Text></View> */}
+                            </View>
+                            
 
+                        </Pressable>
+                    </ScholarshipCard>
+                    <AccentCard>
+                    <Image style={styles.like} source={LikeButton} />
+                    <Image style={styles.share} source={ShareButton} />
+                        <ApplyButton text="Apply!"/>
+                    </AccentCard></>
+                )}
 
-                            </Pressable>
-                        </ScholarshipCard>
-                            <AccentCard>
-                                <Image style={styles.like} source={LikeButton} />
-                                <Image style={styles.share} source={ShareButton} />
-                                <ApplyButton text="Apply!" />
-                            </AccentCard></>
-                    )}
-
-                />
+            />
             </View>
         </View>
     );
