@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, ScrollView, TouchableOpacity, Modal } from 'react-native';
+import { View, Text, TextInput, StyleSheet, ScrollView, TouchableOpacity, Modal, ShadowPropTypesIOS } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import CustomButton from '../components/CustomButton/CustomButton';
 import SecondaryCard from '../components/SecondaryCard';
@@ -16,20 +16,20 @@ const Questions = () => {
             .collection('user_info')
             .doc(auth().currentUser.uid)
             .set({
-                highSchool: highSchool,
-                satMath: satMath,
-                satEBRW: satEBRW,
+                high_school: highSchool,
+                sat_math: satMath,
+                sat_ebrw: satEBRW,
                 act: act,
-                // sport: sport
-                // military:military,
-                // incomeLevel: incomeLevel,
-                // firstCollegeStudent: firstCollegeStudent,
-                // classStanding: classStanding,
-                // enrollmentStatus: enrollmentStatus,
-                // major: major,
-                // college: college,
-                // degree: degree,
-                // gpa: gpa
+                // sport: sport,
+                military:military,
+                income_level: incomeLevel,
+                first_college_student: firstCollegeStudent,
+                class_standing: classStanding,
+                enrollment_status: enrollmentStatus,
+                major: major,
+                college: college,
+                degree: degree,
+                gpa: gpa
             }, { merge: true })
         navigation.navigate('SuccessfullAccount')
     }
@@ -47,7 +47,6 @@ const Questions = () => {
 
     const [isModalVisible, setisModalVisible] = useState(false);
 
-    const ref = firestore().collection('user_info').doc(auth().currentUser.uid)
     const [highSchool, setHighSchool] = useState('');
     const [satMath, setSatMath] = useState('');
     const [satEBRW, setSatEBRW] = useState('');
@@ -66,9 +65,10 @@ const Questions = () => {
     const changeModalVisibility = (bool) => {
         setisModalVisible(bool)
     }
-
-
-
+    
+    const setData = (option) => {
+        setMajor(option)
+    }
     return (
         <View style={styles.container}>
 
@@ -109,7 +109,7 @@ const Questions = () => {
                     <TextInput placeholder="Enter a sport here (leave blank if none)"
                         placeholderTextColor="#FFFFFF"
                         //value = {FName}
-                        //onChangeText = {text => setFirstName(text)}
+                        onChangeText = {text => sport.add(text)}
                         style={styles.inputBox} />
                     <Text style={styles.text}>Sport 2</Text>
                     <TextInput placeholder="Enter a sport here (leave blank if none)"
@@ -270,7 +270,7 @@ const Questions = () => {
                     >
                         <ListofMajors
                             changeModalVisibility={changeModalVisibility}
-                            setData={major}
+                            setData={setData}
                         />
 
                     </Modal>
