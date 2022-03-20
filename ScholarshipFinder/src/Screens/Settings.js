@@ -9,6 +9,7 @@ import SettingsCard from '../SettingsCard';
 import SettingsButton from '../components/CustomButton/SettingsButton';
 import LogoutButton from '../components/CustomButton/LogoutButton';
 import LogoutIcon from '../../assets/images/logout-icon.png'
+import auth from '@react-native-firebase/auth';
 
 const Settings = (props) => {
     
@@ -38,7 +39,12 @@ const Settings = (props) => {
                 <SettingsButton text="Scholarship Feed" onPress={onFeedPressed}></SettingsButton>
                 <SettingsButton text="Post A Scholarship" onPress={PostScholarshipPressed}></SettingsButton>
                 <SettingsButton text="App Review"></SettingsButton>
-                <LogoutButton text="Logout" onPress={LogoutPressed}></LogoutButton>
+                <LogoutButton 
+                text="Logout" 
+                onPress={() => auth() 
+                .signOut() 
+                .then(() => navigation.navigate('Logout'))
+                .then(() => console.log('User Signed Out!'))}/>
                 <Image style={styles.logout} source={LogoutIcon}/>
             </SettingsCard>
         </View> 
