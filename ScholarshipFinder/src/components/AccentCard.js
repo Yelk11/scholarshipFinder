@@ -13,14 +13,14 @@ export default function AccentCard(props) {
 
         const styles = StyleSheet.create({
             card: {
-                borderRadius: 20,
+                borderRadius: 8,
                 elevation: 3,
                 backgroundColor: '#596066',
                 shadowOffset: {width: 1, height: 1},
                 shadowColor: '#333',
                 shadowOpacity: 0.3,
                 shadowRadius: 2,
-                marginTop: 3,
+                marginTop: 20,
                 marginBottom: -16,
                 marginHorizontal: 4,
                 bottom: 32

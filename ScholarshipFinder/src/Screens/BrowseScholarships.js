@@ -51,7 +51,7 @@ const BrowseScholarships = () => {
     }
     return (
         <View style={styles.container}>
-            <Pressable hitSlop={50} onPress={onSettingsPressed}>
+            <Pressable onPress={onSettingsPressed}>
                 <Image style={styles.settingsTopLeft} source={YellowSettingsButton} />
             </Pressable>
             <Image style={styles.scholarshipTopRight} source={scholarshipFilter} />
@@ -61,12 +61,12 @@ const BrowseScholarships = () => {
                 data={scholarships}
                 renderItem={({ item }) => (
                     <><ScholarshipCard>
-                        <Pressable style={styles.listItem} onPress={() => navigation.navigate('ScholarshipDetails',
+                        {/* <Pressable style={styles.listItem} onPress={() => navigation.navigate('ScholarshipDetails',
                             {
                                 name: item.title,
                                 amount: item.amount,
                                 deadline: item.deadline
-                            })}>
+                            })}> */}
 
                             <Text style={styles.title}>{item.title}</Text>
                             <View style={styles.circleContainer}>
@@ -76,12 +76,17 @@ const BrowseScholarships = () => {
                             </View>
                             
 
-                        </Pressable>
+                        {/* </Pressable> */}
                     </ScholarshipCard>
                     <AccentCard>
                     <Image style={styles.like} source={LikeButton} />
                     <Image style={styles.share} source={ShareButton} />
-                        <ApplyButton text="Apply!"/>
+                        <ApplyButton text="Learn More!" onPress={() => navigation.navigate('ScholarshipDetails',
+                        {
+                            name: item.title,
+                            amount: item.amount,
+                            deadline: item.deadline
+                        })}/>
                     </AccentCard></>
                 )}
 
