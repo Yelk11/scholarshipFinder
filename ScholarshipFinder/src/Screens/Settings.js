@@ -34,7 +34,7 @@ const Settings = (props) => {
             <Image style={styles.logoTopCenter} source={smallLogo} />
             <SettingsCard>
                 <Text style={styles.headertext}>Welcome Back!</Text>
-                <Text style={styles.text}>Mike Brown</Text>
+                <Text style={styles.text}>Nicholas Kramer</Text>
                 <SettingsButton text="Profile" onPress={GoToPersonalInfo}></SettingsButton>
                 <SettingsButton text="Scholarship Feed" onPress={onFeedPressed}></SettingsButton>
                 <SettingsButton text="Post A Scholarship" onPress={PostScholarshipPressed}></SettingsButton>

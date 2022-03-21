@@ -20,7 +20,7 @@ const EditPersonalInfo = (props) => {
 
     const CloseAccountPressed = () => navigation.navigate('AccountClosed')
 
-    const onQuestionPressed = () => navigation.navigate('BrowseScholarships')
+    const onQuestionPressed = () => navigation.navigate('Settings')
 
     const [shouldShow, setShouldShow] = useState(true);
 
@@ -56,7 +56,7 @@ const EditPersonalInfo = (props) => {
             
             <SecondaryCard>
             <Text style={styles.text}>Email</Text>
-            <TextInput placeholder="Mbrown@something.com"
+            <TextInput placeholder="nickdemo@gmail.com"
 	            placeholderTextColor="#FFFFFF" 
 	            style = { {backgroundColor :'#596066', borderColor: '#e8e8e8', 
 	            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"}}/>
@@ -373,7 +373,7 @@ const EditPersonalInfo = (props) => {
                         style = { {backgroundColor :'#596066', borderColor: '#e8e8e8',
                         borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"}}/>
             </SecondaryCard>
-            <CustomButton frontColor="#000000" backColor="#FFF" text="Save Changes" onPress={onQuestionPressed}/>
+            <WhiteButton frontColor="#000000" backColor="#FFF" text="Save Changes" onPress={onQuestionPressed}/>
 
             <WhiteButton text="Close Account" onPress={CloseAccountPressed}></WhiteButton>
 

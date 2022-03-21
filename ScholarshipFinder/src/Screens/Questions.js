@@ -319,8 +319,8 @@ const styles = StyleSheet.create({
 
     text: {
         color: "black",
-        fontSize: 16,
-        textAlign: 'center',
+        fontSize: 20,
+        textAlign: 'left',
     },
 
     scholarshipTopRight: {
