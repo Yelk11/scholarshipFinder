@@ -13,9 +13,20 @@ import AccentCard from '../components/AccentCard';
 import ApplyButton from '../components/CustomButton/ApplyButton';
 import LikeButton from '../../assets/images/like-button.png';
 import ShareButton from '../../assets/images/share-button.png';
+import emailjs from 'emailjs-com';
 
 const ScholarshipDetails = (props) => {
-    
+
+    const templateParams = {
+        name: 'Matt',
+        link: 'https://www.usra.edu/educational-activities-and-opportunities/usra-distinguished-undergraduate-awards',
+        email: 'mneighbour@oakland.edu',
+    }
+
+    function sendEmail() {
+        emailjs.send('service_xfm3dal', 'template_9piifjo', templateParams, '1iNE_5oYK6-Gs9dJS');
+    }
+
     const navigation = useNavigation();
 
     const GoBack = () => navigation.navigate('BrowseScholarships')
@@ -53,7 +64,7 @@ const ScholarshipDetails = (props) => {
             <AccentCard>
                     <Image style={styles.like} source={LikeButton} />
                     <Image style={styles.share} source={ShareButton} />
-                        <ApplyButton text="Apply!"/>
+                        <ApplyButton text="Apply!" onPress={sendEmail}/>
                     </AccentCard> 
             </View>
         </View> 
