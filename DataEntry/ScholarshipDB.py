@@ -20,6 +20,9 @@ data = {
     u'organization' : u'',
     u'apply_url' : u'',
     u'info_url' : u'',
+    u'login_required' : 1<0,
+    u'topic' : u'',
+    u'file_upload' : 1<0,
     u'race' : ['all'], # 'black', 'white', 'asian'
     u'us_citizen' : ['all'], # us_citizen, permanent_resident, international_student, other
     u'sex' : ['male', 'female', 'non-binary'], # male, female, non-binary
@@ -43,31 +46,7 @@ data = {
 # Add a new doc in collection 'scholarship' with auto generated ID
 db.collection(u'new_scholarships').document().set(data)
 
-#********READ EACH HEADING BELOW********
-
-#***********BASIC SCHOLARSHIP SCRIPT LAYOUT***********
-#    u'amount': 2,
-#    u'deadline': u'enddate',
-#    u'opens': u'date',
-#    u'organization': u'net_solutions',
-#    u'apply_url': u'applylink',
-#    u'info_url': u'informationlink',
-
-
-#*********USE ONLY IF APPLICABLE TO SCHOLARSHIP********
-#    u'race': u'B,W,L,NAT_AM, etc',
-#    u'citizenship': u'us_citizen, permanent_resident, etc',
-#    u'gender': u'M,F,Transgender, rather not say',
-#    u'enrollment_status': u'full_time, part_time',
-#    u'class_standing': [hs_freshman, hs_sophomore, hs_junior, hs_senior, col_freshman, col_sophomore, col_junior, col_senior],
-#    u'degree': u'associate, bachelor, graduate, masters, doctoral, professional, joint,',
-#    u'gpa': u'2.0 - 4.0',
-#
-#    u'login': u't or f',
-#    u'topic': u'*see cell C23 in "Scholarship attributes"*',
-#    u'file_upload': u't or f',
-#
-#    u'Military': u't or f'
+#********READ "Scholarship attributes" SHEETS FOR DETAILS********
 
 # **********EXAMPLES SECTION************
 #    u'amount': 6400,
