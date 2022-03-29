@@ -64,7 +64,7 @@ const ScholarshipDetails = (props) => {
             <AccentCard>
                     <Image style={styles.like} source={LikeButton} />
                     <Image style={styles.share} source={ShareButton} />
-                        <ApplyButton text="Apply!" onPress={sendEmail} onSubmit={sendEmail}/>
+                        <ApplyButton text="Apply!" onPress={sendEmail}/>
                     </AccentCard> 
             </View>
         </View> 
