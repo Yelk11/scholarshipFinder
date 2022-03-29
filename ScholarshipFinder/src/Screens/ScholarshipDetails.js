@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { View, Button, Text, StyleSheet, Image } from 'react-native';
+import { View, Button, Text, StyleSheet, Image, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import CustomButton from '../components/CustomButton/CustomButton';
 import scholarshipSearch from '../../assets/images/scholarship-search-button.png';
@@ -18,14 +18,17 @@ import emailjs from 'emailjs-com';
 const ScholarshipDetails = (props) => {
 
     const templateParams = {
-        name: 'Matt',
+        name: 'Nick',
         link: 'https://www.usra.edu/educational-activities-and-opportunities/usra-distinguished-undergraduate-awards',
-        email: 'mneighbour@oakland.edu',
+        email: 'kramenator13@gmail.com',
     }
 
     function sendEmail() {
-        emailjs.send('service_xfm3dal', 'template_9piifjo', templateParams, '1iNE_5oYK6-Gs9dJS');
-    }
+        emailjs.send('service_xfm3dal', 'template_9piifjo', templateParams, '1iNE_5oYK6-Gs9dJS')
+        .then(() => {
+            Alert.alert("An email has been sent to you. Please check your inbox to begin applying!");   
+    })
+}
 
     const navigation = useNavigation();
 
