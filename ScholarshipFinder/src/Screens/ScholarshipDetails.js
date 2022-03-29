@@ -14,10 +14,6 @@ import ApplyButton from '../components/CustomButton/ApplyButton';
 import LikeButton from '../../assets/images/like-button.png';
 import ShareButton from '../../assets/images/share-button.png';
 import emailjs from 'emailjs-com';
-import init from '@emailjs/browser'
-
-init()
-
 
 const ScholarshipDetails = (props) => {
 
