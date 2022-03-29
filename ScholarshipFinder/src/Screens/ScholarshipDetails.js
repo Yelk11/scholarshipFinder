@@ -18,9 +18,9 @@ import emailjs from 'emailjs-com';
 const ScholarshipDetails = (props) => {
 
     const templateParams = {
-        name: 'Test',
+        name: 'Matt',
         link: 'https://www.usra.edu/educational-activities-and-opportunities/usra-distinguished-undergraduate-awards',
-        email: 'scholarshipfinderou@gmail.com',
+        email: 'mneighbour@oakland.edu',
     }
 
     function sendEmail() {
