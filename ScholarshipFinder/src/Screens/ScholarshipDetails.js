@@ -14,13 +14,18 @@ import ApplyButton from '../components/CustomButton/ApplyButton';
 import LikeButton from '../../assets/images/like-button.png';
 import ShareButton from '../../assets/images/share-button.png';
 import emailjs from 'emailjs-com';
+import auth from '@react-native-firebase/auth'
+import firestore from '@react-native-firebase/firestore'
 
 const ScholarshipDetails = (props) => {
 
     const templateParams = {
-        name: 'Nick',
+        name: firestore()
+                .collection('user_info')
+                .doc(auth().currentUser.uid)
+                .get(),
         link: 'https://www.usra.edu/educational-activities-and-opportunities/usra-distinguished-undergraduate-awards',
-        email: 'kramenator13@gmail.com',
+        email: auth().currentUser.email,
     }
 
     function sendEmail() {
