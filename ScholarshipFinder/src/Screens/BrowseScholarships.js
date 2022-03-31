@@ -107,27 +107,27 @@ const BrowseScholarships = () => {
                     });
                 });
                 console.log(objectsArray[0])
-                total_attributes = 1;
+                total_attributes = 3;
 
                 for (let i = 0; i < objectsArray.length; i++) {
                     counter = 0;
                     
                     try {objectsArray[i].race.includes('black') || objectsArray[i].race.includes('all')? counter++ : null} catch (error) {total_attributes--;}
-                    // try {objectsArray[i].race.includes(citizenship) || objectsArray[i].race.includes('all')? counter++ : null} catch (error) {}
-                    // try {objectsArray[i].race.includes(gender) || objectsArray[i].race.includes('all')? counter++ : null} catch (error) {}
-                    // try {objectsArray[i].race.includes(college) || objectsArray[i].race.includes('all')? counter++ : null} catch (error) {}
-                    // try {objectsArray[i].race.includes(enrollmentStatus) || objectsArray[i].race.includes('all')? counter++ : null} catch (error) {}
-                    // try {objectsArray[i].race.includes(classStanding) || objectsArray[i].race.includes('all')? counter++ : null} catch (error) {}
-                    // try {objectsArray[i].race.includes(degree) || objectsArray[i].race.includes('all')? counter++ : null} catch (error) {}
-                    // try {objectsArray[i].race.includes(major) || objectsArray[i].race.includes('all')? counter++ : null} catch (error) {}
-                    // try {objectsArray[i].race.includes(gpa) || objectsArray[i].race.includes('all')? counter++ : null} catch (error) {}
-                    // try {objectsArray[i].race.includes(military) || objectsArray[i].race.includes('all')? counter++ : null} catch (error) {}
-                    // try {objectsArray[i].race.includes(highSchool) || objectsArray[i].race.includes('all')? counter++ : null} catch (error) {}
-                    // try {objectsArray[i].race.includes(satMath) || objectsArray[i].race.includes('all')? counter++ : null} catch (error) {}
-                    // try {objectsArray[i].race.includes(satEBRW) || objectsArray[i].race.includes('all')? counter++ : null} catch (error) {}
-                    // try {objectsArray[i].race.includes(act) || objectsArray[i].race.includes('all')? counter++ : null} catch (error) {}
-                    // try {objectsArray[i].race.includes(firstCollegeStudent) || objectsArray[i].race.includes('all')? counter++ : null} catch (error) {}
-                    // try {objectsArray[i].race.includes(incomeLevel) || objectsArray[i].race.includes('all')? counter++ : null} catch (error) {}
+                    try {objectsArray[i].us_citizen.includes(citizenship) || objectsArray[i].us_citizen.includes('all')? counter++ : null} catch (error) {total_attributes--;}
+                    try {objectsArray[i].sex.includes(gender) || objectsArray[i].sex.includes('all')? counter++ : null} catch (error) {total_attributes--;}
+                    try {objectsArray[i].college.includes(college) || objectsArray[i].college.includes('all')? counter++ : null} catch (error) {total_attributes--;}
+                    try {objectsArray[i].enrollment_status.includes(enrollmentStatus) || objectsArray[i].enrollment_status.includes('all')? counter++ : null} catch (error) {total_attributes--;}
+                    try {objectsArray[i].class_standing.includes(classStanding) || objectsArray[i].class_standing.includes('all')? counter++ : null} catch (error) {total_attributes--;}
+                    try {objectsArray[i].degree.includes(degree) || objectsArray[i].degree.includes('all')? counter++ : null} catch (error) {total_attributes--;}
+                    try {objectsArray[i].major.includes(major) || objectsArray[i].major.includes('all')? counter++ : null} catch (error) {total_attributes--;}
+                    try {objectsArray[i].gpa <= gpa || objectsArray[i].gpa.includes('all') ? counter++ : null} catch (error) {total_attributes--;}
+                    try {objectsArray[i].military.includes(military) || objectsArray[i].military.includes('all')? counter++ : null} catch (error) {total_attributes--;}
+                    try {objectsArray[i].high_school.includes(highSchool) || objectsArray[i].high_school.includes('all')? counter++ : null} catch (error) {total_attributes--;}
+                    try {objectsArray[i].sat_math <= satMath || objectsArray[i].sat_math.includes('all')? counter++ : null} catch (error) {total_attributes--;}
+                    try {objectsArray[i].sat_ebrw <= (satEBRW) || objectsArray[i].sat_ebrw.includes('all')? counter++ : null} catch (error) {total_attributes--;}
+                    try {objectsArray[i].act.includes(act) || objectsArray[i].act.includes('all')? counter++ : null} catch (error) {total_attributes--;}
+                    try {objectsArray[i].first_college_student.includes(firstCollegeStudent) || objectsArray[i].first_college_student.includes('all')? counter++ : null} catch (error) {total_attributes--;}
+                    try {objectsArray[i].income_level.includes(incomeLevel) || objectsArray[i].income_level.includes('all')? counter++ : null} catch (error) {total_attributes--;}
                     
                     
 
