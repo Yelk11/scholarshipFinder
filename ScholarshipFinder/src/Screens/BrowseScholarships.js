@@ -66,14 +66,31 @@ const BrowseScholarships = () => {
         setFirstCollegeStudent(data.firstCollegeStudent)
         setIncomeLevel(data.incomeLevel)
 
-    }
-    const get_match_percentage = (props) => {
-        props.attributes;
-        props.schol_attributes;
-        
-        return matched_attributes / props.schol_attributes;
+
     }
 
+    function add_match_percentage(scholarship_array) {
+        console.log(typeof scholarship_array[0])
+        for (let i = 0; i < scholarship_array.length; i++) {
+            scholarship_array[i]['match'] = calc_match_percentage();
+        }
+        console.log(scholarship_array[0])
+    }
+    function calc_match_percentage(i) {
+        return 100 - i
+    }
+    function sort_by_percentage(scholarship_array) {
+        return scholarship_array.sort(compare_function);
+    }
+
+    function compare_function(a, b) {
+        if (a[0] === b[0]) {
+            return 0;
+        }
+        else {
+            return (a[0] < b[0]) ? -1 : 1;
+        }
+    }
     const onSettingsPressed = () => {
         navigation.navigate('Settings');
     };
@@ -89,6 +106,36 @@ const BrowseScholarships = () => {
                         key: documentSnapshot.id,
                     });
                 });
+                console.log(objectsArray[0])
+                total_attributes = 1;
+
+                for (let i = 0; i < objectsArray.length; i++) {
+                    counter = 0;
+                    
+                    try {objectsArray[i].race.includes('black') || objectsArray[i].race.includes('all')? counter++ : null} catch (error) {total_attributes--;}
+                    // try {objectsArray[i].race.includes(citizenship) || objectsArray[i].race.includes('all')? counter++ : null} catch (error) {}
+                    // try {objectsArray[i].race.includes(gender) || objectsArray[i].race.includes('all')? counter++ : null} catch (error) {}
+                    // try {objectsArray[i].race.includes(college) || objectsArray[i].race.includes('all')? counter++ : null} catch (error) {}
+                    // try {objectsArray[i].race.includes(enrollmentStatus) || objectsArray[i].race.includes('all')? counter++ : null} catch (error) {}
+                    // try {objectsArray[i].race.includes(classStanding) || objectsArray[i].race.includes('all')? counter++ : null} catch (error) {}
+                    // try {objectsArray[i].race.includes(degree) || objectsArray[i].race.includes('all')? counter++ : null} catch (error) {}
+                    // try {objectsArray[i].race.includes(major) || objectsArray[i].race.includes('all')? counter++ : null} catch (error) {}
+                    // try {objectsArray[i].race.includes(gpa) || objectsArray[i].race.includes('all')? counter++ : null} catch (error) {}
+                    // try {objectsArray[i].race.includes(military) || objectsArray[i].race.includes('all')? counter++ : null} catch (error) {}
+                    // try {objectsArray[i].race.includes(highSchool) || objectsArray[i].race.includes('all')? counter++ : null} catch (error) {}
+                    // try {objectsArray[i].race.includes(satMath) || objectsArray[i].race.includes('all')? counter++ : null} catch (error) {}
+                    // try {objectsArray[i].race.includes(satEBRW) || objectsArray[i].race.includes('all')? counter++ : null} catch (error) {}
+                    // try {objectsArray[i].race.includes(act) || objectsArray[i].race.includes('all')? counter++ : null} catch (error) {}
+                    // try {objectsArray[i].race.includes(firstCollegeStudent) || objectsArray[i].race.includes('all')? counter++ : null} catch (error) {}
+                    // try {objectsArray[i].race.includes(incomeLevel) || objectsArray[i].race.includes('all')? counter++ : null} catch (error) {}
+                    
+                    
+
+                    objectsArray[i]['match'] = (counter / total_attributes) * 100;
+                    console.log(objectsArray[i].race)
+                    console.log(counter / total_attributes)
+                }
+                
                 setScholarships(objectsArray);
                 setLoading(false);
             }); return () => subscriber;
@@ -104,35 +151,35 @@ const BrowseScholarships = () => {
             <Image style={styles.scholarshipTopRight} source={scholarshipFilter} />
             <Image style={styles.logoTopCenter} source={smallLogo} />
             <View style={styles.flexAdjustment}>
-            <FlatList
-                data={scholarships}
-                renderItem={({ item }) => (
-                    <><ScholarshipCard>
-                        <Pressable style={styles.listItem} onPress={() => navigation.navigate('ScholarshipDetails',
-                            {
-                                name: item.title,
-                                amount: item.amount,
-                                deadline: item.deadline
-                            })}>
+                <FlatList
+                    data={scholarships}
+                    renderItem={({ item }) => (
+                        <><ScholarshipCard>
+                            <Pressable style={styles.listItem} onPress={() => navigation.navigate('ScholarshipDetails',
+                                {
+                                    name: item.title,
+                                    amount: item.amount,
+                                    deadline: item.deadline
+                                })}>
 
-                            <Text style={styles.title}>{item.title}</Text>
-                            <View style={styles.circleContainer}>
-                                <View style={styles.circle}><Text style={styles.circleText}>INSERT MATCH %</Text></View>
-                                <View style={styles.circle}><Text style={styles.circleText}>${item.amount}</Text></View>
-                                {/* <View style={styles.circle}><Text style={styles.circleText}>Due {'\n'} {item.deadline.toDate().getMonth().toString()}/{item.deadline.toDate().getDate().toString()}</Text></View> */}
-                            </View>
-                            
+                                <Text style={styles.title}>{item.title}</Text>
+                                <View style={styles.circleContainer}>
+                                    <View style={styles.circle}><Text style={styles.circleText}>%{item.match}</Text></View>
+                                    <View style={styles.circle}><Text style={styles.circleText}>${item.amount}</Text></View>
+                                    {/* <View style={styles.circle}><Text style={styles.circleText}>Due {'\n'} {item.deadline.toDate().getMonth().toString()}/{item.deadline.toDate().getDate().toString()}</Text></View> */}
+                                </View>
 
-                        </Pressable>
-                    </ScholarshipCard>
-                    <AccentCard>
-                    <Image style={styles.like} source={LikeButton} />
-                    <Image style={styles.share} source={ShareButton} />
-                        <ApplyButton text="Apply!"/>
-                    </AccentCard></>
-                )}
 
-            />
+                            </Pressable>
+                        </ScholarshipCard>
+                            <AccentCard>
+                                <Image style={styles.like} source={LikeButton} />
+                                <Image style={styles.share} source={ShareButton} />
+                                <ApplyButton text="Apply!" />
+                            </AccentCard></>
+                    )}
+
+                />
             </View>
         </View>
     );
