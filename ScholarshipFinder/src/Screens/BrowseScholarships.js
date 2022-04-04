@@ -69,28 +69,27 @@ const BrowseScholarships = () => {
 
     }
 
-    function add_match_percentage(scholarship_array) {
-        console.log(typeof scholarship_array[0])
-        for (let i = 0; i < scholarship_array.length; i++) {
-            scholarship_array[i]['match'] = calc_match_percentage();
-        }
-        console.log(scholarship_array[0])
-    }
-    function calc_match_percentage(i) {
-        return 100 - i
-    }
-    function sort_by_percentage(scholarship_array) {
-        return scholarship_array.sort(compare_function);
-    }
 
-    function compare_function(a, b) {
-        if (a[0] === b[0]) {
-            return 0;
-        }
-        else {
-            return (a[0] < b[0]) ? -1 : 1;
-        }
+    function my_sort(my_arr) {
+        
+
+        //Outer pass
+        for (let i = 0; i < my_arr.length; i++) {
+            //Inner pass
+            for (let j = 0; j < my_arr.length - i - 1; j++) {
+
+                //Value comparison using ascending order
+
+                if (my_arr[j + 1]['match'] > my_arr[j]['match']) {
+                    
+                    //Swapping
+                    [my_arr[j + 1], my_arr[j]] = [my_arr[j], my_arr[j + 1]]
+                }
+            }
+        };
+        return my_arr;
     }
+    
     const onSettingsPressed = () => {
         navigation.navigate('Settings');
     };
@@ -106,37 +105,42 @@ const BrowseScholarships = () => {
                         key: documentSnapshot.id,
                     });
                 });
-                console.log(objectsArray[0])
-                total_attributes = 3;
+                
 
                 for (let i = 0; i < objectsArray.length; i++) {
                     counter = 0;
-                    
-                    try {objectsArray[i].race.includes('black') || objectsArray[i].race.includes('all')? counter++ : null} catch (error) {total_attributes--;}
-                    try {objectsArray[i].us_citizen.includes(citizenship) || objectsArray[i].us_citizen.includes('all')? counter++ : null} catch (error) {total_attributes--;}
-                    try {objectsArray[i].sex.includes(gender) || objectsArray[i].sex.includes('all')? counter++ : null} catch (error) {total_attributes--;}
-                    try {objectsArray[i].college.includes(college) || objectsArray[i].college.includes('all')? counter++ : null} catch (error) {total_attributes--;}
-                    try {objectsArray[i].enrollment_status.includes(enrollmentStatus) || objectsArray[i].enrollment_status.includes('all')? counter++ : null} catch (error) {total_attributes--;}
-                    try {objectsArray[i].class_standing.includes(classStanding) || objectsArray[i].class_standing.includes('all')? counter++ : null} catch (error) {total_attributes--;}
-                    try {objectsArray[i].degree.includes(degree) || objectsArray[i].degree.includes('all')? counter++ : null} catch (error) {total_attributes--;}
-                    try {objectsArray[i].major.includes(major) || objectsArray[i].major.includes('all')? counter++ : null} catch (error) {total_attributes--;}
-                    try {objectsArray[i].gpa <= gpa || objectsArray[i].gpa.includes('all') ? counter++ : null} catch (error) {total_attributes--;}
-                    try {objectsArray[i].military.includes(military) || objectsArray[i].military.includes('all')? counter++ : null} catch (error) {total_attributes--;}
-                    try {objectsArray[i].high_school.includes(highSchool) || objectsArray[i].high_school.includes('all')? counter++ : null} catch (error) {total_attributes--;}
-                    try {objectsArray[i].sat_math <= satMath || objectsArray[i].sat_math.includes('all')? counter++ : null} catch (error) {total_attributes--;}
-                    try {objectsArray[i].sat_ebrw <= (satEBRW) || objectsArray[i].sat_ebrw.includes('all')? counter++ : null} catch (error) {total_attributes--;}
-                    try {objectsArray[i].act.includes(act) || objectsArray[i].act.includes('all')? counter++ : null} catch (error) {total_attributes--;}
-                    try {objectsArray[i].first_college_student.includes(firstCollegeStudent) || objectsArray[i].first_college_student.includes('all')? counter++ : null} catch (error) {total_attributes--;}
-                    try {objectsArray[i].income_level.includes(incomeLevel) || objectsArray[i].income_level.includes('all')? counter++ : null} catch (error) {total_attributes--;}
-                    
-                    
+                    total_attributes = 16;
 
-                    objectsArray[i]['match'] = (counter / total_attributes) * 100;
-                    console.log(objectsArray[i].race)
-                    console.log(counter / total_attributes)
+                    try { objectsArray[i].race.includes('black') || objectsArray[i].race.includes('all') ? counter++ : null } catch (error) { total_attributes--; }
+                    try { objectsArray[i].us_citizen.includes(citizenship) || objectsArray[i].us_citizen.includes('all') ? counter++ : null } catch (error) { total_attributes--; }
+                    try { objectsArray[i].sex.includes(gender) || objectsArray[i].sex.includes('all') ? counter++ : null } catch (error) { total_attributes--; }
+                    try { objectsArray[i].college.includes(college) || objectsArray[i].college.includes('all') ? counter++ : null } catch (error) { total_attributes--; }
+                    try { objectsArray[i].enrollment_status.includes(enrollmentStatus) || objectsArray[i].enrollment_status.includes('all') ? counter++ : null } catch (error) { total_attributes--; }
+                    try { objectsArray[i].class_standing.includes(classStanding) || objectsArray[i].class_standing.includes('all') ? counter++ : null } catch (error) { total_attributes--; }
+                    try { objectsArray[i].degree.includes(degree) || objectsArray[i].degree.includes('all') ? counter++ : null } catch (error) { total_attributes--; }
+                    try { objectsArray[i].major.includes(major) || objectsArray[i].major.includes('all') ? counter++ : null } catch (error) { total_attributes--; }
+                    try { objectsArray[i].gpa <= gpa || objectsArray[i].gpa.includes('all') ? counter++ : null } catch (error) { total_attributes--; }
+                    try { objectsArray[i].military.includes(military) || objectsArray[i].military.includes('all') ? counter++ : null } catch (error) { total_attributes--; }
+                    try { objectsArray[i].high_school.includes(highSchool) || objectsArray[i].high_school.includes('all') ? counter++ : null } catch (error) { total_attributes--; }
+                    try { objectsArray[i].sat_math <= satMath || objectsArray[i].sat_math.includes('all') ? counter++ : null } catch (error) { total_attributes--; }
+                    try { objectsArray[i].sat_ebrw <= (satEBRW) || objectsArray[i].sat_ebrw.includes('all') ? counter++ : null } catch (error) { total_attributes--; }
+                    try { objectsArray[i].act.includes(act) || objectsArray[i].act.includes('all') ? counter++ : null } catch (error) { total_attributes--; }
+                    try { objectsArray[i].first_college_student.includes(firstCollegeStudent) || objectsArray[i].first_college_student.includes('all') ? counter++ : null } catch (error) { total_attributes--; }
+                    try { objectsArray[i].income_level.includes(incomeLevel) || objectsArray[i].income_level.includes('all') ? counter++ : null } catch (error) { total_attributes--; }
+
+
+                    
+                    if(total_attributes == 0 || counter == 0){
+                        objectsArray[i]['match'] = 0;
+                    }else{
+                        objectsArray[i]['match'] = ((counter / total_attributes) * 100).toFixed(0);
+                    }
+                    // console.log(counter);
+                    console.log((counter / total_attributes) * 100);
+                    
                 }
                 
-                setScholarships(objectsArray);
+                setScholarships(my_sort(objectsArray));
                 setLoading(false);
             }); return () => subscriber;
     }, []);
