@@ -61,12 +61,6 @@ const BrowseScholarships = () => {
                 data={scholarships}
                 renderItem={({ item }) => (
                     <><ScholarshipCard>
-                        {/* <Pressable style={styles.listItem} onPress={() => navigation.navigate('ScholarshipDetails',
-                            {
-                                name: item.title,
-                                amount: item.amount,
-                                deadline: item.deadline
-                            })}> */}
 
                             <Text style={styles.title}>{item.title}</Text>
                             <View style={styles.circleContainer}>
@@ -85,7 +79,8 @@ const BrowseScholarships = () => {
                         {
                             name: item.title,
                             amount: item.amount,
-                            deadline: item.deadline
+                            deadline: item.deadline,
+                            apply_url: item.apply_url
                         })}/>
                     </AccentCard></>
                 )}

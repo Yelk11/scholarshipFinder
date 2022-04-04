@@ -148,10 +148,10 @@ function BrowseScholarshipsScreen({ navigation }) {
 }
 
 function ScholarshipDetailsScreen({ route, navigation }) {
-  const { name, amount, deadline } = route.params;
+  const { name, amount, deadline, apply_url } = route.params;
   return (
     <SafeAreaView style={styles.root}>
-      <ScholarshipDetails name={name} amount={amount} deadline={deadline} />
+      <ScholarshipDetails name={name} amount={amount} deadline={deadline} apply_url={apply_url} />
     </SafeAreaView>
   );
 }
