@@ -20,10 +20,10 @@ import firestore from '@react-native-firebase/firestore'
 const ScholarshipDetails = (props) => {
 
     const templateParams = {
-        name: firestore()
-            .collection('user_info')
-            .doc(auth().currentUser.uid)
-            .get().first_name,
+        // name: firestore()
+        //     .collection('user_info')
+        //     .doc(auth().currentUser.uid)
+        //     .get().first_name,
         link: props.apply_url,
         email: auth().currentUser.email,
     }
