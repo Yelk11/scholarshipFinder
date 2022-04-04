@@ -23,7 +23,7 @@ const ScholarshipDetails = (props) => {
         name: firestore()
                 .collection('user_info')
                 .doc(auth().currentUser.uid)
-                .get(),
+                .get().first_name,
         link: 'https://www.usra.edu/educational-activities-and-opportunities/usra-distinguished-undergraduate-awards',
         email: auth().currentUser.email,
     }
@@ -150,8 +150,7 @@ const styles = StyleSheet.create({
         width: 50,
         position: 'absolute',
         top: 5,
-        justif5yContent: 'center'
-
+        justifyContent: 'center'
     },
 
     flexAdjustment : {
