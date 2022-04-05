@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { TouchableOpacity, FlatList, Image, Text, ActivityIndicator, View, StyleSheet } from 'react-native';
+import { FlatList, Image, Text, ActivityIndicator, View, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import firestore from '@react-native-firebase/firestore';
 
-import CustomButton from '../components/CustomButton/CustomButton';
-import scholarshipSearch from '../../assets/images/scholarship-search-button.png';
-import settingsButton from '../../assets/images/settings-button.png';
 import smallLogo from '../../assets/images/app-logo-dark-background.png';
-import underlineScreen from '../../assets/images/current-tab.png';
 import ScholarshipCard from '../components/ScholarshipCard';
 import AccentCard from '../components/AccentCard';
 import ApplyButton from '../components/CustomButton/ApplyButton';
@@ -17,12 +13,12 @@ import ShareButton from '../../assets/images/share-button.png';
 import scholarshipFilter from '../../assets/images/yellow-filter.png';
 import YellowSettingsButton from '../../assets/images/settings-gear.png';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
-import WhiteCircle from '../../assets/images/white-circle.png';
+
 
 
 const BrowseScholarships = () => {
-    const [loading, setLoading] = useState(true); // Set loading to true on component mount
-    const [scholarships, setScholarships] = useState([]); // Initial empty array of scholarships
+    const [loading, setLoading] = useState(true);
+    const [scholarships, setScholarships] = useState([]);
 
     const navigation = useNavigation();
 
@@ -33,10 +29,9 @@ const BrowseScholarships = () => {
 
     useEffect(() => {
         const subscriber = firestore().collection('scholarships').get().then((querySnapshot) => {
-            // console.log('Total Scholarships: ', querySnapshot.size);
+            
             const objectsArray = [];
             querySnapshot.forEach(documentSnapshot => {
-                // console.log('User ID: ', documentSnapshot.id, documentSnapshot.data());
                 objectsArray.push({
                     ...documentSnapshot.data(),
                     key: documentSnapshot.id,
@@ -66,16 +61,12 @@ const BrowseScholarships = () => {
                             <View style={styles.circleContainer}>
                                 <View style={styles.circle}><Text style={styles.circleText}>INSERT MATCH %</Text></View>
                                 <View style={styles.circle}><Text style={styles.circleText}>${item.amount}</Text></View>
-                                {/* <View style={styles.circle}><Text style={styles.circleText}>Due {'\n'} {item.deadline.toDate().getMonth().toString()}/{item.deadline.toDate().getDate().toString()}</Text></View> */}
                             </View>
-                            
-
-                        {/* </Pressable> */}
                     </ScholarshipCard>
                     <AccentCard>
                     <Image style={styles.like} source={LikeButton} />
                     <Image style={styles.share} source={ShareButton} />
-                        <ApplyButton text="Learn More!" onPress={() => navigation.navigate('ScholarshipDetails',
+                        <ApplyButton text="Apply" onPress={() => navigation.navigate('ScholarshipDetails',
                         {
                             name: item.title,
                             amount: item.amount,
@@ -84,7 +75,6 @@ const BrowseScholarships = () => {
                         })}/>
                     </AccentCard></>
                 )}
-
             />
             </View>
         </View>
@@ -117,12 +107,9 @@ const styles = StyleSheet.create({
         marginLeft: 5,
         color: "black"
     },
-
-
     text : {
         color: "#000",
         fontSize: 24,
-        // backgroundColor : "#3E4347",
         textAlign: 'left',
         width: "100%",
         padding: 20,
@@ -179,6 +166,7 @@ const styles = StyleSheet.create({
         flex: .9,
         top: 35
     },
+
     circle: {
         fllex: 1,
         height: 80,
@@ -189,6 +177,7 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         backgroundColor:'white'
     },
+
     circleText:{
         textAlign:'center'
     }

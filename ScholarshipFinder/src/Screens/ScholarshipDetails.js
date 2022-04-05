@@ -1,11 +1,8 @@
-import React, { useState } from 'react';
-import { View, Button, Text, StyleSheet, Image, Alert } from 'react-native';
+import React from 'react';
+import { View, Text, StyleSheet, Image, Alert, ProgressBarAndroidComponent } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import CustomButton from '../components/CustomButton/CustomButton';
-import scholarshipSearch from '../../assets/images/scholarship-search-button.png';
 import BackButton from '../../assets/images/back-button.png';
 import smallLogo from '../../assets/images/app-logo-dark-background.png';
-import underlineScreen from '../../assets/images/current-tab.png';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import DetailsCard from '../components/DetailsCard';
 import infoIcon from '../../assets/images/info.png';
@@ -15,15 +12,10 @@ import LikeButton from '../../assets/images/like-button.png';
 import ShareButton from '../../assets/images/share-button.png';
 import emailjs from 'emailjs-com';
 import auth from '@react-native-firebase/auth'
-import firestore from '@react-native-firebase/firestore'
 
 const ScholarshipDetails = (props) => {
-
+    
     const templateParams = {
-        // name: firestore()
-        //     .collection('user_info')
-        //     .doc(auth().currentUser.uid)
-        //     .get().first_name,
         link: props.apply_url,
         email: auth().currentUser.email,
     }
@@ -45,7 +37,6 @@ const ScholarshipDetails = (props) => {
             <Pressable onPress={GoBack}>
                 <Image style={styles.settingsTopLeft} source={BackButton} />
             </Pressable>
-            {/* <Image style={styles.scholarshipTopRight} source={scholarshipSearch} /> */}
             <Image style={styles.logoTopCenter} source={smallLogo} />
             <View style={styles.flexAdjustment}>
                 <DetailsCard>
@@ -117,7 +108,6 @@ const styles = StyleSheet.create({
         color: "black",
         fontSize: 20,
         right: 50,
-        //width: "100%",
         textDecorationLine: 'underline',
         fontWeight: 'bold',
         marginTop: 10
