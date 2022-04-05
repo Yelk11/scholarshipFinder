@@ -15,9 +15,9 @@ const WelcomeScreen = () => {
     return (
         <View style={styles.container}>
             <Image style={styles.logoTopCenter} source={initialLogo} />
-            <Text style={styles.text}>Find and apply to Scholarships that actually pertain to you</Text>
+            <Text style={styles.text}>Find and apply to Scholarships that actually pertain to you.</Text>
             <InitialScreenCard>
-                <CustomButton frontColor="#000000" backColor="#FFF" text="Sign In" onPress={onUserSignInPressed} />
+                <CustomButton frontColor="#000000" backColor="#FFF" text="Sign in" onPress={onUserSignInPressed} />
                 <CustomButton frontColor="#000000" backColor="#FFF" text="Create an account" onPress={onUserCreateAccountPressed} />
             </InitialScreenCard>
         </View>
@@ -43,13 +43,14 @@ const styles = StyleSheet.create({
         fontSize: 32,
         textAlign: "center",
         padding: 1,
-        top: -30,
+        top: -20,
+        fontWeight: 'bold'
 
     },
 
     logoTopCenter: {
-        height: 100,
-        width: 100,
+        height: 150,
+        width: 150,
         position: 'absolute',
         top: 55,
         justifyContent: 'center'

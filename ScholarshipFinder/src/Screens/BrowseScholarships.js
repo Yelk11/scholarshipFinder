@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FlatList, Image, Text, ActivityIndicator, View, StyleSheet } from 'react-native';
+import { FlatList, Image, Text, ActivityIndicator, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import firestore from '@react-native-firebase/firestore';
@@ -46,10 +46,10 @@ const BrowseScholarships = () => {
     }
     return (
         <View style={styles.container}>
-            <Pressable onPress={onSettingsPressed}>
+            <TouchableOpacity onPress={onSettingsPressed}>
                 <Image style={styles.settingsTopLeft} source={YellowSettingsButton} />
-            </Pressable>
-            <Image style={styles.scholarshipTopRight} source={scholarshipFilter} />
+            </TouchableOpacity>
+            {/* <Image style={styles.scholarshipTopRight} source={scholarshipFilter} /> */}
             <Image style={styles.logoTopCenter} source={smallLogo} />
             <View style={styles.flexAdjustment}>
             <FlatList
@@ -64,9 +64,9 @@ const BrowseScholarships = () => {
                             </View>
                     </ScholarshipCard>
                     <AccentCard>
-                    <Image style={styles.like} source={LikeButton} />
-                    <Image style={styles.share} source={ShareButton} />
-                        <ApplyButton text="Apply" onPress={() => navigation.navigate('ScholarshipDetails',
+                    {/* <Image style={styles.like} source={LikeButton} />
+                    <Image style={styles.share} source={ShareButton} /> */}
+                        <ApplyButton text="Apply!" onPress={() => navigation.navigate('ScholarshipDetails',
                         {
                             name: item.title,
                             amount: item.amount,
@@ -89,7 +89,8 @@ const styles = StyleSheet.create({
     },
     circleContainer:{
         flexDirection:'row',
-        justifyContent:'space-evenly'
+        justifyContent:'space-evenly',
+        paddingBottom: 25
     },
     listItem: {
         flex: 1,
@@ -101,7 +102,8 @@ const styles = StyleSheet.create({
     title: {
         marginLeft: 5,
         fontWeight: 'bold',
-        color: 'black'
+        color: 'black',
+        paddingBottom: 5
     },
     info: {
         marginLeft: 5,
@@ -126,16 +128,16 @@ const styles = StyleSheet.create({
         height: 50,
         width: 50,
         position: 'absolute',
-        top: -30, 
+        top: -28, 
         left: 6,
     },
 
     logoTopCenter : {
-        height: 50,
-        width: 50,
+        height: 55,
+        width: 55,
         position: 'absolute',
         top: 5,
-        left: 175
+        left: 180
     },
 
     underlineTopRight : {
@@ -172,7 +174,7 @@ const styles = StyleSheet.create({
         height: 80,
         width:80,
         borderColor: 'black',
-        borderWidth: 5,
+        borderWidth: 3,
         borderRadius: 80/2,
         justifyContent:'center',
         backgroundColor:'white'

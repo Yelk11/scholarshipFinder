@@ -54,6 +54,7 @@ const UserSignIn = () => {
                     value={email}
                     onChangeText={text => setEmail(text)}
                     style={{
+                        fontWeight: 'bold',
                         backgroundColor: '#596066',
                         width: '100%',
                         borderColor: '#e8e8e8',
@@ -67,6 +68,7 @@ const UserSignIn = () => {
                     onChangeText={text => setPassword(text)}
                     secureTextEntry={true}
                     style={{
+                        fontWeight: 'bold',
                         backgroundColor: '#596066',
                         width: '100%',
                         borderColor: '#e8e8e8',
@@ -99,12 +101,21 @@ const styles = StyleSheet.create({
     },
 
     logoTopCenter: {
-        height: 100,
-        width: 100,
+        height: 150,
+        width: 150,
         position: 'absolute',
-        top: 55,
+        top: 115,
         justifyContent: 'center'
     },
+
+    text: {
+        color: "white",
+        fontSize: 32,
+        textAlign: "center",
+        padding: 1,
+        top: -30,
+        fontWeight: 'bold'
+    }
 });
 
 export default UserSignIn;

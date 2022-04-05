@@ -30,7 +30,8 @@ const ForgotPassword = () => {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>Enter your email address to reset password</Text>
+            <Image style={styles.logoTopCenter} source={initialLogo} />
+            <Text style={styles.text}>Enter your email address to reset your password.</Text>
             <LoginSystemCard>
                 <TextInput placeholder="Email"
                     placeholderTextColor="#FFFFFF"
@@ -38,6 +39,7 @@ const ForgotPassword = () => {
                     value={email}
                     onChangeText={text => setEmail(text)}
                     style={{
+                        fontWeight: 'bold',
                         backgroundColor: '#596066',
                         width: '100%',
                         borderColor: '#e8e8e8',
@@ -57,7 +59,7 @@ const styles = StyleSheet.create({
         //flexStart: .2,
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "#FFCE31",
+        backgroundColor: "#3E4347",
         flexDirection: "row",
         //display:"flex",
     },
@@ -68,12 +70,21 @@ const styles = StyleSheet.create({
     },
 
     text: {
-        color: "black",
+        color: "white",
         fontSize: 32,
         textAlign: "center",
         padding: 1,
-        top: -30,
+        top: -20,
+        fontWeight: 'bold'
 
+    },
+
+    logoTopCenter: {
+        height: 150,
+        width: 150,
+        position: 'absolute',
+        top: 60,
+        justifyContent: 'center'
     },
 
 });

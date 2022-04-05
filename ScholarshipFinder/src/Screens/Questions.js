@@ -316,6 +316,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#3E4347",
     },
     inputBox: {
+        fontWeight: 'bold',
         backgroundColor: '#596066', borderColor: '#e8e8e8',
         borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"
     },
@@ -328,6 +329,7 @@ const styles = StyleSheet.create({
         color: "black",
         fontSize: 20,
         textAlign: 'left',
+        fontWeight: 'bold'
     },
 
     scholarshipTopRight: {
@@ -369,7 +371,8 @@ const styles = StyleSheet.create({
         marginVertical: 5,
         alignItems: 'center',
         borderRadius: 5,
-        backgroundColor: "white"
+        backgroundColor: "white",
+        fontWeight: 'bold'
     }
 
 })
