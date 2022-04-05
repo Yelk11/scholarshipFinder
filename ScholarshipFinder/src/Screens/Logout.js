@@ -13,7 +13,7 @@ const Logout = (props) => {
     return(
         <View style={styles.container}>
             <Image style={styles.logoTopCenter} source={initialLogo} />
-            <Text style={styles.text}>You have successfully logged out</Text>
+            <Text style={styles.text}>You have successfully logged out.</Text>
             <WhiteButton text="Continue" onPress={Welcome}></WhiteButton>
         </View> 
     );
@@ -32,7 +32,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         width: "100%",
         paddingBottom: 10,
-        top: -30
+        top: -30,
+        fontWeight: 'bold'
     },
 
     logoTopCenter: {

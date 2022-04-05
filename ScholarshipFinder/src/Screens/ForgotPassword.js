@@ -31,7 +31,7 @@ const ForgotPassword = () => {
     return (
         <View style={styles.container}>
             <Image style={styles.logoTopCenter} source={initialLogo} />
-            <Text style={styles.text}>Enter your email address to reset your password</Text>
+            <Text style={styles.text}>Enter your email address to reset your password.</Text>
             <LoginSystemCard>
                 <TextInput placeholder="Email"
                     placeholderTextColor="#FFFFFF"
