@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: '#FFF',
         width: '100%',
-    
+        borderWidth: 1,
         padding: 10,
         marginVertical: 7,
         alignItems: 'center',
@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
         text: {
             fontWeight: 'bold',
             color: 'black',
+            fontSize: 20
         },
         text_tertiary: {
             color: 'gray',

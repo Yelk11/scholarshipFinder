@@ -61,8 +61,8 @@ const ScholarshipDetails = (props) => {
                     <Text style={styles.text}>{'\u2B24'} Source 2</Text>
                 </DetailsCard>
                 <AccentCard>
-                    <Image style={styles.like} source={LikeButton} />
-                    <Image style={styles.share} source={ShareButton} />
+                    {/* <Image style={styles.like} source={LikeButton} />
+                    <Image style={styles.share} source={ShareButton} /> */}
                     <ApplyButton text="Apply!" onPress={sendEmail} />
                 </AccentCard>
             </View>
@@ -136,8 +136,8 @@ const styles = StyleSheet.create({
     },
 
     logoTopCenter: {
-        height: 50,
-        width: 50,
+        height: 55,
+        width: 55,
         position: 'absolute',
         top: 5,
         justifyContent: 'center'

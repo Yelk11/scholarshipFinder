@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
         marginTop: 15,
         marginBottom: 15,
         alignItems: 'center',
-        borderRadius: 25,
+        borderRadius: 16,
         borderWidth: 1,
         borderColor: "black"
         },
@@ -34,7 +34,8 @@ const styles = StyleSheet.create({
         text: {
             color: 'black',
             fontSize: 20,
-            textDecorationLine: 'underline'
+            fontWeight: 'bold'
+            // textDecorationLine: 'underline'
         },
         text_tertiary: {
             color: 'gray',

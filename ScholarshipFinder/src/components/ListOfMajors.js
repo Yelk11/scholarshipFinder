@@ -354,6 +354,7 @@ const styles = StyleSheet.create({
         alignItems: 'flex-start'
     },
     text: {
+        color: 'black',
         margin: 20,
         fontSize: 20,
         fontWeight: 'bold'
