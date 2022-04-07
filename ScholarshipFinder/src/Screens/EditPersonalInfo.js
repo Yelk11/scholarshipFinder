@@ -84,6 +84,7 @@ const EditPersonalInfo = (props) => {
 	            placeholderTextColor="#FFFFFF"
 	            style = { {backgroundColor :'#596066', borderColor: '#e8e8e8', 
 	            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"}}/>
+                
             <TextInput placeholder="Last Name"
 	            placeholderTextColor="#FFFFFF"
 	            style = { {backgroundColor :'#596066', borderColor: '#e8e8e8',

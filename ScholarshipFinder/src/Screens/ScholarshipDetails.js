@@ -10,7 +10,6 @@ import AccentCard from '../components/AccentCard';
 import ApplyButton from '../components/CustomButton/ApplyButton';
 import LikeButton from '../../assets/images/like-button.png';
 import ShareButton from '../../assets/images/share-button.png';
-import emailjs from 'emailjs-com';
 import auth from '@react-native-firebase/auth'
 
 const ScholarshipDetails = (props) => {
