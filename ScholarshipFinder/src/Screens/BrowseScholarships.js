@@ -62,6 +62,21 @@ const BrowseScholarships = () => {
                                 <View style={styles.circle}><Text style={styles.circleText}>INSERT MATCH %</Text></View>
                                 <View style={styles.circle}><Text style={styles.circleText}>${item.amount}</Text></View>
                             </View>
+                    <Text style={styles.headers}>Requirements Met</Text>
+                    <Text style={styles.smallheader}>IT Major</Text>
+                    <Text style={styles.smallheader}>Full Time Student</Text>
+                    <Text style={styles.smallheader}>Bachelors</Text>
+                    <Text style={styles.smallheader}>GPA</Text>
+                    <Text style={styles.headers}>Application Guide</Text>
+                    <Text style={styles.detailtext}>{'\u2B24'} 1000 - 2000 word essay</Text>
+                    <Text style={styles.detailtext}>{'\u2B24'} “The role of technology companies in transforming the world and altering the social fabric."</Text>
+                    <Text style={styles.headers}>Submission Format</Text>
+                    <Text style={styles.detailtext}>{'\u2B24'} No Log-in Required</Text>
+                    <Text style={styles.detailtext}>{'\u2B24'} Google Doc Submission</Text>
+                    <Text style={styles.detailtext}>{'\u2B24'} File Upload</Text>
+                    <Text style={styles.headers}>More Information</Text>
+                    <Text style={styles.detailtext}>{'\u2B24'} Source 1</Text>
+                    <Text style={styles.detailtext}>{'\u2B24'} Source 2</Text>
                     </ScholarshipCard>
                     <AccentCard>
                     {/* <Image style={styles.like} source={LikeButton} />
@@ -90,7 +105,7 @@ const styles = StyleSheet.create({
     circleContainer:{
         flexDirection:'row',
         justifyContent:'space-evenly',
-        paddingBottom: 25
+        paddingBottom: 2
     },
     listItem: {
         flex: 1,
@@ -182,7 +197,29 @@ const styles = StyleSheet.create({
 
     circleText:{
         textAlign:'center'
-    }
+    },
+    
+    smallheader: {
+        color: "black",
+        fontSize: 16,
+        left: 20,
+        fontWeight: 'bold'
+    },
+
+    headers: {
+        color: "black",
+        fontSize: 20,
+        left: 5,
+        textDecorationLine: 'underline',
+        fontWeight: 'bold',
+    },
+
+    detailtext: {
+        color: "black",
+        fontSize: 14,
+        paddingBottom: 25,
+        left: 5
+    },
 });
 
 export default BrowseScholarships;
