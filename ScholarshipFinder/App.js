@@ -31,7 +31,7 @@ const App = () => {
     <NavigationContainer>
 
       <Stack.Navigator
-        initialRouteName="WelcomeScreen"
+        initialRouteName="BrowseScholarships"
         screenOptions={{
 
           headerRight: () => (
@@ -39,7 +39,7 @@ const App = () => {
               onPress={() =>
                 auth()
                   .signOut()
-                  .then(() => console.log('User signed out!'))}
+                  .then(() => console.log('User signed out'))}
               title="Info"
               color="#fff"
             />
