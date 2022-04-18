@@ -1,12 +1,11 @@
 // In App.js in a new project
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, View, Text, SafeAreaView, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import UserSignIn from './src/Screens/UserSignIn';
 import Questions from './src/Screens/Questions';
 import BrowseScholarships from './src/Screens/BrowseScholarships';
-import ScholarshipDetails from './src/Screens/ScholarshipDetails';
 import CreateAccount from './src/Screens/CreateAccount';
 
 import WelcomeScreen from './src/Screens/WelcomeScreen';
@@ -23,14 +22,68 @@ import PostScholarship from './src/Screens/PostScholarship';
 import ScholarshipSubmitted from './src/Screens/ScholarshipSubmitted';
 import ForgotPassword from './src/Screens/ForgotPassword';
 
+
 const App = () => {
   const Stack = createNativeStackNavigator();
+  const [user, setUser] = useState();
+
+  function onAuthStateChanged(user) {
+    setUser(user);
+  }
 
 
+  useEffect(() => {
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber; // unsubscribe on unmount
+  }, []);
+console.log(auth().currentUser.email)
+  if (auth().currentUser) {
+
+    return (
+      <NavigationContainer>
+
+        <Stack.Navigator
+
+          initialRouteName="BrowseScholarships"
+          screenOptions={{
+
+            headerRight: () => (
+              <Button
+                onPress={() =>
+                  auth()
+                    .signOut()
+                    .then(() => console.log('User signed out'))}
+                title="Info"
+                color="#fff"
+              />
+            ),
+          }}
+        >
+          <Stack.Screen name="WelcomeScreen" component={WelcomeScreenScreen} options={{ headerShown: false }} />
+          <Stack.Screen name="SuccessfullAccount" component={SuccessfullAccountScreen} options={{ headerShown: false }} />
+          <Stack.Screen name="PersonalInfo" component={PersonalInfoScreen} options={{ headerShown: false }} />
+          <Stack.Screen name="UserSignIn" component={UserSignInScreen} options={{ headerShown: false }} />
+          <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
+          <Stack.Screen name="Details" component={DetailsScreen} options={{ headerShown: false }} />
+          <Stack.Screen name="Questions" component={QuestionsScreen} options={{ headerShown: false }} />
+          <Stack.Screen name="BrowseScholarships" component={BrowseScholarshipsScreen} options={{ headerShown: false }} />
+          <Stack.Screen name="CreateAccount" component={CreateAccountScreen} options={{ headerShown: false }} />
+          <Stack.Screen name="Settings" component={SettingsScreen} options={{ headerShown: false }} />
+          <Stack.Screen name="EditPersonalInfo" component={EditPersonalInfoScreen} options={{ headerShown: false }} />
+          <Stack.Screen name="AccountClosed" component={AccountClosedScreen} options={{ headerShown: false }} />
+          <Stack.Screen name="Logout" component={LogoutScreen} options={{ headerShown: false }} />
+          <Stack.Screen name="PostScholarship" component={PostScholarshipScreen} options={{ headerShown: false }} />
+          <Stack.Screen name="ScholarshipSubmitted" component={ScholarshipSubmittedScreen} options={{ headerShown: false }} />
+          <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} options={{ headerShown: false }} />
+        </Stack.Navigator>
+      </NavigationContainer >
+    );
+  }
   return (
     <NavigationContainer>
 
       <Stack.Navigator
+
         initialRouteName="WelcomeScreen"
         screenOptions={{
 
@@ -51,7 +104,7 @@ const App = () => {
         <Stack.Screen name="PersonalInfo" component={PersonalInfoScreen} options={{ headerShown: false }} />
         <Stack.Screen name="UserSignIn" component={UserSignInScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="Details" component={DetailsScreen} options={{ headerShown: false }}/>
+        <Stack.Screen name="Details" component={DetailsScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Questions" component={QuestionsScreen} options={{ headerShown: false }} />
         <Stack.Screen name="BrowseScholarships" component={BrowseScholarshipsScreen} options={{ headerShown: false }} />
         <Stack.Screen name="CreateAccount" component={CreateAccountScreen} options={{ headerShown: false }} />
