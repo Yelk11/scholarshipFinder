@@ -1,7 +1,6 @@
 import React from 'react'
 import { Text, StyleSheet, Pressable } from 'react-native'
-import emailjs from 'emailjs-com';
-import auth from '@react-native-firebase/auth'
+
 const ApplyButton = ({ onPress, text, type = "PRIMARY", backColor, frontColor, apply_url }) => {
     
     return (
