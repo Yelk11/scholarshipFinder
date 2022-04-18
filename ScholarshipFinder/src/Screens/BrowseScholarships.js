@@ -79,8 +79,6 @@ const BrowseScholarships = () => {
         setACT(data.act)
         setFirstCollegeStudent(data.firstCollegeStudent)
         setIncomeLevel(data.incomeLevel)
-
-
     }
     
 
@@ -185,9 +183,10 @@ const BrowseScholarships = () => {
 
                                 <Text style={styles.title}>{item.title}</Text>
                                 <View style={styles.circleContainer}>
-                                    <View style={styles.circle}><Text style={styles.circleText}>%{item.match}</Text></View>
+                                    <View style={styles.circle}><Text style={styles.circleText}>{item.match}%</Text></View>
                                     <View style={styles.circle}><Text style={styles.circleText}>${item.amount}</Text></View>
-                                    {/* <View style={styles.circle}><Text style={styles.circleText}>Due {'\n'} {item.deadline.toDate().getMonth().toString()}/{item.deadline.toDate().getDate().toString()}</Text></View> */}
+                                    
+                                    <View style={styles.circle}><Text style={styles.circleText}>Due {'\n'} {item.deadline.toDate().getMonth().toString()}/{item.deadline.toDate().getDate().toString()}</Text></View>
                                 </View>
 
 
