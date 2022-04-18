@@ -20,7 +20,9 @@ const PostScholarship = () => {
 
     return(
         <View style={styles.container}>
-            <Pressable hitSlop={-50} onPress={GoBack}><Image style={styles.settingsTopLeft} source={BackButton} /></Pressable>
+            <TouchableOpacity onPress={GoBack}>
+            <Image style={styles.settingsTopLeft} source={BackButton} />
+            </TouchableOpacity>
             {/* <Image style={styles.scholarshipTopRight} source={scholarshipFilter} /> */}
             <Image style={styles.logoTopCenter} source={smallLogo} />
             <View style={styles.flexAdjustment}>
@@ -32,7 +34,7 @@ const PostScholarship = () => {
                                    placeholderTextColor="#FFFFFF"
                                    multiline
                                    numberOfLines={8}
-                                   style = { {backgroundColor :'#596066', borderColor: '#e8e8e8', 
+                                   style = { {backgroundColor :'#596066', borderColor: '#e8e8e8', fontWeight: 'bold', 
                                    borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"}}/>
                         </PersonalCard>
 
@@ -69,6 +71,7 @@ const styles = StyleSheet.create({
         textAlign: 'left',
         width: "100%",
         paddingBottom: 10,
+        fontWeight: 'bold'
     },
 
     headers : {

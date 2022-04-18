@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { FlatList, Image, Text, ActivityIndicator, View, StyleSheet } from 'react-native';
+
+import { FlatList, Image, Text, ActivityIndicator, View, StyleSheet, TouchableOpacity } from 'react-native';
+
 import { useNavigation } from '@react-navigation/native';
 
 import firestore from '@react-native-firebase/firestore';
@@ -16,9 +18,10 @@ import YellowSettingsButton from '../../assets/images/settings-gear.png';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 
 
+
 const BrowseScholarships = () => {
-    const [loading, setLoading] = useState(true); // Set loading to true on component mount
-    const [scholarships, setScholarships] = useState([]); // Initial empty array of scholarships
+    const [loading, setLoading] = useState(true);
+    const [scholarships, setScholarships] = useState([]);
 
     const [amount, setAmount] = useState([]);
     const [deadline, setDeadline] = useState([]);
@@ -95,6 +98,7 @@ const BrowseScholarships = () => {
     };
 
     useEffect(() => {
+
         getValue()
         const subscriber = firestore().collection('scholarships')
             .get().then((querySnapshot) => {
@@ -104,6 +108,7 @@ const BrowseScholarships = () => {
                         ...documentSnapshot.data(),
                         key: documentSnapshot.id,
                     });
+
                 });
                 
 
@@ -149,12 +154,13 @@ const BrowseScholarships = () => {
     }
     return (
         <View style={styles.container}>
-            <Pressable hitSlop={50} onPress={onSettingsPressed}>
+            <TouchableOpacity onPress={onSettingsPressed}>
                 <Image style={styles.settingsTopLeft} source={YellowSettingsButton} />
-            </Pressable>
-            <Image style={styles.scholarshipTopRight} source={scholarshipFilter} />
+            </TouchableOpacity>
+            {/* <Image style={styles.scholarshipTopRight} source={scholarshipFilter} /> */}
             <Image style={styles.logoTopCenter} source={smallLogo} />
             <View style={styles.flexAdjustment}>
+
                 <FlatList
                     data={scholarships}
                     renderItem={({ item }) => (
@@ -184,6 +190,7 @@ const BrowseScholarships = () => {
                     )}
 
                 />
+
             </View>
         </View>
     );
@@ -195,9 +202,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         backgroundColor: '#474747'
     },
+
     circleContainer: {
         flexDirection: 'row',
         justifyContent: 'space-evenly'
+
     },
     listItem: {
         flex: 1,
@@ -209,18 +218,18 @@ const styles = StyleSheet.create({
     title: {
         marginLeft: 5,
         fontWeight: 'bold',
-        color: 'black'
+        color: 'black',
+        paddingBottom: 5
     },
     info: {
         marginLeft: 5,
         color: "black"
     },
 
-
     text: {
+
         color: "#000",
         fontSize: 24,
-        // backgroundColor : "#3E4347",
         textAlign: 'left',
         width: "100%",
         padding: 20,
@@ -237,6 +246,7 @@ const styles = StyleSheet.create({
         height: 50,
         width: 50,
         position: 'absolute',
+
         top: -30,
         left: 6,
     },
@@ -244,9 +254,10 @@ const styles = StyleSheet.create({
     logoTopCenter: {
         height: 50,
         width: 50,
+
         position: 'absolute',
         top: 5,
-        left: 175
+        left: 180
     },
 
     underlineTopRight: {
@@ -277,6 +288,7 @@ const styles = StyleSheet.create({
         flex: .9,
         top: 35
     },
+
     circle: {
         fllex: 1,
         height: 80,
@@ -289,6 +301,7 @@ const styles = StyleSheet.create({
     },
     circleText: {
         textAlign: 'center'
+
     }
 });
 

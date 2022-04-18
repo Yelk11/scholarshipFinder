@@ -44,8 +44,10 @@ const Questions = () => {
 
     const [shouldShow5, setShouldShow5] = useState(true);
 
+    const [chooseData, setchooseData] = useState('Select your Major...');
 
     const [isModalVisible, setisModalVisible] = useState(false);
+    
 
     const [highSchool, setHighSchool] = useState('');
     const [satMath, setSatMath] = useState('');
@@ -69,6 +71,11 @@ const Questions = () => {
     const setData = (option) => {
         setMajor(option)
     }
+
+    const setDataDisplay = (option) => {
+        setchooseData(option)
+    }
+
     return (
         <View style={styles.container}>
 
@@ -109,7 +116,7 @@ const Questions = () => {
                     <TextInput placeholder="Enter a sport here (leave blank if none)"
                         placeholderTextColor="#FFFFFF"
                         //value = {FName}
-                        onChangeText = {text => sport.add(text)}
+                        //onChangeText = {text => sport.add(text)}
                         style={styles.inputBox} />
                     <Text style={styles.text}>Sport 2</Text>
                     <TextInput placeholder="Enter a sport here (leave blank if none)"
@@ -260,7 +267,7 @@ const Questions = () => {
                 <SecondaryCard>
                     <Text style={styles.text}>Identify your major:</Text>
                     <TouchableOpacity onPress={() => changeModalVisibility(true)}>
-                        <Text style={styles.dropdown}>Choose Your Major</Text>
+                        <Text style={styles.dropdown}>{chooseData}</Text>
                     </TouchableOpacity>
                     <Modal
                         transparent={true}
@@ -270,7 +277,7 @@ const Questions = () => {
                     >
                         <ListofMajors
                             changeModalVisibility={changeModalVisibility}
-                            setData={setData}
+                            setData={setDataDisplay}
                         />
 
                     </Modal>
@@ -309,6 +316,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#3E4347",
     },
     inputBox: {
+        fontWeight: 'bold',
         backgroundColor: '#596066', borderColor: '#e8e8e8',
         borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"
     },
@@ -319,8 +327,9 @@ const styles = StyleSheet.create({
 
     text: {
         color: "black",
-        fontSize: 16,
-        textAlign: 'center',
+        fontSize: 20,
+        textAlign: 'left',
+        fontWeight: 'bold'
     },
 
     scholarshipTopRight: {
@@ -362,7 +371,8 @@ const styles = StyleSheet.create({
         marginVertical: 5,
         alignItems: 'center',
         borderRadius: 5,
-        backgroundColor: "white"
+        backgroundColor: "white",
+        fontWeight: 'bold'
     }
 
 })

@@ -47,6 +47,7 @@ const CreateAccount = () => {
                         value={email}
                         onChangeText={text => setEmail(text)}
                         style={{
+                            fontWeight: 'bold',
                             backgroundColor: '#596066',
                             width: '100%',
                             borderColor: '#e8e8e8',
@@ -60,6 +61,7 @@ const CreateAccount = () => {
                         onChangeText={text => setPassword(text)}
                         secureTextEntry={true}
                         style={{
+                            fontWeight: 'bold',
                             backgroundColor: '#596066',
                             width: '100%',
                             borderColor: '#e8e8e8',
@@ -73,6 +75,7 @@ const CreateAccount = () => {
                         onChangeText={text => setConfirmPassword(text)}
                         secureTextEntry={true}
                         style={{
+                            fontWeight: 'bold',
                             backgroundColor: '#596066',
                             width: '100%',
                             borderColor: '#e8e8e8',
@@ -123,7 +126,9 @@ const styles = StyleSheet.create({
     },
 
     title: {
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: 'black',
+        fontSize: 20
     },
 
     flexAdjustment: {
@@ -132,10 +137,10 @@ const styles = StyleSheet.create({
     },
 
     logoTopCenter: {
-        height: 100,
-        width: 100,
+        height: 150,
+        width: 150,
         position: 'absolute',
-        top: 55,
+        top: 77.5,
         justifyContent: 'center'
     },
 });

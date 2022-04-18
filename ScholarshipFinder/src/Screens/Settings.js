@@ -1,14 +1,15 @@
 import React, {useState} from 'react';
-import { View, Button, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { View, Button, Text, TouchableOpacity, StyleSheet, Image, Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import CustomButton from '../components/CustomButton/CustomButton';
 import scholarshipFilter from '../../assets/images/yellow-filter.png';
-import YellowSettingsButton from '../../assets/images/settings-gear.png';
+import BackButton from '../../assets/images/back-button.png';
 import smallLogo from '../../assets/images/app-logo-dark-background.png';
 import SettingsCard from '../SettingsCard';
 import SettingsButton from '../components/CustomButton/SettingsButton';
 import LogoutButton from '../components/CustomButton/LogoutButton';
 import LogoutIcon from '../../assets/images/logout-icon.png'
+import auth from '@react-native-firebase/auth';
 
 const Settings = (props) => {
     
@@ -18,24 +19,32 @@ const Settings = (props) => {
 
     const LogoutPressed = () => navigation.navigate('Logout')
 
+    const GoBack = () => navigation.navigate('BrowseScholarships')
+
     const PostScholarshipPressed = () => navigation.navigate('PostScholarship')
 
     const onFeedPressed = () => navigation.navigate('BrowseScholarships')
 
     return(
         <View style={styles.container}>
-            {/* <Image style={styles.settingsTopLeft} source={YellowSettingsButton} /> */}
-            <Image style={styles.scholarshipTopRight} source={scholarshipFilter} />
+            {/* <Pressable onPress={GoBack}>
+                <Image style={styles.settingsTopLeft} source={BackButton} />
+            </Pressable> */}
+            {/* <Image style={styles.scholarshipTopRight} source={scholarshipFilter} /> */}
             <Image style={styles.logoTopCenter} source={smallLogo} />
             <SettingsCard>
                 <Text style={styles.headertext}>Welcome Back!</Text>
-                <Text style={styles.text}>AsianGirls</Text>
-                <SettingsButton text="Profile" onPress={GoToPersonalInfo}></SettingsButton>
+                <Text style={styles.text}>Nicholas Kramer</Text>
+                <SettingsButton text="Edit Profile" onPress={GoToPersonalInfo}></SettingsButton>
                 <SettingsButton text="Scholarship Feed" onPress={onFeedPressed}></SettingsButton>
                 <SettingsButton text="Post A Scholarship" onPress={PostScholarshipPressed}></SettingsButton>
-                <SettingsButton text="FAQs"></SettingsButton>
-                <SettingsButton text="App Review"></SettingsButton>
-                <LogoutButton text="Logout" onPress={LogoutPressed}></LogoutButton>
+                {/* <SettingsButton text="App Review"></SettingsButton> */}
+                <LogoutButton 
+                text="Logout" 
+                onPress={() => auth() 
+                .signOut() 
+                .then(() => navigation.navigate('Logout'))
+                .then(() => console.log('User Signed Out!'))}/>
                 <Image style={styles.logout} source={LogoutIcon}/>
             </SettingsCard>
         </View> 
@@ -100,7 +109,7 @@ const styles = StyleSheet.create({
         height: 50,
         width: 50,
         position: 'absolute',
-        top: 5, left: 2,
+        top: -145, left: 2,
     },
 
     logoTopCenter : {

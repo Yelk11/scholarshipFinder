@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
         marginTop: 15,
         alignItems: 'center',
         borderRadius: 25,
+        borderWidth: 1
         },
 
         container_Primary: {
@@ -31,6 +32,7 @@ const styles = StyleSheet.create({
         text: {
             color: 'black',
             fontSize: 20,
+            fontWeight: 'bold'
         },
         text_tertiary: {
             color: 'gray',

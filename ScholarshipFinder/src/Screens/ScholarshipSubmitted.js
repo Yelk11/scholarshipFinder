@@ -7,7 +7,7 @@ const ScholarshipSubmitted = (props) => {
 
     const navigation = useNavigation();
 
-    const onContinuePressed = () => navigation.navigate('PostScholarship')
+    const onContinuePressed = () => navigation.navigate('Settings')
 
     return(
         <View style={styles.container}>

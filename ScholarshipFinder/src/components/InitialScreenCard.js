@@ -23,7 +23,7 @@ export default function InitialScreenCard(props) {
                 marginHorizontal: 4,
                 marginVertical: 6,
                 position: 'absolute',
-                bottom: 0.01,
+                bottom: -5,
                 width: '100%',
             },
 

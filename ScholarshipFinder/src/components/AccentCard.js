@@ -20,14 +20,15 @@ export default function AccentCard(props) {
                 shadowColor: '#333',
                 shadowOpacity: 0.3,
                 shadowRadius: 2,
-                marginTop: 3,
+                marginTop: 0,
                 marginBottom: -16,
                 marginHorizontal: 4,
-                bottom: 32
+                bottom: 32,
+                borderWidth:1
             },
 
             cardContent : {
-                marginHorizontal: 140,
+                marginHorizontal: 60,
                 //marginVertical: 10,
             }
 
