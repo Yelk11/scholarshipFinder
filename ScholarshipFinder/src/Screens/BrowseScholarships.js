@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
-
+import emailjs from 'emailjs-com';
 import smallLogo from '../../assets/images/app-logo-dark-background.png';
 import ScholarshipCard from '../components/ScholarshipCard';
 import AccentCard from '../components/AccentCard';
@@ -43,7 +43,18 @@ const BrowseScholarships = () => {
     const [firstCollegeStudent, setFirstCollegeStudent] = useState([]);
     const [incomeLevel, setIncomeLevel] = useState([]);
 
+   
 
+    function sendEmail(apply_url) {
+        const templateParams = {
+            link: apply_url,
+            email: auth().currentUser.email,
+        }
+        emailjs.send('service_xfm3dal', 'template_9piifjo', templateParams, '1iNE_5oYK6-Gs9dJS')
+            .then(() => {
+                Alert.alert("An email has been sent to you. Please check your inbox to begin applying!");
+            })
+    }
     const navigation = useNavigation();
 
     const getValue = async () => {
@@ -71,7 +82,7 @@ const BrowseScholarships = () => {
 
 
     }
-
+    
 
     function my_sort(my_arr) {
         
@@ -140,7 +151,7 @@ const BrowseScholarships = () => {
                     }else{
                         objectsArray[i]['match'] = ((counter / total_attributes) * 100).toFixed(0);
                     }
-                    // console.log(counter);
+                    
                     console.log((counter / total_attributes) * 100);
                     
                 }
@@ -185,7 +196,7 @@ const BrowseScholarships = () => {
                             <AccentCard>
                                 <Image style={styles.like} source={LikeButton} />
                                 <Image style={styles.share} source={ShareButton} />
-                                <ApplyButton text="Apply!" />
+                                <ApplyButton text="Apply!" onPress={() => sendEmail(item.apply_url)}/>
                             </AccentCard></>
                     )}
 
