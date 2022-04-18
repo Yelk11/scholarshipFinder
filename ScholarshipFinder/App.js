@@ -54,7 +54,6 @@ const App = () => {
         <Stack.Screen name="Details" component={DetailsScreen} options={{ headerShown: false }}/>
         <Stack.Screen name="Questions" component={QuestionsScreen} options={{ headerShown: false }} />
         <Stack.Screen name="BrowseScholarships" component={BrowseScholarshipsScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="ScholarshipDetails" component={ScholarshipDetailsScreen} options={{ headerShown: false }} />
         <Stack.Screen name="CreateAccount" component={CreateAccountScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Settings" component={SettingsScreen} options={{ headerShown: false }} />
         <Stack.Screen name="EditPersonalInfo" component={EditPersonalInfoScreen} options={{ headerShown: false }} />
