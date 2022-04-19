@@ -26,18 +26,6 @@ const BrowseScholarships = () => {
         navigation.navigate('Settings');
     };
 
-    const templateParams = {
-        link: props.apply_url,
-        email: auth().currentUser.email,
-    }
-
-    function sendEmail() {
-        emailjs.send('service_xfm3dal', 'template_9piifjo', templateParams, '1iNE_5oYK6-Gs9dJS')
-            .then(() => {
-                Alert.alert("An email has been sent to you. Please check your inbox to begin applying!");
-            })
-    }
-    console.log(props.apply_url);
 
     useEffect(() => {
         const subscriber = firestore().collection('scholarships').get().then((querySnapshot) => {
@@ -93,7 +81,13 @@ const BrowseScholarships = () => {
                     <AccentCard>
                     {/* <Image style={styles.like} source={LikeButton} />
                     <Image style={styles.share} source={ShareButton} /> */}
-                        <ApplyButton text="Apply" onPress={sendEmail}/>
+                        <ApplyButton text="Apply!" onPress={() => navigation.navigate('ScholarshipDetails',
+                        {
+                            name: item.title,
+                            amount: item.amount,
+                            deadline: item.deadline,
+                            apply_url: item.apply_url
+                        })}/>
                     </AccentCard></>
                 )}
             />
