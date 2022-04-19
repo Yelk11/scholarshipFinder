@@ -1,16 +1,14 @@
 import React, {useState} from 'react';
-import { View, Button, TouchableOpacity, Modal, Text, TextInput, StyleSheet, ScrollView, Image } from 'react-native';
+import { View, Button, TouchableOpacity, Modal, Text, TextInput, StyleSheet, ScrollView, Image, onChangeText } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import scholarshipFilter from '../../assets/images/yellow-filter.png';
 import BackButton from '../../assets/images/back-button.png';
 import smallLogo from '../../assets/images/app-logo-dark-background.png';
-import SettingsButton from '../components/CustomButton/SettingsButton';
-import LogoutButton from '../components/CustomButton/LogoutButton';
-import LogoutIcon from '../../assets/images/logout-icon.png'
 import SecondaryCard from '../components/SecondaryCard';
 import WhiteButton from '../components/CustomButton/WhiteButton';
 import CustomButton from '../components/CustomButton/CustomButton';
 import { ListofMajors } from '../components/ListOfMajors';
+import {isValidObjField, updateError} from '../components/CustomInput/methods';
 
 const EditPersonalInfo = (props) => {
     
@@ -20,7 +18,12 @@ const EditPersonalInfo = (props) => {
 
     const CloseAccountPressed = () => navigation.navigate('AccountClosed')
 
-    const onQuestionPressed = () => navigation.navigate('Settings')
+    const onQuestionPressed = () => {
+        if (isValidForm()) {
+            // submit form
+            console.log(FName, LName, password);
+        navigation.navigate('Settings')}
+    }
 
     const [shouldShow, setShouldShow] = useState(true);
 
@@ -35,6 +38,11 @@ const EditPersonalInfo = (props) => {
     const [chooseData, setchooseData] = useState('Select your Major...');
 
     const [isModalVisible, setisModalVisible] = useState(false);
+    const [FName, setFirstName] = useState('');
+    const [LName, setLastName] = useState('');
+    const [password, setpassword] = useState('');
+    const [Re_password, setRe_password] = useState('');
+    const [error, setError] = useState('');
 
     const changeModalVisibility = (bool) => {
         setisModalVisible(bool)
@@ -44,7 +52,36 @@ const EditPersonalInfo = (props) => {
         setchooseData(option)
     }
 
-    return(
+    const isValidObjField = (obj) => {
+        return Object.values(obj).every(value => value.trim())
+    };
+    const updateError = (error, stateUpdater) => {
+        stateUpdater(error);
+        setTimeout(() => {
+        stateUpdater('');
+        }, 5000);
+    };
+
+    const isValidForm = () => {
+        // we will accept only if all of the fields have value
+        if (!isValidObjField(LName, FName))
+          return updateError('Required first name and last name', setError);
+
+        if (!FName.trim() || FName.length < 3)
+          return updateError('Invalid first name!', setError);
+
+        if (!LName.trim() || LName.length < 3)
+          return updateError('Invalid last name!', setError);
+        if (!password.trim() || password.length < 6)
+          return updateError('Password is too short!', setError);
+        if (!Re_password.trim() || Re_password.length < 6)
+          return updateError('Password is too short!', setError);
+        if (password.trim() != Re_password.trim)
+          return updateError('Password match is required', setError);
+        return true;
+      };
+
+    return( 
         <View style={styles.container}>
             <TouchableOpacity onPress={GoBack}>
             <Image style={styles.settingsTopLeft} source={BackButton} />
@@ -52,8 +89,13 @@ const EditPersonalInfo = (props) => {
             <Image style={styles.scholarshipTopRight} source={scholarshipFilter} />
             <Image style={styles.logoTopCenter} source={smallLogo} />
             <View style={styles.flexAdjustment}>
+            {error ? (
+                        <Text style={{color: 'red', fontSize: 16, textAlign:'center'}}>
+                            {error}
+                        </Text>
+                    ) :null}
             <ScrollView>
-            
+
             <SecondaryCard>
             <Text style={styles.text}>Email</Text>
             <TextInput placeholder="nickdemo@gmail.com"
@@ -69,11 +111,15 @@ const EditPersonalInfo = (props) => {
 	            style = { {backgroundColor :'#596066', borderColor: '#e8e8e8', 
 	            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"}}/>
             <TextInput placeholder="New Password"
-	            placeholderTextColor="#FFFFFF" 
+	            placeholderTextColor="#FFFFFF"
+                value={password}
+                onChangeText={text => setpassword(text)}
 	            style = { {backgroundColor :'#596066', borderColor: '#e8e8e8',
 	            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"}}/>
             <TextInput placeholder="Retype New Password"
-	            placeholderTextColor="#FFFFFF" 
+	            placeholderTextColor="#FFFFFF"
+                value={Re_password}
+                onChangeText={text => setRe_password(text)}
 	            style = { {backgroundColor :'#596066', borderColor: '#e8e8e8',
 	            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"}}/>
             </SecondaryCard>
@@ -82,11 +128,15 @@ const EditPersonalInfo = (props) => {
             <Text style={styles.text}>My name is</Text>
             <TextInput placeholder="First Name"
 	            placeholderTextColor="#FFFFFF"
+                value={FName}
+                onChangeText={text => setFirstName(text)}
 	            style = { {backgroundColor :'#596066', borderColor: '#e8e8e8', 
 	            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"}}/>
                 
             <TextInput placeholder="Last Name"
 	            placeholderTextColor="#FFFFFF"
+                value={LName}
+                onChangeText={text => setLastName(text)}
 	            style = { {backgroundColor :'#596066', borderColor: '#e8e8e8',
 	            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"}}/>
             </SecondaryCard>

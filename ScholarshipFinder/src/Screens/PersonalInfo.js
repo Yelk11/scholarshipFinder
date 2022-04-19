@@ -4,7 +4,6 @@ import {useContext} from 'react';
 import { useNavigation } from '@react-navigation/native';
 import CustomButton from '../components/CustomButton/CustomButton';
 import PersonalCard from '../components/PersonalCard';
-import { DateTimePickerProps } from 'react-native-modal-datetime-picker';
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
 import {isValidObjField, updateError} from '../components/CustomInput/methods';
@@ -24,10 +23,10 @@ const PersonalInfo = () => {
                 citizenship_status: CitizinshipStatus,
                 gender: gender,
             }, { merge: true })
-        navigation.navigate('Questions')
         if (isValidForm()) {
             // submit form
             console.log(FName, LName);
+            navigation.navigate('Questions')
           }
     }
 
@@ -40,7 +39,7 @@ const PersonalInfo = () => {
         stateUpdater(error);
         setTimeout(() => {
         stateUpdater('');
-        }, 2500);
+        }, 5000);
     };
     const [FName, setFirstName] = useState('');
     const [LName, setLastName] = useState('');
@@ -50,7 +49,7 @@ const PersonalInfo = () => {
     const [race, setRace] = useState('');
     const [CitizinshipStatus, setCitizenship] = useState('');
     const [gender, setGender] = useState('');
-
+    
     const onChange = (event, selectedDate) => {
         const currentDate = selectedDate || date;
         setShow(Platform.OS === 'android');
@@ -75,7 +74,7 @@ const PersonalInfo = () => {
         if (!FName.trim() || FName.length < 3)
           return updateError('Invalid first name!', setError);
 
-          if (!LName.trim() || LName.length < 3)
+        if (!LName.trim() || LName.length < 3)
           return updateError('Invalid last name!', setError);
         return true;
       };

@@ -8,6 +8,7 @@ import BackButton from '../../assets/images/back-button.png';
 import smallLogo from '../../assets/images/app-logo-dark-background.png';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import WhiteButton from '../components/CustomButton/WhiteButton';
+import firestore from '@react-native-firebase/firestore';
 
 
 const PostScholarship = () => {
@@ -16,12 +17,17 @@ const PostScholarship = () => {
 
     const GoBack = () => navigation.navigate('Settings')
 
-    const onSubmitPressed = () => navigation.navigate('ScholarshipSubmitted')
+    const onSubmitPressed = () => {
+        firestore()
+            .collection('post_a_scholarship')
+            .add({Scholarship_Links: link})
 
+        navigation.navigate('ScholarshipSubmitted')
+    }
+    const [link, setLink] = useState('');
     return(
         <View style={styles.container}>
             <Pressable hitSlop={-50} onPress={GoBack}><Image style={styles.settingsTopLeft} source={BackButton} /></Pressable>
-            {/* <Image style={styles.scholarshipTopRight} source={scholarshipFilter} /> */}
             <Image style={styles.logoTopCenter} source={smallLogo} />
             <View style={styles.flexAdjustment}>
             <ScrollView>
@@ -30,8 +36,10 @@ const PostScholarship = () => {
                         <Text style={styles.text}>Scholarship Link</Text>
                         <TextInput placeholder="insert scholarship link here"
                                    placeholderTextColor="#FFFFFF"
+                                   value={link}
                                    multiline
                                    numberOfLines={8}
+                                   onChangeText={text => setLink(text)}
                                    style = { {backgroundColor :'#596066', borderColor: '#e8e8e8', 
                                    borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"}}/>
                         </PersonalCard>
