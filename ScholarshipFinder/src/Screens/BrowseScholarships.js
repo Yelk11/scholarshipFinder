@@ -83,20 +83,11 @@ const BrowseScholarships = () => {
 
     }
     
-
     function my_sort(my_arr) {
-        
-
-
         for (let i = 0; i < my_arr.length; i++) {
-
             for (let j = 0; j < my_arr.length - i - 1; j++) {
-
-
-
                 if (my_arr[j + 1]['match'] > my_arr[j]['match']) {
-                    
-                    //Swapping
+
                     [my_arr[j + 1], my_arr[j]] = [my_arr[j], my_arr[j + 1]]
                 }
             }
