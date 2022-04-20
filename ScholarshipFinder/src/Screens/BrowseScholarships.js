@@ -87,12 +87,12 @@ const BrowseScholarships = () => {
     function my_sort(my_arr) {
         
 
-        //Outer pass
+
         for (let i = 0; i < my_arr.length; i++) {
-            //Inner pass
+
             for (let j = 0; j < my_arr.length - i - 1; j++) {
 
-                //Value comparison using ascending order
+
 
                 if (my_arr[j + 1]['match'] > my_arr[j]['match']) {
                     
@@ -176,22 +176,12 @@ const BrowseScholarships = () => {
                     data={scholarships}
                     renderItem={({ item }) => (
                         <><ScholarshipCard>
-                            <Pressable style={styles.listItem} onPress={() => navigation.navigate('ScholarshipDetails',
-                                {
-                                    name: item.title,
-                                    amount: item.amount,
-                                    deadline: item.deadline
-                                })}>
-
-                                <Text style={styles.title}>{item.title}</Text>
+                            <Text style={styles.title}>{item.title}</Text>
                                 <View style={styles.circleContainer}>
                                     <View style={styles.circle}><Text style={styles.circleText}>{item.match}%</Text></View>
                                     <View style={styles.circle}><Text style={styles.circleText}>${item.amount}</Text></View>
-                                    {/* <View style={styles.circle}><Text style={styles.circleText}>Due {'\n'} {item.deadline.toDate().getMonth().toString()}/{item.deadline.toDate().getDate().toString()}</Text></View> */}
+                                    <View style={styles.circle}><Text style={styles.circleText}>Due {'\n'} {item.deadline.toDate().getMonth().toString()}/{item.deadline.toDate().getDate().toString()}</Text></View>
                                 </View>
-
-
-                            </Pressable>
                         </ScholarshipCard>
                             <AccentCard>
                                 <Image style={styles.like} source={LikeButton} />
