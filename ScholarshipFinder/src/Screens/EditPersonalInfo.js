@@ -21,7 +21,7 @@ const EditPersonalInfo = (props) => {
     const onQuestionPressed = () => {
         if (isValidForm()) {
             // submit form
-            console.log(FName, LName, password);
+            console.log(FName, LName, password, Re_password);
         navigation.navigate('Settings')}
     }
 
@@ -73,11 +73,11 @@ const EditPersonalInfo = (props) => {
         if (!LName.trim() || LName.length < 3)
           return updateError('Invalid last name!', setError);
         if (!password.trim() || password.length < 6)
-          return updateError('Password is too short!', setError);
+          return updateError('Password is less than 6 characters!', setError);
         if (!Re_password.trim() || Re_password.length < 6)
-          return updateError('Password is too short!', setError);
-        if (password.trim() != Re_password.trim)
-          return updateError('Password match is required', setError);
+          return updateError('Password is less than 6 characters!', setError);
+        if (password !== Re_password)
+          return updateError('Password does not match! please try again!', setError);
         return true;
       };
 
