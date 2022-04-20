@@ -96,6 +96,7 @@ const PersonalInfo = () => {
                         value={FName}
                         onChangeText={text => setFirstName(text)}
                         style={{
+                            fontWeight: 'bold',
                             backgroundColor: '#596066', borderColor: '#e8e8e8',
                             borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"
                         }} />
@@ -104,6 +105,7 @@ const PersonalInfo = () => {
                         value={LName}
                         onChangeText={text => setLastName(text)}
                         style={{
+                            fontWeight: 'bold',
                             backgroundColor: '#596066', borderColor: '#e8e8e8',
                             borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"
                         }} />
@@ -116,6 +118,7 @@ const PersonalInfo = () => {
                         value={date}
                         onChangeText={text => setDate(text)}
                         style={{
+                            fontWeight: 'bold',
                             backgroundColor: '#596066', borderColor: '#e8e8e8',
                             borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"
                         }} />
@@ -128,6 +131,7 @@ const PersonalInfo = () => {
                         value={race}
                         onChangeText={text => setRace(text)}
                         style={{
+                            fontWeight: 'bold',
                             backgroundColor: '#596066', borderColor: '#e8e8e8',
                             borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"
                         }} />
@@ -136,6 +140,7 @@ const PersonalInfo = () => {
                         value={CitizinshipStatus}
                         onChangeText={text => setCitizenship(text)}
                         style={{
+                            fontWeight: 'bold',
                             backgroundColor: '#596066', borderColor: '#e8e8e8',
                             borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"
                         }} />
@@ -144,6 +149,7 @@ const PersonalInfo = () => {
                         value={gender}
                         onChangeText={text => setGender(text)}
                         style={{
+                            fontWeight: 'bold',
                             backgroundColor: '#596066', borderColor: '#e8e8e8',
                             borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"
                         }} />
@@ -174,7 +180,8 @@ const styles = StyleSheet.create({
         color: "black",
         fontSize: 20,
         textAlign: 'left',
-        marginVertical: 10
+        marginVertical: 10,
+        fontWeight: 'bold'
     },
 
     enteredText: {

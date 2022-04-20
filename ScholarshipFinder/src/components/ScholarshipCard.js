@@ -13,7 +13,7 @@ export default function ScholarshipCard(props) {
 
         const styles = StyleSheet.create({
             card: {
-                borderRadius: 8,
+                borderRadius: 16,
                 elevation: 3,
                 backgroundColor: '#FFCE31',
                 shadowOffset: {width: 1, height: 1},

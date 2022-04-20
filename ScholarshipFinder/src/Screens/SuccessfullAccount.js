@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginSystemCard from '../components/LoginSystemCard';
 import LoginButton from '../components/CustomButton/LoginButton';
+import initialLogo from '../../assets/images/logo-initial.png';
 
 const SuccessfullAccount = () => {
     const navigation = useNavigation();
@@ -20,6 +21,7 @@ const SuccessfullAccount = () => {
     
     return(
         <View style={styles.container}>
+            <Image style={styles.logoTopCenter} source={initialLogo} />
             <Text style={styles.text}>Your Account was successfully created</Text>
             <LoginSystemCard>       
                 <LoginButton frontColor="#000000" backColor="#FFF" text="Browse Scholarships now" onPress={onScholarshipsPressed} />
@@ -34,7 +36,7 @@ const styles = StyleSheet.create({
         //flexStart: .2,
         alignItems : "center",
         justifyContent : "center",
-        backgroundColor : "#FFCE31",
+        backgroundColor : "#3E4347",
         flexDirection: "row",
         //display:"flex",
     },
@@ -45,12 +47,21 @@ const styles = StyleSheet.create({
     },
 
     text : {
-        color: "black",
+        color: "white",
         fontSize: 32,
         textAlign: "center",
         padding: 1,
         top: -30,
+        fontWeight: 'bold'
 
+    },
+
+    logoTopCenter: {
+        height: 150,
+        width: 150,
+        position: 'absolute',
+        top: 60,
+        justifyContent: 'center'
     },
 
 });

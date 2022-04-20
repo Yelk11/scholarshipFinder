@@ -86,7 +86,7 @@ const EditPersonalInfo = (props) => {
             <TouchableOpacity onPress={GoBack}>
             <Image style={styles.settingsTopLeft} source={BackButton} />
             </TouchableOpacity>
-            <Image style={styles.scholarshipTopRight} source={scholarshipFilter} />
+            {/* <Image style={styles.scholarshipTopRight} source={scholarshipFilter} /> */}
             <Image style={styles.logoTopCenter} source={smallLogo} />
             <View style={styles.flexAdjustment}>
             {error ? (
@@ -100,7 +100,7 @@ const EditPersonalInfo = (props) => {
             <Text style={styles.text}>Email</Text>
             <TextInput placeholder="nickdemo@gmail.com"
 	            placeholderTextColor="#FFFFFF" 
-	            style = { {backgroundColor :'#596066', borderColor: '#e8e8e8', 
+	            style = { {backgroundColor :'#596066', borderColor: '#e8e8e8', fontWeight: 'bold', 
 	            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"}}/>
             </SecondaryCard>
 
@@ -108,19 +108,15 @@ const EditPersonalInfo = (props) => {
             <Text style={styles.text}>Password</Text>
             <TextInput placeholder="Current Password"
 	            placeholderTextColor="#FFFFFF" 
-	            style = { {backgroundColor :'#596066', borderColor: '#e8e8e8', 
+	            style = { {backgroundColor :'#596066', borderColor: '#e8e8e8', fontWeight: 'bold',
 	            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"}}/>
             <TextInput placeholder="New Password"
-	            placeholderTextColor="#FFFFFF"
-                value={password}
-                onChangeText={text => setpassword(text)}
-	            style = { {backgroundColor :'#596066', borderColor: '#e8e8e8',
+	            placeholderTextColor="#FFFFFF" 
+	            style = { {backgroundColor :'#596066', borderColor: '#e8e8e8', fontWeight: 'bold',
 	            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"}}/>
             <TextInput placeholder="Retype New Password"
-	            placeholderTextColor="#FFFFFF"
-                value={Re_password}
-                onChangeText={text => setRe_password(text)}
-	            style = { {backgroundColor :'#596066', borderColor: '#e8e8e8',
+	            placeholderTextColor="#FFFFFF" 
+	            style = { {backgroundColor :'#596066', borderColor: '#e8e8e8', fontWeight: 'bold',
 	            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"}}/>
             </SecondaryCard>
 
@@ -128,16 +124,12 @@ const EditPersonalInfo = (props) => {
             <Text style={styles.text}>My name is</Text>
             <TextInput placeholder="First Name"
 	            placeholderTextColor="#FFFFFF"
-                value={FName}
-                onChangeText={text => setFirstName(text)}
-	            style = { {backgroundColor :'#596066', borderColor: '#e8e8e8', 
+	            style = { {backgroundColor :'#596066', borderColor: '#e8e8e8', fontWeight: 'bold',
 	            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"}}/>
                 
             <TextInput placeholder="Last Name"
 	            placeholderTextColor="#FFFFFF"
-                value={LName}
-                onChangeText={text => setLastName(text)}
-	            style = { {backgroundColor :'#596066', borderColor: '#e8e8e8',
+	            style = { {backgroundColor :'#596066', borderColor: '#e8e8e8', fontWeight: 'bold',
 	            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"}}/>
             </SecondaryCard>
 
@@ -145,7 +137,7 @@ const EditPersonalInfo = (props) => {
             <Text style={styles.text}>Citizenship</Text>
             <TextInput placeholder="U.S Citizen"
 	            placeholderTextColor="#FFFFFF" 
-	            style = { {backgroundColor :'#596066', borderColor: '#e8e8e8', 
+	            style = { {backgroundColor :'#596066', borderColor: '#e8e8e8', fontWeight: 'bold',
 	            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"}}/>
             </SecondaryCard>
 
@@ -153,7 +145,7 @@ const EditPersonalInfo = (props) => {
             <Text style={styles.text}>Gender</Text>
             <TextInput placeholder="Male"
 	            placeholderTextColor="#FFFFFF" 
-	            style = { {backgroundColor :'#596066', borderColor: '#e8e8e8', 
+	            style = { {backgroundColor :'#596066', borderColor: '#e8e8e8', fontWeight: 'bold',
 	            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"}}/>
             </SecondaryCard>
 
@@ -164,7 +156,7 @@ const EditPersonalInfo = (props) => {
                         //value = {FName}
                         //onChangeText = {text => setFirstName(text)}
                         style={{
-                            backgroundColor: '#596066', borderColor: '#e8e8e8',
+                            backgroundColor: '#596066', borderColor: '#e8e8e8', fontWeight: 'bold',
                             borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"
                         }} />
                 </SecondaryCard>
@@ -175,7 +167,7 @@ const EditPersonalInfo = (props) => {
                         //value = {FName}
                         //onChangeText = {text => setFirstName(text)}
                         style={{
-                            backgroundColor: '#596066', borderColor: '#e8e8e8',
+                            backgroundColor: '#596066', borderColor: '#e8e8e8', fontWeight: 'bold',
                             borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"
                         }} />
                     <Text style={styles.text}>SAT Evidence-Based Reading and Writing Score</Text>
@@ -184,7 +176,7 @@ const EditPersonalInfo = (props) => {
                         //value = {LName}
                         //onChangeText = {text => setLastName(text)}
                         style={{
-                            backgroundColor: '#596066', borderColor: '#e8e8e8',
+                            backgroundColor: '#596066', borderColor: '#e8e8e8', fontWeight: 'bold',
                             borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"
                         }} />
                     <Text style={styles.text}>ACT Score</Text>
@@ -193,7 +185,7 @@ const EditPersonalInfo = (props) => {
                         //value = {LName}
                         //onChangeText = {text => setLastName(text)}
                         style={{
-                            backgroundColor: '#596066', borderColor: '#e8e8e8',
+                            backgroundColor: '#596066', borderColor: '#e8e8e8', fontWeight: 'bold',
                             borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"
                         }} />
                 </SecondaryCard>
@@ -206,7 +198,7 @@ const EditPersonalInfo = (props) => {
                         //value = {FName}
                         //onChangeText = {text => setFirstName(text)}
                         style={{
-                            backgroundColor: '#596066', borderColor: '#e8e8e8',
+                            backgroundColor: '#596066', borderColor: '#e8e8e8', fontWeight: 'bold',
                             borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"
                         }} />
                     <Text style={styles.text}>Sport 2</Text>
@@ -215,7 +207,7 @@ const EditPersonalInfo = (props) => {
                         //value = {LName}
                         //onChangeText = {text => setLastName(text)}
                         style={{
-                            backgroundColor: '#596066', borderColor: '#e8e8e8',
+                            backgroundColor: '#596066', borderColor: '#e8e8e8', fontWeight: 'bold',
                             borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"
                         }} />
                     <Text style={styles.text}>Sport 3</Text>
@@ -224,7 +216,7 @@ const EditPersonalInfo = (props) => {
                         //value = {LName}
                         //onChangeText = {text => setLastName(text)}
                         style={{
-                            backgroundColor: '#596066', borderColor: '#e8e8e8',
+                            backgroundColor: '#596066', borderColor: '#e8e8e8', fontWeight: 'bold',
                             borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"
                         }} />
                 </SecondaryCard>
@@ -407,26 +399,26 @@ const EditPersonalInfo = (props) => {
                         placeholderTextColor="#FFFFFF" 
                         //value = {FName}
                         //onChangeText = {text => setFirstName(text)}
-                        style = { {backgroundColor :'#596066', borderColor: '#e8e8e8', 
+                        style = { {backgroundColor :'#596066', borderColor: '#e8e8e8', fontWeight: 'bold',
                         borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"}}/>
             <Text style={styles.text}>seeking a</Text>
             <TextInput placeholder="Degree"
                         placeholderTextColor="#FFFFFF" 
                         //value = {LName}
                         //onChangeText = {text => setLastName(text)}
-                        style = { {backgroundColor :'#596066', borderColor: '#e8e8e8',
+                        style = { {backgroundColor :'#596066', borderColor: '#e8e8e8', fontWeight: 'bold',
                         borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"}}/>
             <Text style={styles.text}>with a GPA of</Text>
             <TextInput placeholder="GPA"
                         placeholderTextColor="#FFFFFF" 
                         //value = {LName}
                         //onChangeText = {text => setLastName(text)}
-                        style = { {backgroundColor :'#596066', borderColor: '#e8e8e8',
+                        style = { {backgroundColor :'#596066', borderColor: '#e8e8e8', fontWeight: 'bold',
                         borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"}}/>
             </SecondaryCard>
             <WhiteButton frontColor="#000000" backColor="#FFF" text="Save Changes" onPress={onQuestionPressed}/>
 
-            <WhiteButton text="Close Account" onPress={CloseAccountPressed}></WhiteButton>
+            {/* <WhiteButton text="Close Account" onPress={CloseAccountPressed}></WhiteButton> */}
 
             </ScrollView>
             </View>
@@ -460,6 +452,7 @@ const styles = StyleSheet.create({
         textAlign: 'left',
         width: "100%",
         paddingBottom: 10,
+        fontWeight: 'bold'
     },
 
     headers : {
@@ -525,7 +518,8 @@ const styles = StyleSheet.create({
         marginVertical: 5,
         alignItems: 'center',
         borderRadius: 5,
-        backgroundColor: "white"
+        backgroundColor: "white",
+        fontWeight: 'bold',
     }
 })
 
