@@ -198,7 +198,7 @@ const styles = StyleSheet.create({
     circleContainer: {
         flexDirection: 'row',
         justifyContent: 'space-evenly',
-        paddingBottom: 10
+        paddingBottom: 25
 
     },
     listItem: {
