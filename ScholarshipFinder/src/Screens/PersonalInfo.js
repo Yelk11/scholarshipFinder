@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-import { View, Button, TextInput, Text, Image, StyleSheet, useWindowDimensions, ScrollView, SafeAreaView, TouchableOpacity, Modal, Alert } from 'react-native';
+import { View, Button, TextInput, Text, StyleSheet, useWindowDimensions, ScrollView, TouchableOpacity} from 'react-native';
+import {useContext} from 'react';
 import { useNavigation } from '@react-navigation/native';
 import CustomButton from '../components/CustomButton/CustomButton';
 import PersonalCard from '../components/PersonalCard';
-//import DateTimePicker from '@react-native-community/datetimepicker';
-//import DateTimePicker from 'react-native-modal-datetime-picker';
-import { DateTimePickerProps } from 'react-native-modal-datetime-picker';
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
+import {isValidObjField, updateError} from '../components/CustomInput/methods';
 
 const PersonalInfo = () => {
 
@@ -24,9 +23,24 @@ const PersonalInfo = () => {
                 citizenship_status: CitizinshipStatus,
                 gender: gender,
             }, { merge: true })
-        navigation.navigate('Questions')
+        if (isValidForm()) {
+            // submit form
+            console.log(FName, LName);
+            navigation.navigate('Questions')
+          }
     }
 
+    const [error, setError] = useState('');
+
+    const isValidObjField = (obj) => {
+        return Object.values(obj).every(value => value.trim())
+    };
+    const updateError = (error, stateUpdater) => {
+        stateUpdater(error);
+        setTimeout(() => {
+        stateUpdater('');
+        }, 5000);
+    };
     const [FName, setFirstName] = useState('');
     const [LName, setLastName] = useState('');
     const [date, setDate] = useState(new Date(1598051730000));
@@ -35,15 +49,12 @@ const PersonalInfo = () => {
     const [race, setRace] = useState('');
     const [CitizinshipStatus, setCitizenship] = useState('');
     const [gender, setGender] = useState('');
-    const [city, setCity] = useState('');
-    const [state, setState] = useState('');
-    const [zip, setZip] = useState('');
-    const [country, setCountry] = useState('');
-
+    
     const onChange = (event, selectedDate) => {
         const currentDate = selectedDate || date;
         setShow(Platform.OS === 'android');
         setDate(currentDate);
+
     };
 
     const showDatepicker = () => {
@@ -55,15 +66,18 @@ const PersonalInfo = () => {
         setMode(currentMode);
     };
 
-    //    handlePicker = () => {
-    //     this.setState({
-    //         isVisible: false
-    //     })};
+    const isValidForm = () => {
+        // we will accept only if all of the fields have value
+        if (!isValidObjField(LName, FName))
+          return updateError('Required first name and last name', setError);
 
-    //  hidePicker = () => {
-    //     this.setState({
-    //         isVisible: false
-    //     })};
+        if (!FName.trim() || FName.length < 3)
+          return updateError('Invalid first name!', setError);
+
+        if (!LName.trim() || LName.length < 3)
+          return updateError('Invalid last name!', setError);
+        return true;
+      };
 
     return (
         <View style={styles.container}>
@@ -71,6 +85,12 @@ const PersonalInfo = () => {
 
                 <PersonalCard>
                     <Text style={styles.text}>My name is</Text>
+                    {error ? (
+                        <Text style={{color: 'red', fontSize: 16, textAlign:'center'}}>
+                            {error}
+                        </Text>
+                    ) :null}
+
                     <TextInput placeholder="First Name"
                         placeholderTextColor="#FFFFFF"
                         value={FName}
@@ -135,41 +155,6 @@ const PersonalInfo = () => {
                         }} />
                 </PersonalCard>
 
-                {/* <PersonalCard>
-                    <Text style={styles.text}>I live in</Text>
-                    <TextInput placeholder="City"
-                        placeholderTextColor="#FFFFFF"
-                        value={city}
-                        onChangeText={text => setCity(text)}
-                        style={{
-                            backgroundColor: '#596066', borderColor: '#e8e8e8',
-                            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"
-                        }} />
-                    <TextInput placeholder="State"
-                        placeholderTextColor="#FFFFFF"
-                        value={state}
-                        onChangeText={text => setState(text)}
-                        style={{
-                            backgroundColor: '#596066', borderColor: '#e8e8e8',
-                            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"
-                        }} />
-                    <TextInput placeholder="ZIP"
-                        placeholderTextColor="#FFFFFF"
-                        value={zip}
-                        onChangeText={text => setZip(text)}
-                        style={{
-                            backgroundColor: '#596066', borderColor: '#e8e8e8',
-                            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"
-                        }} />
-                    <TextInput placeholder="Country"
-                        placeholderTextColor="#FFFFFF"
-                        value={country}
-                        onChangeText={text => setCountry(text)}
-                        style={{
-                            backgroundColor: '#596066', borderColor: '#e8e8e8',
-                            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"
-                        }} />
-                </PersonalCard> */}
 
 
 
