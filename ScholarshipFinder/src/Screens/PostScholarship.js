@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { View, Button, TextInput, Text, Image, StyleSheet, useWindowDimensions, ScrollView, SafeAreaView, TouchableOpacity, Modal, Alert } from 'react-native';
+import { View, Button, TextInput, Text, Image, StyleSheet, useWindowDimensions, ScrollView, SafeAreaView, TouchableOpacity, Modal, Alert, onChangeText} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import CustomButton from '../components/CustomButton/CustomButton';
 import PersonalCard from '../components/PersonalCard';
@@ -42,6 +42,7 @@ const PostScholarship = () => {
                                    value={link}
                                    multiline
                                    numberOfLines={8}
+                                   onChangeText={text => setLink(text)}
                                    style = { {backgroundColor :'#596066', borderColor: '#e8e8e8', fontWeight: 'bold', 
                                    borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"}}/>
                         </PersonalCard>

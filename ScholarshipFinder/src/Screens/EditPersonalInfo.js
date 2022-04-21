@@ -40,6 +40,7 @@ const EditPersonalInfo = (props) => {
     const [isModalVisible, setisModalVisible] = useState(false);
     const [FName, setFirstName] = useState('');
     const [LName, setLastName] = useState('');
+    const [CurrentPassword, setCurrentPassword] = useState('');
     const [password, setpassword] = useState('');
     const [Re_password, setRe_password] = useState('');
     const [error, setError] = useState('');
@@ -107,15 +108,24 @@ const EditPersonalInfo = (props) => {
             <SecondaryCard>
             <Text style={styles.text}>Password</Text>
             <TextInput placeholder="Current Password"
-	            placeholderTextColor="#FFFFFF" 
+	            placeholderTextColor="#FFFFFF"
+                value={CurrentPassword}
+                secureTextEntry={true}
+                onChangeText={text => setCurrentPassword(text)}
 	            style = { {backgroundColor :'#596066', borderColor: '#e8e8e8', fontWeight: 'bold',
 	            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"}}/>
             <TextInput placeholder="New Password"
-	            placeholderTextColor="#FFFFFF" 
+	            placeholderTextColor="#FFFFFF"
+                value={password}
+                secureTextEntry={true}
+                onChangeText={text => setpassword(text)}
 	            style = { {backgroundColor :'#596066', borderColor: '#e8e8e8', fontWeight: 'bold',
 	            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"}}/>
             <TextInput placeholder="Retype New Password"
-	            placeholderTextColor="#FFFFFF" 
+	            placeholderTextColor="#FFFFFF"
+                value={Re_password}
+                secureTextEntry={true}
+                onChangeText={text => setRe_password(text)} 
 	            style = { {backgroundColor :'#596066', borderColor: '#e8e8e8', fontWeight: 'bold',
 	            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"}}/>
             </SecondaryCard>
@@ -124,11 +134,15 @@ const EditPersonalInfo = (props) => {
             <Text style={styles.text}>My name is</Text>
             <TextInput placeholder="First Name"
 	            placeholderTextColor="#FFFFFF"
+                value={FName}
+                onChangeText={text => setFirstName(text)}
 	            style = { {backgroundColor :'#596066', borderColor: '#e8e8e8', fontWeight: 'bold',
 	            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"}}/>
                 
             <TextInput placeholder="Last Name"
 	            placeholderTextColor="#FFFFFF"
+                value={LName}
+                onChangeText={text => setLastName(text)}
 	            style = { {backgroundColor :'#596066', borderColor: '#e8e8e8', fontWeight: 'bold',
 	            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"}}/>
             </SecondaryCard>
