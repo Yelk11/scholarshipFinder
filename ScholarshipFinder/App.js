@@ -36,8 +36,10 @@ const App = () => {
     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
     return subscriber; // unsubscribe on unmount
   }, []);
-console.log(auth().currentUser.email)
-  if (auth().currentUser) {
+
+
+
+  if (auth().currentUser != null) {
 
     return (
       <NavigationContainer>

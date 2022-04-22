@@ -115,30 +115,21 @@ const Questions = () => {
                     <Text style={styles.text}>Sport 1</Text>
                     <TextInput placeholder="Enter a sport here (leave blank if none)"
                         placeholderTextColor="#FFFFFF"
-                        //value = {FName}
-                        //onChangeText = {text => sport.add(text)}
                         style={styles.inputBox} />
                     <Text style={styles.text}>Sport 2</Text>
                     <TextInput placeholder="Enter a sport here (leave blank if none)"
                         placeholderTextColor="#FFFFFF"
-                        //value = {LName}
-                        //onChangeText = {text => setLastName(text)}
                         style={styles.inputBox} />
                     <Text style={styles.text}>Sport 3</Text>
                     <TextInput placeholder="Enter a sport here (leave blank if none)"
                         placeholderTextColor="#FFFFFF"
-                        //value = {LName}
-                        //onChangeText = {text => setLastName(text)}
                         style={styles.inputBox} />
                 </SecondaryCard>
 
                 {
                     shouldShow3 ? (
                         <SecondaryCard>
-
                             <Text style={styles.text}>Are you affiliated with the military?</Text>
-
-
                             <CustomButton frontColor="#000000" backColor="#6FE7C3" text="Yes" onPress={() => {
                                 setShouldShow3(!shouldShow3)
                                 setMilitary(true)

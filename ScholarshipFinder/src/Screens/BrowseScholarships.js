@@ -81,20 +81,11 @@ const BrowseScholarships = () => {
         setIncomeLevel(data.incomeLevel)
     }
     
-
     function my_sort(my_arr) {
-        
-
-        //Outer pass
         for (let i = 0; i < my_arr.length; i++) {
-            //Inner pass
             for (let j = 0; j < my_arr.length - i - 1; j++) {
-
-                //Value comparison using ascending order
-
                 if (my_arr[j + 1]['match'] > my_arr[j]['match']) {
-                    
-                    //Swapping
+
                     [my_arr[j + 1], my_arr[j]] = [my_arr[j], my_arr[j + 1]]
                 }
             }
@@ -150,8 +141,6 @@ const BrowseScholarships = () => {
                         objectsArray[i]['match'] = ((counter / total_attributes) * 100).toFixed(0);
                     }
                     
-                    console.log((counter / total_attributes) * 100);
-                    
                 }
                 
                 setScholarships(my_sort(objectsArray));
@@ -174,17 +163,11 @@ const BrowseScholarships = () => {
                     data={scholarships}
                     renderItem={({ item }) => (
                         <><ScholarshipCard>
-                            <Pressable style={styles.listItem} onPress={() => navigation.navigate('ScholarshipDetails',
-                                {
-                                    name: item.title,
-                                    amount: item.amount,
-                                    deadline: item.deadline
-                                })}>
-
-                                <Text style={styles.title}>{item.title}</Text>
+                            <Text style={styles.title}>{item.title}</Text>
                                 <View style={styles.circleContainer}>
                                     <View style={styles.circle}><Text style={styles.circleText}>{item.match}%</Text></View>
                                     <View style={styles.circle}><Text style={styles.circleText}>${item.amount}</Text></View>
+
                                     
                                     <View style={styles.circle}><Text style={styles.circleText}>Due {'\n'} {item.deadline.toDate().getMonth().toString()}/{item.deadline.toDate().getDate().toString()}</Text></View>
                                 </View>
@@ -194,6 +177,7 @@ const BrowseScholarships = () => {
                                     <Text>Degree: {item.degree}</Text>
                                 </View>
                             </Pressable>
+
                         </ScholarshipCard>
                             <AccentCard>
                                 <Image style={styles.like} source={LikeButton} />
@@ -218,7 +202,8 @@ const styles = StyleSheet.create({
 
     circleContainer: {
         flexDirection: 'row',
-        justifyContent: 'space-evenly'
+        justifyContent: 'space-evenly',
+        paddingBottom: 25
 
     },
     listItem: {
