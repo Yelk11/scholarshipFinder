@@ -10,6 +10,7 @@ import SettingsButton from '../components/CustomButton/SettingsButton';
 import LogoutButton from '../components/CustomButton/LogoutButton';
 import LogoutIcon from '../../assets/images/logout-icon.png'
 import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 
 const Settings = (props) => {
     
@@ -25,20 +26,27 @@ const Settings = (props) => {
 
     const onFeedPressed = () => navigation.navigate('BrowseScholarships')
 
+    const [firstName, setFirstName] = useState('');
+
+    firestore()
+        .collection('user_info')
+        .doc(auth().currentUser.uid)
+        .get()
+        .then(documentSnapshot => {
+            const data = documentSnapshot.data()
+            setFirstName(data.first_name)
+        });
+
     return(
         <View style={styles.container}>
-            {/* <Pressable onPress={GoBack}>
-                <Image style={styles.settingsTopLeft} source={BackButton} />
-            </Pressable> */}
-            {/* <Image style={styles.scholarshipTopRight} source={scholarshipFilter} /> */}
+            
             <Image style={styles.logoTopCenter} source={smallLogo} />
             <SettingsCard>
-                <Text style={styles.headertext}>Welcome Back!</Text>
-                <Text style={styles.text}>Nicholas Kramer</Text>
+                <Text style={styles.headertext}>Welcome Back</Text>
+                <Text style={styles.text}>{firstName}</Text>
                 <SettingsButton text="Edit Profile" onPress={GoToPersonalInfo}></SettingsButton>
                 <SettingsButton text="Scholarship Feed" onPress={onFeedPressed}></SettingsButton>
                 <SettingsButton text="Post A Scholarship" onPress={PostScholarshipPressed}></SettingsButton>
-                {/* <SettingsButton text="App Review"></SettingsButton> */}
                 <LogoutButton 
                 text="Logout" 
                 onPress={() => auth() 
