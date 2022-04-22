@@ -100,7 +100,7 @@ const EditPersonalInfo = (props) => {
             stateUpdater('');
         }, 5000);
     };
-    console.log(auth().currentUser.uid)
+    
     firestore()
         .collection('user_info')
         .doc(auth().currentUser.uid)
