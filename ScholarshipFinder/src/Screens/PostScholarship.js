@@ -30,7 +30,6 @@ const PostScholarship = () => {
             <TouchableOpacity onPress={GoBack}>
             <Image style={styles.settingsTopLeft} source={BackButton} />
             </TouchableOpacity>
-            {/* <Image style={styles.scholarshipTopRight} source={scholarshipFilter} /> */}
             <Image style={styles.logoTopCenter} source={smallLogo} />
             <View style={styles.flexAdjustment}>
             <ScrollView>
