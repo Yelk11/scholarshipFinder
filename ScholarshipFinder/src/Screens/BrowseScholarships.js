@@ -143,8 +143,6 @@ const BrowseScholarships = () => {
                         objectsArray[i]['match'] = ((counter / total_attributes) * 100).toFixed(0);
                     }
                     
-                    console.log((counter / total_attributes) * 100);
-                    
                 }
                 
                 setScholarships(my_sort(objectsArray));
