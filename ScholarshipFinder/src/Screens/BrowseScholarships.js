@@ -159,7 +159,6 @@ const BrowseScholarships = () => {
             <TouchableOpacity onPress={onSettingsPressed}>
                 <Image style={styles.settingsTopLeft} source={YellowSettingsButton} />
             </TouchableOpacity>
-            {/* <Image style={styles.scholarshipTopRight} source={scholarshipFilter} /> */}
             <Image style={styles.logoTopCenter} source={smallLogo} />
             <View style={styles.flexAdjustment}>
 
