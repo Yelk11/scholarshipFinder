@@ -15,23 +15,42 @@ import firestore from '@react-native-firebase/firestore';
 const EditPersonalInfo = (props) => {
     const navigation = useNavigation();
 
-
+    const [firstName, setFirstName] = useState('');
+    const [newFirstName, setNewFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [newLastName, setNewLastName] = useState('');
     const [race, setRace] = useState('');
-    const [citizenship, setCitizen] = useState('');
+    const [newRace, setNewRace] = useState('');
+    const [citizenship_status, setCitizen] = useState('');
+    const [new_citizenship_status, setNewCitizen] = useState('');
     const [gender, setGender] = useState('');
+    const [newGender, setNewGender] = useState('');
     const [college, setCollege] = useState('');
+    const [newCollege, setNewCollege] = useState('');
     const [enrollmentStatus, setEnrollmentStatus] = useState('');
+    const [new_enrollmentStatus, setNewEnrollmentStatus] = useState('');
     const [classStanding, setClassStanding] = useState('');
+    const [newClassStanding, setNewClassStanding] = useState('');
     const [degree, setDegree] = useState('');
+    const [newDegree, setNewDegree] = useState('');
     const [major, setMajor] = useState('');
+    const [newMajor, setNewMajor] = useState('');
     const [gpa, setGpa] = useState('');
+    const [newGpa, setNewGpa] = useState('');
     const [military, setMilitary] = useState('');
-    const [highSchool, setHighSchool] = useState('');
-    const [satMath, setSatMath] = useState('');
-    const [satEBRW, setSatEBRW] = useState('');
+    const [newMilitary, setNewMilitary] = useState('');
+    const [high_school, setHighSchool] = useState('');
+    const [new_high_school, setNewHighSchool] = useState('');
+    const [sat_math, setSatMath] = useState('');
+    const [new_sat_math, setNewSatMath] = useState('');
+    const [sat_ebrw, setSatEBRW] = useState('');
+    const [new_sat_ebrw, setNewSatEBRW] = useState('');
     const [act, setACT] = useState('');
+    const [newACT, setNewACT] = useState('');
     const [firstCollegeStudent, setFirstCollegeStudent] = useState('');
+    const [NewfirstCollegeStudent, setNewFirstCollegeStudent] = useState('');
     const [incomeLevel, setIncomeLevel] = useState('');
+    const [NewincomeLevel, setNewIncomeLevel] = useState('');
 
 
     const GoBack = () => navigation.navigate('Settings')
@@ -44,19 +63,23 @@ const EditPersonalInfo = (props) => {
             .collection('user_info')
             .doc(auth().currentUser.uid)
             .set({
-                high_school: highSchool,
-                sat_math: satMath,
-                sat_ebrw: satEBRW,
-                act: act,
-                military:military,
-                income_level: incomeLevel,
-                first_college_student: firstCollegeStudent,
-                class_standing: classStanding,
-                enrollment_status: enrollmentStatus,
-                major: major,
-                college: college,
-                degree: degree,
-                gpa: gpa
+                first_name: newFirstName,
+                last_name: newLastName,
+                high_school: new_high_school,
+                sat_math: new_sat_math,
+                sat_ebrw: new_sat_ebrw,
+                act: newACT,
+                military: newMilitary,
+                income_level: NewincomeLevel,
+                first_college_student: NewfirstCollegeStudent,
+                class_standing: newClassStanding,
+                enrollment_status: new_enrollmentStatus,
+                major: newMajor,
+                college: newCollege,
+                degree: newDegree,
+                gpa: newGpa,
+                citizenship_status: new_citizenship_status,
+                gender: newGender
             }, { merge: true })
             navigation.navigate('Settings')
         }
@@ -75,8 +98,6 @@ const EditPersonalInfo = (props) => {
     const [chooseData, setchooseData] = useState('Select your Major...');
 
     const [isModalVisible, setisModalVisible] = useState(false);
-    const [firstName, setFirstName] = useState('FirstName');
-    const [lastName, setLastName] = useState('LastName');
     const [CurrentPassword, setCurrentPassword] = useState('');
     const [password, setpassword] = useState('');
     const [Re_password, setRe_password] = useState('');
@@ -108,17 +129,17 @@ const EditPersonalInfo = (props) => {
         .then(documentSnapshot => {
             const data = documentSnapshot.data()
 
-            if (data.first_name != null){
+            if (data.first_name != ''){
                 setFirstName(data.first_name)
             }
-            if (data.last_name != null){
+            if (data.last_name != ''){
                 setLastName(data.last_name)
             }
             if (data.race != '') {
                 setRace(data.race)
             }
-            if (data.citizen != '') {
-                setCitizen(data.citizen)
+            if (data.citizenship_status != '') {
+                setCitizen(data.citizenship_status)
             }
             if (data.gender != '') {
                 setGender(data.gender)
@@ -144,14 +165,14 @@ const EditPersonalInfo = (props) => {
             if (data.military != '') {
                 setMilitary(data.military)
             }
-            if (data.highSchool != '') {
-                setHighSchool(data.highSchool)
+            if (data.high_school != '') {
+                setHighSchool(data.high_school)
             }
-            if (data.satMath != '') {
-                setSatMath(data.satMath)
+            if (data.sat_math != '') {
+                setSatMath(data.sat_math)
             }
-            if (data.satEBRW != '') {
-                setSatEBRW(data.satEBRW)
+            if (data.sat_ebrw != '') {
+                setSatEBRW(data.sat_ebrw)
             }
             if (data.act != '') {
                 setACT(data.act)
@@ -168,17 +189,17 @@ const EditPersonalInfo = (props) => {
         if (!isValidObjField(lastName, firstName))
             return updateError('Required first name and last name', setError);
 
-        if (!firstName.trim() || firstName.length < 3)
+        if (!firstName.trim() || firstName.length < 2)
             return updateError('Invalid first name!', setError);
 
-        if (!lastName.trim() || lastName.length < 3)
+        if (!lastName.trim() || lastName.length < 2)
             return updateError('Invalid last name!', setError);
-        if (!password.trim() || password.length < 6)
-            return updateError('Password is less than 6 characters!', setError);
-        if (!Re_password.trim() || Re_password.length < 6)
-            return updateError('Password is less than 6 characters!', setError);
-        if (password !== Re_password)
-            return updateError('Password does not match! please try again!', setError);
+        // if (!password.trim() || password.length < 6)
+        //     return updateError('Password is less than 6 characters!', setError);
+        // if (!Re_password.trim() || Re_password.length < 6)
+        //     return updateError('Password is less than 6 characters!', setError);
+        // if (password !== Re_password)
+        //     return updateError('Password does not match! please try again!', setError);
         return true;
     };
 
@@ -197,17 +218,17 @@ const EditPersonalInfo = (props) => {
                 ) : null}
                 <ScrollView>
 
-                    <SecondaryCard>
+                    {/* <SecondaryCard>
                         <Text style={styles.text}>Email</Text>
-                        <TextInput placeholder={"nickdemo@gmail.com"}
+                        <TextInput placeholder={auth().currentUser.email}
                             placeholderTextColor="#FFFFFF"
                             style={{
                                 backgroundColor: '#596066', borderColor: '#e8e8e8', fontWeight: 'bold',
                                 borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"
                             }} />
-                    </SecondaryCard>
+                    </SecondaryCard> */}
 
-                    <SecondaryCard>
+                    {/* <SecondaryCard>
                         <Text style={styles.text}>Password</Text>
                         <TextInput placeholder="Current Password"
                             placeholderTextColor="#FFFFFF"
@@ -236,14 +257,14 @@ const EditPersonalInfo = (props) => {
                                 backgroundColor: '#596066', borderColor: '#e8e8e8', fontWeight: 'bold',
                                 borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"
                             }} />
-                    </SecondaryCard>
+                    </SecondaryCard> */}
 
                     <SecondaryCard>
                         <Text style={styles.text}>My name is</Text>
                         <TextInput placeholder={firstName}
                             placeholderTextColor="#FFFFFF"
-                            value={firstName}
-                            onChangeText={text => setFirstName(text)}
+                            value={newFirstName}
+                            onChangeText={text => setNewFirstName(text)}
                             style={{
                                 backgroundColor: '#596066', borderColor: '#e8e8e8', fontWeight: 'bold',
                                 borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"
@@ -251,8 +272,8 @@ const EditPersonalInfo = (props) => {
 
                         <TextInput placeholder={lastName}
                             placeholderTextColor="#FFFFFF"
-                            value={lastName}
-                            onChangeText={text => setLastName(text)}
+                            value={newLastName}
+                            onChangeText={text => setNewLastName(text)}
                             style={{
                                 backgroundColor: '#596066', borderColor: '#e8e8e8', fontWeight: 'bold',
                                 borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"
@@ -261,8 +282,10 @@ const EditPersonalInfo = (props) => {
 
                     <SecondaryCard>
                         <Text style={styles.text}>Citizenship</Text>
-                        <TextInput placeholder={citizenship}
+                        <TextInput placeholder={citizenship_status}
                             placeholderTextColor="#FFFFFF"
+                            value={new_citizenship_status}
+                            onChangeText={text => setNewCitizen(text)}
                             style={{
                                 backgroundColor: '#596066', borderColor: '#e8e8e8', fontWeight: 'bold',
                                 borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"
@@ -272,6 +295,8 @@ const EditPersonalInfo = (props) => {
                     <SecondaryCard>
                         <Text style={styles.text}>Gender</Text>
                         <TextInput placeholder={gender}
+                        value={newGender}
+                        onChangeText={text => setNewGender(text)}
                             placeholderTextColor="#FFFFFF"
                             style={{
                                 backgroundColor: '#596066', borderColor: '#e8e8e8', fontWeight: 'bold',
@@ -281,10 +306,10 @@ const EditPersonalInfo = (props) => {
 
                     <SecondaryCard>
                         <Text style={styles.text}>I attended high school at</Text>
-                        <TextInput placeholder={highSchool}
+                        <TextInput placeholder={high_school}
                             placeholderTextColor="#FFFFFF"
-                            //value = {FName}
-                            //onChangeText = {text => setFirstName(text)}
+                            value={new_high_school}
+                            onChangeText={text => setNewHighSchool(text)}
                             style={{
                                 backgroundColor: '#596066', borderColor: '#e8e8e8', fontWeight: 'bold',
                                 borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"
@@ -292,19 +317,19 @@ const EditPersonalInfo = (props) => {
                     </SecondaryCard>
                     <SecondaryCard>
                         <Text style={styles.text}>SAT Math Score</Text>
-                        <TextInput placeholder={satMath}
+                        <TextInput placeholder={sat_math}
                             placeholderTextColor="#FFFFFF"
-                            //value = {FName}
-                            //onChangeText = {text => setFirstName(text)}
+                            value={new_sat_math}
+                            onChangeText={text => setNewSatMath(text)}
                             style={{
                                 backgroundColor: '#596066', borderColor: '#e8e8e8', fontWeight: 'bold',
                                 borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"
                             }} />
                         <Text style={styles.text}>SAT Evidence-Based Reading and Writing Score</Text>
-                        <TextInput placeholder={satEBRW}
+                        <TextInput placeholder={sat_ebrw}
                             placeholderTextColor="#FFFFFF"
-                            //value = {LName}
-                            //onChangeText = {text => setLastName(text)}
+                            value={new_sat_ebrw}
+                            onChangeText={text => setNewSatEBRW(text)}
                             style={{
                                 backgroundColor: '#596066', borderColor: '#e8e8e8', fontWeight: 'bold',
                                 borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"
@@ -312,15 +337,15 @@ const EditPersonalInfo = (props) => {
                         <Text style={styles.text}>ACT Score</Text>
                         <TextInput placeholder={act}
                             placeholderTextColor="#FFFFFF"
-                            //value = {LName}
-                            //onChangeText = {text => setLastName(text)}
+                            value={newACT}
+                            onChangeText={text => setNewACT(text)}
                             style={{
                                 backgroundColor: '#596066', borderColor: '#e8e8e8', fontWeight: 'bold',
                                 borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"
                             }} />
                     </SecondaryCard>
 
-                    <SecondaryCard>
+                    {/* <SecondaryCard>
                         <Text style={styles.text}>Do you have any athletic interests or participation?</Text>
                         <Text style={styles.text}>Sport 1</Text>
                         <TextInput placeholder="Enter a sport here (leave blank if none)"
@@ -349,7 +374,7 @@ const EditPersonalInfo = (props) => {
                                 backgroundColor: '#596066', borderColor: '#e8e8e8', fontWeight: 'bold',
                                 borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"
                             }} />
-                    </SecondaryCard>
+                    </SecondaryCard> */}
 
                     {
                         shouldShow3 ? (
@@ -358,11 +383,11 @@ const EditPersonalInfo = (props) => {
                                 <Text style={styles.text}>Are you affiliated with the military?</Text>
 
 
-                                <CustomButton frontColor="#000000" backColor="#6FE7C3" text="Yes" onPress={() => {
-                                    setShouldShow3(!shouldShow3)
+                                <CustomButton frontColor="#000000" backColor="#6FE7C3" text="Yes" onPress={() => {                        
+                                    setShouldShow3(!shouldShow3), setNewMilitary(true)
                                 }} />
                                 <CustomButton frontColor="#000000" backColor="#EA5E6A" text="No" onPress={() => {
-                                    setShouldShow3(!shouldShow3)
+                                    setShouldShow3(!shouldShow3), setNewMilitary(false)
                                 }} />
 
                             </SecondaryCard>
@@ -376,19 +401,19 @@ const EditPersonalInfo = (props) => {
 
 
                             <CustomButton frontColor="#000000" backColor="#FFF" text="Low" onPress={() => {
-                                setShouldShow4(!shouldShow4)
+                                setShouldShow4(!shouldShow4), setNewIncomeLevel("low")
                             }} />
                             <CustomButton frontColor="#000000" backColor="#FFF" text="Low-Middle" onPress={() => {
-                                setShouldShow4(!shouldShow4)
+                                setShouldShow4(!shouldShow4), setNewIncomeLevel("low-middle")
                             }} />
                             <CustomButton frontColor="#000000" backColor="#FFF" text="Middle" onPress={() => {
-                                setShouldShow4(!shouldShow4)
+                                setShouldShow4(!shouldShow4), setNewIncomeLevel("middle")
                             }} />
                             <CustomButton frontColor="#000000" backColor="#FFF" text="Middle-High" onPress={() => {
-                                setShouldShow4(!shouldShow4)
+                                setShouldShow4(!shouldShow4), setNewIncomeLevel("middle-high")
                             }} />
                             <CustomButton frontColor="#000000" backColor="#FFF" text="High" onPress={() => {
-                                setShouldShow4(!shouldShow4)
+                                setShouldShow4(!shouldShow4), setNewIncomeLevel("high")
                             }} />
 
                         </SecondaryCard>
@@ -403,10 +428,10 @@ const EditPersonalInfo = (props) => {
 
 
                                 <CustomButton frontColor="#000000" backColor="#6FE7C3" text="Yes" onPress={() => {
-                                    setShouldShow(!shouldShow)
+                                    setShouldShow(!shouldShow), setNewFirstCollegeStudent(true)
                                 }} />
                                 <CustomButton frontColor="#000000" backColor="#EA5E6A" text="No" onPress={() => {
-                                    setShouldShow(!shouldShow)
+                                    setShouldShow(!shouldShow), setNewFirstCollegeStudent(false)
                                 }} />
 
                             </SecondaryCard>
@@ -420,28 +445,28 @@ const EditPersonalInfo = (props) => {
 
 
                             <CustomButton frontColor="#000000" backColor="#FFF" text="Incoming College Student" onPress={() => {
-                                setShouldShow2(!shouldShow2)
+                                setShouldShow2(!shouldShow2), setNewEnrollmentStatus("incoming")
                                 
                             }} />
                             <CustomButton frontColor="#000000" backColor="#FFF" text="Freshman" onPress={() => {
-                                setShouldShow2(!shouldShow2)
+                                setShouldShow2(!shouldShow2), setNewEnrollmentStatus("freshman")
                                 
                             }} />
                             <CustomButton frontColor="#000000" backColor="#FFF" text="Sophomore" onPress={() => {
-                                setShouldShow2(!shouldShow2)
+                                setShouldShow2(!shouldShow2), setNewEnrollmentStatus("sophomore")
                                 
                             }} />
                             <CustomButton frontColor="#000000" backColor="#FFF" text="Junior" onPress={() => {
-                                setShouldShow2(!shouldShow2)
+                                setShouldShow2(!shouldShow2), setNewEnrollmentStatus("junior")
                                 
 
                             }} />
                             <CustomButton frontColor="#000000" backColor="#FFF" text="Senior" onPress={() => {
-                                setShouldShow2(!shouldShow2)
+                                setShouldShow2(!shouldShow2), setNewEnrollmentStatus("senior")
                                 
                             }} />
                             <CustomButton frontColor="#000000" backColor="#FFF" text="Other" onPress={() => {
-                                setShouldShow2(!shouldShow2)
+                                setShouldShow2(!shouldShow2), setNewEnrollmentStatus("other")
                                 
                             }} />
 
@@ -457,44 +482,39 @@ const EditPersonalInfo = (props) => {
 
 
                                 <CustomButton frontColor="#000000" backColor="#FFF" text="Full-Time" onPress={() => {
-                                    setShouldShow5(!shouldShow5)
+                                    setShouldShow5(!shouldShow5), setNewClassStanding("full-time")
                                 }} />
                                 <CustomButton frontColor="#000000" backColor="#FFF" text="Part-Time" onPress={() => {
-                                    setShouldShow5(!shouldShow5)
+                                    setShouldShow5(!shouldShow5), setNewClassStanding("part-time")
                                 }} />
                                 <CustomButton frontColor="#000000" backColor="#FFF" text="Undecided" onPress={() => {
-                                    setShouldShow5(!shouldShow5)
+                                    setShouldShow5(!shouldShow5), setNewClassStanding("undecided")
                                 }} />
 
                             </SecondaryCard>
                         ) : null
                     }
 
-                    <SecondaryCard>
-                        <Text style={styles.text}>Identify your major:</Text>
-                        <TouchableOpacity onPress={() => changeModalVisibility(true)}>
-                            <Text style={styles.dropdown}>{chooseData}</Text>
-                        </TouchableOpacity>
-                        <Modal
-                            transparent={true}
-                            animationType='fade'
-                            visible={isModalVisible}
-                            nRequestClose={() => changeModalVisibility(false)}
-                        >
-                            <ListofMajors
-                                changeModalVisibility={changeModalVisibility}
-                                setData={setData}
-                            />
+                <SecondaryCard>
+                    <Text style={styles.text}>List your Major:</Text>
+                    <TextInput placeholder={major}
+                        placeholderTextColor="#FFFFFF"
+                        value={newMajor}
+                        onChangeText={text => setNewMajor(text)}
+                        style={{
+                            backgroundColor: '#596066', borderColor: '#e8e8e8', fontWeight: 'bold',
+                            borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"
+                        }}
+                    />
 
-                        </Modal>
-                    </SecondaryCard>
+                </SecondaryCard>
 
                     <SecondaryCard>
                         <Text style={styles.text}>I (will) attend school at</Text>
                         <TextInput placeholder={college}
                             placeholderTextColor="#FFFFFF"
-                            //value = {FName}
-                            //onChangeText = {text => setFirstName(text)}
+                            value={newCollege}
+                            onChangeText={text => setNewCollege(text)}
                             style={{
                                 backgroundColor: '#596066', borderColor: '#e8e8e8', fontWeight: 'bold',
                                 borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"
@@ -502,8 +522,8 @@ const EditPersonalInfo = (props) => {
                         <Text style={styles.text}>seeking a</Text>
                         <TextInput placeholder={degree}
                             placeholderTextColor="#FFFFFF"
-                            //value = {LName}
-                            //onChangeText = {text => setLastName(text)}
+                            value={newDegree}
+                            onChangeText={text => setNewDegree(text)}
                             style={{
                                 backgroundColor: '#596066', borderColor: '#e8e8e8', fontWeight: 'bold',
                                 borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"
@@ -511,8 +531,8 @@ const EditPersonalInfo = (props) => {
                         <Text style={styles.text}>with a GPA of</Text>
                         <TextInput placeholder={gpa}
                             placeholderTextColor="#FFFFFF"
-                            //value = {LName}
-                            //onChangeText = {text => setLastName(text)}
+                            value={newGpa}
+                            onChangeText={text => setNewGpa(text)}
                             style={{
                                 backgroundColor: '#596066', borderColor: '#e8e8e8', fontWeight: 'bold',
                                 borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, marginVertical: 5, color: "#FFF"

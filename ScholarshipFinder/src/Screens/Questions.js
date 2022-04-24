@@ -110,7 +110,7 @@ const Questions = () => {
                         onChangeText={text => setAct(text)}
                         style={styles.inputBox} />
                 </SecondaryCard>
-                <SecondaryCard>
+                {/* <SecondaryCard>
                     <Text style={styles.text}>Do you have any athletic interests or participation?</Text>
                     <Text style={styles.text}>Sport 1</Text>
                     <TextInput placeholder="Enter a sport here (leave blank if none)"
@@ -124,7 +124,7 @@ const Questions = () => {
                     <TextInput placeholder="Enter a sport here (leave blank if none)"
                         placeholderTextColor="#FFFFFF"
                         style={styles.inputBox} />
-                </SecondaryCard>
+                </SecondaryCard> */}
 
                 {
                     shouldShow3 ? (
@@ -254,24 +254,15 @@ const Questions = () => {
                     ) : null
                 }
 
-
                 <SecondaryCard>
-                    <Text style={styles.text}>Identify your major:</Text>
-                    <TouchableOpacity onPress={() => changeModalVisibility(true)}>
-                        <Text style={styles.dropdown}>{chooseData}</Text>
-                    </TouchableOpacity>
-                    <Modal
-                        transparent={true}
-                        animationType='fade'
-                        visible={isModalVisible}
-                        nRequestClose={() => changeModalVisibility(false)}
-                    >
-                        <ListofMajors
-                            changeModalVisibility={changeModalVisibility}
-                            setData={setDataDisplay}
-                        />
+                    <Text style={styles.text}>List your Major:</Text>
+                    <TextInput placeholder="College Major"
+                        placeholderTextColor="#FFFFFF"
+                        value={major}
+                        onChangeText={text => setMajor(text)}
+                        style={styles.inputBox}
+                    />
 
-                    </Modal>
                 </SecondaryCard>
 
                 <SecondaryCard>

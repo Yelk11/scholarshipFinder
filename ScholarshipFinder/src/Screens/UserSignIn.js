@@ -78,7 +78,7 @@ const UserSignIn = () => {
 
                 <LoginButton frontColor="#000000" backColor="#FFF" text="Login" onPress={onUserSignInPressed} />
 
-                <LoginButton text="Forgot my password" textStyle={{ color: "#039BE5" }} onPress={onForgotMyPasswordPressed} type="clear" />
+                <LoginButton text="Reset my password" textStyle={{ color: "#039BE5" }} onPress={onForgotMyPasswordPressed} type="clear" />
 
             </LoginSystemCard>
 

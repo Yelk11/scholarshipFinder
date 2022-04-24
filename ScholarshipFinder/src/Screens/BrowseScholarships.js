@@ -79,6 +79,8 @@ const BrowseScholarships = () => {
         setACT(data.act)
         setFirstCollegeStudent(data.firstCollegeStudent)
         setIncomeLevel(data.incomeLevel)
+
+
     }
     
     function my_sort(my_arr) {
@@ -155,7 +157,6 @@ const BrowseScholarships = () => {
             <TouchableOpacity onPress={onSettingsPressed}>
                 <Image style={styles.settingsTopLeft} source={YellowSettingsButton} />
             </TouchableOpacity>
-
             <Image style={styles.logoTopCenter} source={smallLogo} />
             <View style={styles.flexAdjustment}>
 
@@ -167,17 +168,8 @@ const BrowseScholarships = () => {
                                 <View style={styles.circleContainer}>
                                     <View style={styles.circle}><Text style={styles.circleText}>{item.match}%</Text></View>
                                     <View style={styles.circle}><Text style={styles.circleText}>${item.amount}</Text></View>
-
-                                    
                                     <View style={styles.circle}><Text style={styles.circleText}>Due {'\n'} {item.deadline.toDate().getMonth().toString()}/{item.deadline.toDate().getDate().toString()}</Text></View>
                                 </View>
-
-                                <View>
-                                    <Text>Enrollment Status: {item.enrollment_status}</Text>
-                                    <Text>Degree: {item.degree}</Text>
-                                </View>
-                            </Pressable>
-
                         </ScholarshipCard>
                             <AccentCard>
                                 <Image style={styles.like} source={LikeButton} />
