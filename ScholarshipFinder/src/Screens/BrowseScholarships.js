@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { FlatList, Image, Text, ActivityIndicator, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { FlatList, Image, Text, Alert, ActivityIndicator, View, StyleSheet, TouchableOpacity } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
 
@@ -171,6 +171,11 @@ const BrowseScholarships = () => {
                                     <View style={styles.circle}><Text style={styles.circleText}>Due {'\n'} {item.deadline.toDate().getMonth().toString()}/{item.deadline.toDate().getDate().toString()}</Text></View>
                                 </View>
 
+                                <View>
+                                    <Text style={styles.indent}>Enrollment Status: {item.enrollment_status}</Text>
+                                    <Text style={styles.paddedtext}>Degree: {item.degree}</Text>
+                                </View>
+                            
                         </ScholarshipCard>
                             <AccentCard>
                                 <Image style={styles.like} source={LikeButton} />
@@ -196,7 +201,7 @@ const styles = StyleSheet.create({
     circleContainer: {
         flexDirection: 'row',
         justifyContent: 'space-evenly',
-        paddingBottom: 25
+        paddingBottom: 5
 
     },
     listItem: {
@@ -293,6 +298,15 @@ const styles = StyleSheet.create({
     circleText: {
         textAlign: 'center'
 
+    },
+
+    paddedtext: {
+        paddingBottom: 25,
+        left: 4
+    },
+
+    indent: {
+        left: 4
     }
 });
 
