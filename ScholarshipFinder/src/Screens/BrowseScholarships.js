@@ -172,8 +172,8 @@ const BrowseScholarships = () => {
                                 </View>
 
                                 <View>
-                                    <Text style={styles.indent}>Enrollment Status: {item.enrollment_status}</Text>
-                                    <Text style={styles.paddedtext}>Degree: {item.degree}</Text>
+                                    <Text style={styles.indent}>Enrollment Status: {item.enrollment_status + ""}</Text>
+                                    <Text style={styles.paddedtext}>Degree: {item.degree + ""}</Text>
                                 </View>
                             
                         </ScholarshipCard>
@@ -302,11 +302,15 @@ const styles = StyleSheet.create({
 
     paddedtext: {
         paddingBottom: 25,
-        left: 4
+        left: 4,
+        fontWeight:'bold',
+        color: 'black'
     },
 
     indent: {
-        left: 4
+        left: 4,
+        fontWeight: 'bold',
+        color: 'black'
     }
 });
 
