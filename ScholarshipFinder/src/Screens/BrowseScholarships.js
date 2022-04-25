@@ -80,7 +80,6 @@ const BrowseScholarships = () => {
         setFirstCollegeStudent(data.firstCollegeStudent)
         setIncomeLevel(data.incomeLevel)
 
-
     }
 
     function my_sort(my_arr) {
@@ -168,7 +167,7 @@ const BrowseScholarships = () => {
                                 <View style={styles.circleContainer}>
                                     <View style={styles.circle}><Text style={styles.circleText}>{item.match}%</Text></View>
                                     <View style={styles.circle}><Text style={styles.circleText}>${item.amount}</Text></View>
-                                    <View style={styles.circle}><Text style={styles.circleText}>Due {'\n'} {item.deadline.toDate().getMonth().toString()}/{item.deadline.toDate().getDate().toString()}</Text></View>
+                                    <View style={styles.circle}><Text style={styles.circleText}>Due {'\n'} {(item.deadline.toDate().getMonth()+1).toString()}/{item.deadline.toDate().getDate().toString()}</Text></View>
                                 </View>
 
                                 <View>
