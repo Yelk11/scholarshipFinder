@@ -40,6 +40,14 @@ const EditPersonalInfo = (props) => {
 
     const onQuestionPressed = () => {
         if (isValidForm()) {
+            if(highSchool != null){firestore().collection('user_info').doc(auth().currentUser.uid).set({high_school: highSchool}, { merge: true })}
+            if(satMath != null){firestore().collection('user_info').doc(auth().currentUser.uid).set({high_school: highSchool}, { merge: true })}
+            if(satEBRW != null){firestore().collection('user_info').doc(auth().currentUser.uid).set({high_school: highSchool}, { merge: true })}
+            if(act != null){firestore().collection('user_info').doc(auth().currentUser.uid).set({high_school: highSchool}, { merge: true })}
+            if(military != null){firestore().collection('user_info').doc(auth().currentUser.uid).set({high_school: highSchool}, { merge: true })}
+            if(satMath != null){firestore().collection('user_info').doc(auth().currentUser.uid).set({high_school: highSchool}, { merge: true })}
+            if(satMath != null){firestore().collection('user_info').doc(auth().currentUser.uid).set({high_school: highSchool}, { merge: true })}
+
             firestore()
             .collection('user_info')
             .doc(auth().currentUser.uid)
