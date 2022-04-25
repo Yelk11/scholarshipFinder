@@ -43,7 +43,7 @@ const BrowseScholarships = () => {
     const [firstCollegeStudent, setFirstCollegeStudent] = useState([]);
     const [incomeLevel, setIncomeLevel] = useState([]);
 
-   
+
 
     function sendEmail(apply_url) {
         const templateParams = {
@@ -82,7 +82,7 @@ const BrowseScholarships = () => {
 
 
     }
-    
+
     function my_sort(my_arr) {
         for (let i = 0; i < my_arr.length; i++) {
             for (let j = 0; j < my_arr.length - i - 1; j++) {
@@ -94,7 +94,7 @@ const BrowseScholarships = () => {
         };
         return my_arr;
     }
-    
+
     const onSettingsPressed = () => {
         navigation.navigate('Settings');
     };
@@ -112,7 +112,7 @@ const BrowseScholarships = () => {
                     });
 
                 });
-                
+
 
                 for (let i = 0; i < objectsArray.length; i++) {
                     counter = 0;
@@ -136,15 +136,15 @@ const BrowseScholarships = () => {
                     try { objectsArray[i].income_level.includes(incomeLevel) || objectsArray[i].income_level.includes('all') ? counter++ : null } catch (error) { total_attributes--; }
 
 
-                    
-                    if(total_attributes == 0 || counter == 0){
+
+                    if (total_attributes == 0 || counter == 0) {
                         objectsArray[i]['match'] = 0;
-                    }else{
+                    } else {
                         objectsArray[i]['match'] = ((counter / total_attributes) * 100).toFixed(0);
                     }
-                    
+
                 }
-                
+
                 setScholarships(my_sort(objectsArray));
                 setLoading(false);
             }); return () => subscriber;
@@ -170,6 +170,7 @@ const BrowseScholarships = () => {
                                     <View style={styles.circle}><Text style={styles.circleText}>${item.amount}</Text></View>
                                     <View style={styles.circle}><Text style={styles.circleText}>Due {'\n'} {item.deadline.toDate().getMonth().toString()}/{item.deadline.toDate().getDate().toString()}</Text></View>
                                 </View>
+
                         </ScholarshipCard>
                             <AccentCard>
                                 <Image style={styles.like} source={LikeButton} />
@@ -180,8 +181,8 @@ const BrowseScholarships = () => {
 
                 />
 
-            </View>
         </View>
+        </View >
     );
 };
 
