@@ -71,10 +71,10 @@ const PersonalInfo = () => {
         if (!isValidObjField(LName, FName))
           return updateError('Required first name and last name', setError);
 
-        if (!FName.trim() || FName.length < 3)
+        if (!FName.trim() || FName.length < 2)
           return updateError('Invalid first name!', setError);
 
-        if (!LName.trim() || LName.length < 3)
+        if (!LName.trim() || LName.length < 2)
           return updateError('Invalid last name!', setError);
         return true;
       };
