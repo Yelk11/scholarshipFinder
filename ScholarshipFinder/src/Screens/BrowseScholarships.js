@@ -171,7 +171,7 @@ const BrowseScholarships = () => {
                                 </View>
 
                                 <View>
-                                    <Text style={styles.indent}>Enrollment Status: {item.enrollment_status + ""}</Text>
+                                    {/* <Text style={styles.indent}>Enrollment Status: {item.enrollment_status + ""}</Text> */}
                                     <Text style={styles.paddedtext}>Degree: {item.degree + ""}</Text>
                                 </View>
                             
@@ -306,11 +306,11 @@ const styles = StyleSheet.create({
         color: 'black'
     },
 
-    indent: {
-        left: 4,
-        fontWeight: 'bold',
-        color: 'black'
-    }
+    // indent: {
+    //     left: 4,
+    //     fontWeight: 'bold',
+    //     color: 'black'
+    // }
 });
 
 export default BrowseScholarships;
